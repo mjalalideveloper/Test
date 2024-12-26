@@ -1,1 +1,1 @@
-alert(1 & 5)
+alert((5 < 2) ? "Yes" : "No")

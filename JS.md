@@ -235,12 +235,41 @@ if (Boolean) {
 }
 ```
 
-## Logical Operators => ||
+## Ternary Condition
+- - -
+
+```js
+(Boolean) ? "If True" : "If False"
+
+// example :
+(5 > 2) ? "Yes" : "No" // Yes
+(5 < 2) ? "Yes" : "No" // No
+```
+
+## Logical Operators => OR =>||
 - - -
 
 ```js
 true || true // true
 true || false // true
-true || false // true
+false || true // true
 false || false // false
+```
+
+## Logical Operators => AND => &&
+- - -
+
+```js
+true && true // true
+true && false // false
+false && true // false
+false && false // false
+```
+
+## Logical Operators => NOT => !
+- - -
+
+```js
+!true // false
+!false // true
 ```
