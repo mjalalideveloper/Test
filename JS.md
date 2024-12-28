@@ -8,9 +8,9 @@
 
 <h1 align="center">
   <br>
-  <a href="https://html.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/240px-HTML5_logo_and_wordmark.svg.png" alt="Html"></a>
+  <a href="https://javascript.info/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/260px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript"></a>
   <br>
-  HTML
+  JavaScript
   <br>
 </h1>
 
@@ -62,7 +62,7 @@
 <body>
 
     <!-- ... -->
-    
+
     <!-- Internal -->
     <script>
         alert("Hello World")
@@ -272,4 +272,77 @@ false && false // false
 ```js
 !true // false
 !false // true
+```
+
+## Switch Case
+- - -
+
+```js
+switch(x) {
+  case 'value1':  // if (x === 'value1')
+    ...
+    break
+
+  case 'value2':  // if (x === 'value2' || x === 'value3')
+  case 'value3':
+    ...
+    break
+
+  default:
+    ...
+    break
+}
+```
+
++ The value of x is checked for a strict equality to the value from the first case (that is, value1) then to the second (value2) and so on.
++ If the equality is found, switch starts to execute the code starting from the corresponding case, until the nearest break (or until the end of switch).
++ If no case is matched then the default code is executed (if it exists).
+
+## Function
+- - -
+
+### Function Declaration
+```js
+function name(parameter1, parameter2, ... parameterN) {
+ // Code
+}
+```
+
+### Function Expressions
+```js
+var name = function(parameter1, parameter2, ... parameterN) {
+    // Code
+}
+```
+
+### Call Function
+```js
+name()
+```
+
+### Parameters
+```js
+function showText(text, number) {
+    alert("You Parameters => text: " + text + " number: " + number);
+}
+
+showText("Hello World", 25); // You Parameters => text: Hello World number: 25
+```
+
+### Default values
+
+```js
+function name(params) {
+    alert(params);
+}
+
+name(); // undefined
+
+// Default values:
+
+function name(params = "Test Text") {
+    alert(params);
+}
+
+name(); // Test Text
 ```
