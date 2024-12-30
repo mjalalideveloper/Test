@@ -32,10 +32,27 @@
 
 // average(prompt("Enter first number:"), prompt("Enter second number:"), prompt("Enter third number:"));
 
+// =====> 37 <=====
+
+// var inputUsername = prompt("Enter your username:");
+// var inputPassword = prompt("Enter your password:");
+
+// if (inputUsername === null || inputPassword === null) {
+//     alert("Cancelled");
+// } else if (inputUsername === "" || inputPassword === "") {
+//     alert("No input");
+// } else if (inputUsername.length < 3 && inputPassword.length < 8) {
+//     alert("Username must be at least 3 characters long\nPassword must be at least 8 characters long");
+// } else if (inputUsername.length < 3) {
+//     alert("Username must be at least 3 characters long");
+// } else if (inputPassword.length < 8) {
+//     alert("Password must be at least 8 characters long");
+// } else {
+//     alert("Welcome!");
+// }
+
 // =====> Test <=====
 
-function name(params = "Test Text") {
-    alert(params);
-}
+var capcha = Math.floor(Math.random() * 100000)
 
-name(); // Test Text
+alert(`Enter the following capcha: ${capcha}`);

@@ -54,6 +54,10 @@
   •
 </p>
 
+## Js
+
+> Js is case-sensitive
+
 ## Using JavaScript In HTML
 - - -
 
@@ -336,13 +340,305 @@ function name(params) {
     alert(params);
 }
 
-name(); // undefined
+name(); // undefined (No input)
 
 // Default values:
 
-function name(params = "Test Text") {
+function name(params = "Test Text" /* Default value */) {
     alert(params);
 }
 
-name(); // Test Text
+name(); // Test Text (Default value)
+```
+
+### Return
+
+```js
+function name() {
+    return "Hello World"; // function has only one return
+
+    // (after return => no code will be executed)
+
+    alert("Test") // no alert (after return)
+}
+
+name(); // "Hello World" (no alert)
+
+var result = name(); // "Hello World" (no alert)
+
+alert(result); // alert("Hello World"); (no return)
+```
+
+## String
+- - -
+
+### Strings Syntax
+
+```js
+var singleQuote= 'Hello World'; // single quotes
+
+var doubleQuote = "Hello World"; // double quotes
+
+var templateLiteral = `Hello World`; // backticks (template literals)
+```
+
+### Indexing
+
+```js
+var text = "Hello"; // 5 characters
+
+text[0] // H (index 0)
+text[1] // e (index 1)
+text[2] // l (index 2)
+text[3] // l (index 3)
+text[4] // o (index 4)
+
+text[5] // undefined (index 5)
+
+text[-1] // undefined (index -1)
+```
+
+
+### String Properties
+
+> length
+
+```js
+var text = "Hello World";
+
+text.length // 11 (characters) (index 0 - 10)
+
+text[text.length - 1] // d (index 10)
+
+text[text.length] // undefined (index 11)
+
+text[text.length - 1] // d (index 10)
+```
+
+### String Methods
+
+> chaeAt(index)
+
+Returns the character at the specified index (position)
+
+```js
+var text = "Hello World";
+
+text[0] // H (index 0) (indexing)
+
+text.charAt(0) // H (index 0) (charAt() method)
+```
+
+> charCodeAt(index)
+
+Returns the Unicode of the character at the specified index (position)
+
+```js
+var text = "Hello World";
+
+text.charCodeAt(0) // 72 (index 0) (ASCII code)
+```
+
+> concat(string)
+
+Returns a new string that is this string joined with string(s) provided as arguments
+
+```js
+var text = "Hello";
+
+text.concat(" World") // Hello World
+```
+
+> trim()
+
+Removes whitespace from both ends of a string
+
+```js
+var text = "      Hello World      ";
+
+text // "      Hello World      "
+
+text.trim() // "Hello World"
+```
+
+> toLowerCase()
+
+Returns the calling string value converted to lowercase
+
+```js
+var text = "Hello World";
+
+text.toLowerCase() // hello world
+```
+
+> toUpperCase()
+
+Returns the calling string value converted to uppercase
+
+```js
+var text = "Hello World";
+
+text.toUpperCase() // HELLO WORLD
+```
+
+> search(string)
+
+Searches a string for a specified value and returns the position of the match
+
+```js
+var text = "Hello World";
+
+text.search("World") // 6 (index)
+
+text.search("Worlds") // -1 (not found)
+
+text.search("world") // -1 (not found) (case sensitive)
+```
+
+> indexOf(string)
+
+Returns the position of the first found occurrence of a specified value in a string
+
+```js
+var text = "Hello World";
+
+text.indexOf("World") // 6 (index)
+
+text.indexOf("Worlds") // -1 (not found)
+
+text.indexOf("world") // -1 (not found) (case sensitive)
+```
+
+> includes(string)
+
+Returns true if a string contains a specified value, otherwise false
+
+```js
+var text = "Hello World";
+
+text.includes("World") // true
+
+text.includes("Worlds") // false
+
+text.includes("world") // false (case sensitive)
+```
+
+> slice(start, end)
+
+Extracts a part of a string and returns a new string
+
+```js
+var text = "Hello World";
+
+text.slice(0, 5) // Hello (index 0 - 4)
+
+text.slice(6, 11) // World (index 6 - 10)
+
+text.slice(6) // World (index 6 - end)
+
+text.slice(-5) // World (index -5 - end)
+```
+
+> substr(start, length)
+
+Extracts the characters from a string, beginning at a specified start position, and through the specified number of character
+
+```js
+var text = "Hello World";
+
+text.substr(0, 5) // Hello (index 0 - 4)
+
+text.substr(6, 5) // World (index 6 - 10)
+
+text.substr(6) // World (index 6 - end)
+
+text.substr(-5) // World (index -5 - end)
+```
+
+> substring(start, end)
+
+Extracts the characters from a string, between two specified indices
+
+```js
+var text = "Hello World";
+
+text.substring(0, 5) // Hello (index 0 - 4)
+
+text.substring(6, 11) // World (index 6 - 10)
+
+text.substring(6) // World (index 6 - end)
+
+text.substring(-5) // Hello World (index 0 - end)
+```
+
+## Math Object
+
+```js
+Math.PI // 3.141592653589793 (PI)
+
+Math.round(4.7) // 5 (rounds to the nearest integer)
+Math.round(4.4) // 4 (rounds to the nearest integer)
+
+Math.pow(8, 2) // 64 (8^2)
+
+Math.sqrt(64) // 8 (square root of 64)
+
+Math.abs(-4.7) // 4.7 (absolute value)
+
+Math.ceil(4.4) // 5 (rounds up to the nearest integer)
+Math.floor(4.7) // 4 (rounds down to the nearest integer)
+Math.trunc(4.7) // 4 (removes the decimal part)
+
+Math.min(0, 150, 30, 20, -8, -200) // -200 (returns the number with the lowest value)
+Math.max(0, 150, 30, 20, -8, -200) // 150 (returns the number with the highest value)
+
+Math.random() // 0.123456789 (returns a random number between 0 and 1)
+
+Math.floor(Math.random() * 10) // 0 - 9 (returns a random integer from 0 to 9)
+
+Math.floor(Math.random() * 10) + 1 // 1 - 10 (returns a random integer from 1 to 10)
+```
+
+## Assignment Operators
+
+```js
+var num = 10;
+
+num += 5; // 15 (num = num + 5)
+
+num -= 5; // 5 (num = num - 5)
+
+num *= 5; // 50 (num = num * 5)
+
+num /= 5; // 2 (num = num / 5)
+
+num %= 5; // 0 (num = num % 5)
+
+num **= 5; // 100000 (num = num ** 5)
+
+num++; // 11 (num = num + 1) (increment)
+++num; // 12 (num = num + 1) (increment)
+
+num--; // 11 (num = num - 1) (decrement)
+--num; // 10 (num = num - 1) (decrement)
+```
+
+> **Tip:**
+
+The difference between x++ and ++x
+
++ num++ (post-increment): Returns the current value of num first, then increments num by one.
+
++ ++num (pre-increment): Increments num by one first, then returns the new value of num.
+
+```js
+let num = 5;
+
+console.log(num++); // Output: 5
+console.log(num);   // Output: 6
+
+num = 5;
+
+console.log(++num); // Output: 6
+console.log(num);   // Output: 6
 ```
