@@ -35,9 +35,7 @@ git checkout -- index.html //برگردوندن فایل
 UNSTAGE
 git reset HEAD . // انستیج
 
-
 git reset f0e5d15 // برگشتن به یک کامیت
-
 
 git reset --hard f0e5d15 // برگشتن به یک کامیت و اعمال تغییرات
 
@@ -58,7 +56,6 @@ git checkout -b dev
 MERGE
 git merge dev
 
-
 # stash
 
 create
@@ -71,7 +68,6 @@ git stash list
 delete
 git stash drop stash@{0}
 
-
 show chenage
 git stash show stash@{0}
 git stash show -p stash@{0}
@@ -83,6 +79,7 @@ apply and delete stash
 git stash pop stash@{0}
 
 # Git Ignore
+
 touch .gitignore
 
 git rm --cached -r .
@@ -90,14 +87,13 @@ git add .
 
 folder1/
 
-*.txt
+\*.txt
 
 !a.txt
 
 #
 
 git remote add origin https://github.com/mjalalideveloper/Test.git
-
 
 git push -u origin master
 
