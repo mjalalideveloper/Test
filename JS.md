@@ -642,3 +642,165 @@ num = 5;
 console.log(++num); // Output: 6
 console.log(num);   // Output: 6
 ```
+
+## Comparison Operators
+
+```js
+== // equal to (only value)
+=== // equal value and equal type (strict)
+!= // not equal to (only value)
+!== // not equal value or not equal type (strict)
+> // greater than
+< // less than
+>= // greater than or equal to
+<= // less than or equal to
+
+// Example:
+
+5 == 5 // true
+5 == "5" // true
+5 === 5 // true
+5 === "5" // false
+5 != 5 // false
+5 != "5" // false
+5 !== 5 // false
+5 !== "5" // true
+5 > 5 // false
+5 < 5 // false
+5 >= 5 // true
+5 <= 5 // true
+```
+
+## Loops
+
+### For Loop
+
+```js
+for (var index = 0; index < 5; index++) {
+    // Code
+
+}
+
+// Example:
+
+for (var index = 0; index < 5; index++) {
+    console.log(index);
+}
+
+// Output:
+// 0
+// 1
+// 2
+// 3
+// 4
+
+// Example:
+
+for (var index = 5; index < 0; index--) {
+    console.log(index);
+}
+
+// Output:
+// 5
+// 4
+// 3
+// 2
+// 1
+
+// Example:
+
+for (var index = 0; index < 5; index += 1) {
+    console.log(index);
+}
+
+// Output:
+// 0
+// 1
+// 2
+// 3
+// 4
+
+// Example:
+
+var index = 0;
+
+for (; index < 5; index++) {
+    console.log(index);
+}
+
+// Output:
+// 0
+// 1
+// 2
+// 3
+// 4
+
+// Example:
+
+var text = "Hello";
+
+for (var index = 0; index < text.length; index++) {
+    console.log(text[index]);
+}
+
+// Output:
+// H
+// e
+// l
+// l
+// o
+
+// Practice:
+
+var average = 0;
+var input;
+
+for (var i = 0; i < 6; i++) {
+    if (i < 5) {
+        input = prompt(`Enter The Number ${i + 1}:`);
+        if (input === null) {
+            alert("Cancelled");
+            break;
+        } else if (input === "") {
+            alert("No input");
+            break;
+        } else if (isNaN(input - 1)) {
+            alert("Not a number");
+            break;
+        } else {
+            average += (+input);
+        }
+
+    } else {
+        alert(`Average: ${average / 5}`);
+    }
+}
+
+// Output:
+// input: 1, 2, 3, 4, 5
+// Average: 3
+```
+
+### While Loop
+
+```js
+while (Boolean) {
+    // Code
+}
+
+// Example:
+
+var i = 0;
+
+while (i < 100) {
+    if (i % 2 == 0) {console.log(i);}
+    i++;
+}
+
+// Output:
+// 0
+// 2
+// 4
+// ...
+// 98
+```

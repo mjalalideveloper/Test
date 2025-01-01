@@ -51,8 +51,80 @@
 //     alert("Welcome!");
 // }
 
+// =====> 49 <=====
+
+// var allPrices = 0;
+// var input;
+
+// for (var i = 0; i < 6; i++) {
+//     if (i < 5) {
+//         input = prompt("Price :");
+//         if (input === null) {
+//             alert("Cancelled");
+//             break;
+//         } else if (input === "") {
+//             alert("No input");
+//             break;
+//         } else if (isNaN(input - 1)) {
+//             alert("Not a number");
+//             break;
+//         } else {
+//             all += (+input);
+//         }
+
+//     } else {
+//         alert(`Total: ${all}`);
+//     }
+// }
+
+// =====> 50 <=====
+
+// var average = 0;
+// var input;
+
+// for (var i = 0; i < 6; i++) {
+//     if (i < 5) {
+//         input = prompt(`Enter The Number ${i + 1}:`);
+//         if (input === null) {
+//             alert("Cancelled");
+//             break;
+//         } else if (input === "") {
+//             alert("No input");
+//             break;
+//         } else if (isNaN(input - 1)) {
+//             alert("Not a number");
+//             break;
+//         } else {
+//             average += (+input);
+//         }
+
+//     } else {
+//         alert(`Average: ${average / 5}`);
+//     }
+// }
+
+// =====> 51 <=====
+
+// var userNum = prompt("Enter a number:");
+// var sum = 0;
+
+// if (userNum === null) {
+//     alert("Cancelled");
+// } else if (userNum === "") {
+//     alert("No input");
+// } else if (isNaN(userNum - 1)) {
+//     alert("Not a number");
+// } else {
+//     for (var i = 0; i < userNum.length; i++) {
+//         sum += (+userNum[i]);
+//     } alert(`Sum: ${sum}`);
+// }
+
 // =====> Test <=====
 
-var capcha = Math.floor(Math.random() * 100000)
+var i = 0;
 
-alert(`Enter the following capcha: ${capcha}`);
+while (i < 100) {
+    if (i % 2 == 0) {console.log(i);}
+    i++;
+}
