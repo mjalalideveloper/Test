@@ -830,3 +830,184 @@ while (i < 100) {
 // ...
 // 98
 ```
+
+### Do While Loop
+
+> The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+
+```js
+do {
+  // Code
+} while (Boolean);
+
+// Example:
+
+var i = 0;
+
+do {
+  console.log(i);
+  i++;
+} while (i < 5);
+
+// Output:
+// 0
+// 1
+// 2
+// 3
+// 4
+
+// Example:
+
+var i = 0;
+
+do {
+  console.log(i);
+  i++;
+} while (i < 0);
+
+// Output:
+// 0
+```
+
+## Array
+
+### Array Syntax
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+var arrayName = new Array("Value1", "Value2", "Value3");
+```
+
+### Indexing
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+arrayName[0]; // Value1 (index 0)
+arrayName[1]; // Value2 (index 1)
+arrayName[2]; // Value3 (index 2)
+
+arrayName[3]; // undefined (index 3)
+arrayName[-1]; // undefined (index -1)
+```
+
+### Array Properties
+
+> length
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+arrayName.length; // 3 (elements)
+
+arrayName[arrayName.length - 1]; // Value3 (index 2)
+
+arrayName[arrayName.length]; // undefined (index 3)
+```
+
+### Array Methods
+
+> push()
+
+Adds new elements to the end of an array, and returns the new length
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+// arrayName[3] = "Value4";
+
+// arrayName; // ["Value1", "Value2", "Value3", "Value4"]
+
+arrayName.push("Value4");
+
+arrayName; // ["Value1", "Value2", "Value3", "Value4"]
+```
+
+> pop()
+
+Removes the last element of an array, and returns that element
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+// arrayName[2] = undefined;
+
+// arrayName; // ["Value1", "Value2"]
+
+arrayName.pop();
+
+arrayName; // ["Value1", "Value2"]
+```
+
+> shift()
+
+Removes the first element of an array, and returns that element
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+arrayName.shift();
+
+arrayName; // ["Value2", "Value3"]
+
+arrayName.shift();
+
+arrayName; // ["Value3"]
+```
+
+> unshift()
+
+Adds new elements to the beginning of an array, and returns the new length
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+arrayName.unshift("Value0");
+
+arrayName; // ["Value0", "Value1", "Value2", "Value3"]
+
+arrayName.unshift("Value-1", "Value-2");
+
+arrayName; // ["Value-1", "Value-2", "Value0", "Value1", "Value2", "Value3"]
+```
+
+## Objects
+
+### Object Syntax
+
+```js
+var objectName = {
+  key1: "Value1",
+  key2: "Value2",
+  key3: "Value3",
+};
+
+var objectName = new Object();
+```
+
+### Indexing
+
+```js
+var objectName = {
+  key1: "Value1",
+  key2: "Value2",
+  key3: "Value3",
+};
+
+objectName.key1; // Value1 (key1)
+objectName.key2; // Value2 (key2)
+objectName.key3; // Value3 (key3)
+
+objectName.key4; // undefined (key4)
+objectName.key - 1; // undefined (key-1)
+
+// or
+
+objectName["key1"]; // Value1 (key1)
+objectName["key2"]; // Value2 (key2)
+objectName["key3"]; // Value3 (key3)
+
+objectName["key4"]; // undefined (key4)
+objectName["key-1"]; // undefined (key-1)
+```

@@ -1,4 +1,4 @@
-// =====> 31 <=====
+// !=====> 31 <=====!
 
 // function isEvenOrOdd(num) {
 //     if (num === "") {
@@ -16,7 +16,7 @@
 
 // isEvenOrOdd(prompt("Enter a number:"));
 
-// =====> 32 <=====
+// !=====> 32 <=====!
 
 // function average(num1, num2, num3) {
 //     if (num1 === "" || num2 === "" || num3 === "") {
@@ -32,7 +32,7 @@
 
 // average(prompt("Enter first number:"), prompt("Enter second number:"), prompt("Enter third number:"));
 
-// =====> 37 <=====
+// !=====> 37 <=====!
 
 // var inputUsername = prompt("Enter your username:");
 // var inputPassword = prompt("Enter your password:");
@@ -51,7 +51,7 @@
 //     alert("Welcome!");
 // }
 
-// =====> 49 <=====
+// !=====> 49 <=====!
 
 // var allPrices = 0;
 // var input;
@@ -77,7 +77,7 @@
 //     }
 // }
 
-// =====> 50 <=====
+// !=====> 50 <=====!
 
 // var average = 0;
 // var input;
@@ -103,7 +103,7 @@
 //     }
 // }
 
-// =====> 51 <=====
+// !=====> 51 <=====!
 
 // var userNum = prompt("Enter a number:");
 // var sum = 0;
@@ -120,13 +120,111 @@
 //     } alert(`Sum: ${sum}`);
 // }
 
-// =====> Test <=====
+// !=====> 55 <=====!
 
-var i = 0;
+// var num1 = prompt("Enter a number:");
+// var num2 = prompt("Enter a number:");
+// var i = 1;
 
-while (i < 100) {
-  if (i % 2 == 0) {
-    console.log(i);
+// if (num1 === null || num2 === null) {
+//   alert("Cancelled");
+// } else if (num1 === "" || num2 === "") {
+//   alert("No input");
+// } else if (isNaN(num1 - 1) || isNaN(num2 - 1)) {
+//   alert("Not a number");
+// } else {
+//   num1 = +num1;
+//   num2 = +num2;
+//   if (num1 < num2) {
+//     while (num1 + i < num2) {
+//       if ((num1 + i) % 2 == 0) {
+//         console.log(num1 + i);
+//       }
+//       i++;
+//     }
+//   } else if (num1 > num2) {
+//     while (num2 + i < num1) {
+//       if ((num2 + i) % 2 == 0) {
+//         console.log(num2 + i);
+//       }
+//       i++;
+//     }
+//   }
+// }
+
+// !=====> 56 <=====!
+
+// var n = prompt("N : ");
+// var i = 0;
+// var num = 0;
+// var sum = 0;
+// var avg = 0;
+
+// if (i === null) {
+//   alert("Cancelled");
+// } else if (i === "") {
+//   alert("No input");
+// } else if (isNaN(i - 1)) {
+//   alert("Not a number");
+// } else {
+//   while (i < n) {
+//     num = prompt("Enter a number:");
+//     if (num === null) {
+//       alert("Cancelled");
+//       break;
+//     } else if (num === "") {
+//       alert("No input");
+//       break;
+//     } else if (isNaN(num - 1)) {
+//       alert("Not a number");
+//       break;
+//     } else {
+//       sum += +num;
+//       i++;
+//     }
+//   }
+// }
+
+// avg = sum / n;
+// alert(`Average: ${avg}`);
+
+// !=====> 61 <=====!
+
+var n = prompt("N : ");
+var input;
+var array = [];
+var sum = 0;
+var average = 0;
+
+if (n === null) {
+  alert("Cancelled");
+} else if (n === "") {
+  alert("No input");
+} else if (isNaN(n - 1)) {
+  alert("Not a number");
+} else {
+  for (var i = 0; i < n; i++) {
+    input = prompt("Enter a number:");
+    if (input === null) {
+      alert("Cancelled");
+      break;
+    } else if (input === "") {
+      alert("No input");
+      break;
+    } else if (isNaN(input - 1)) {
+      alert("Not a number");
+      break;
+    } else {
+      array.push(+input);
+    }
   }
-  i++;
+
+  for (var i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+
+  average = sum / n;
+  alert(`Average: ${average}`);
 }
+
+// !=====> Test <=====!
