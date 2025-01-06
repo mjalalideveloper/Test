@@ -972,6 +972,79 @@ arrayName.unshift("Value-1", "Value-2");
 arrayName; // ["Value-1", "Value-2", "Value0", "Value1", "Value2", "Value3"]
 ```
 
+> forEach()
+
+Calls a function once for each element in an array, in order
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+
+arrayName.forEach(function (element, index, array) {
+  console.log(`Element: ${element} Index: ${index} Array: ${array}`);
+});
+
+// Output:
+// Element: Value1 Index: 0 Array: Value1,Value2,Value3
+// Element: Value2 Index: 1 Array: Value1,Value2,Value3
+// Element: Value3 Index: 2 Array: Value1,Value2,Value3
+```
+
+> includes(element, start)
+
+Check if an array contains the specified element
+
+```js
+var arrayName = ["Value1", "Value2", "Value3", "Value2", { key: "Value2" }];
+
+arrayName.includes("Value2"); // true
+
+arrayName.includes("Value4"); // false
+
+arrayName.includes("value2"); // false (case sensitive)
+
+arrayName.includes("Value2", 2); // false (start index) (index 2)
+
+arrayName.includes("Value2", 1); // true (start index) (index 1)
+
+arrayName.includes({ key: "Value2" }); // false (object)
+```
+
+> some()
+
+Check if some elements in an array pass a test
+
+Tip : some() does not execute the function for array elements without values.
+
+Tip : some() does not change the original array.
+
+```js
+var arrayName = ["Value1", "Value2", "Value3", "Value2", { key: "Value2" }];
+
+arrayName.some(function (element, index, array) {
+  return element === "Value2";
+}); // true
+
+arrayName.some(function (element, index, array) {
+  return element === "Value4";
+}); // false
+
+arrayName.some(function (element, index, array) {
+  return element === "value2";
+}); // false (case sensitive)
+
+arrayName.some(function (element, index, array) {
+  return element === "Value2";
+}, 2); // false (start index) (index 2)
+
+arrayName.some(function (element, index, array) {
+  return element === "Value2";
+}, 1); // true (start index) (index 1)
+
+arrayName.some(function (element, index, array) {
+  return element === { key: "Value2" };
+}); // false (object)
+```
+
 ## Objects
 
 ### Object Syntax

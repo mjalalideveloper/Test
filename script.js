@@ -190,41 +190,132 @@
 
 // !=====> 61 <=====!
 
-var n = prompt("N : ");
-var input;
-var array = [];
-var sum = 0;
-var average = 0;
+// var n = prompt("N : ");
+// var input;
+// var array = [];
+// var sum = 0;
+// var average = 0;
 
-if (n === null) {
-  alert("Cancelled");
-} else if (n === "") {
-  alert("No input");
-} else if (isNaN(n - 1)) {
-  alert("Not a number");
-} else {
-  for (var i = 0; i < n; i++) {
-    input = prompt("Enter a number:");
-    if (input === null) {
-      alert("Cancelled");
-      break;
-    } else if (input === "") {
-      alert("No input");
-      break;
-    } else if (isNaN(input - 1)) {
-      alert("Not a number");
-      break;
-    } else {
-      array.push(+input);
-    }
-  }
+// if (n === null) {
+//   alert("Cancelled");
+// } else if (n === "") {
+//   alert("No input");
+// } else if (isNaN(n - 1)) {
+//   alert("Not a number");
+// } else {
+//   for (var i = 0; i < n; i++) {
+//     input = prompt("Enter a number:");
+//     if (input === null) {
+//       alert("Cancelled");
+//       break;
+//     } else if (input === "") {
+//       alert("No input");
+//       break;
+//     } else if (isNaN(input - 1)) {
+//       alert("Not a number");
+//       break;
+//     } else {
+//       array.push(+input);
+//     }
+//   }
 
-  for (var i = 0; i < array.length; i++) {
-    sum += array[i];
-  }
+//   for (var i = 0; i < array.length; i++) {
+//     sum += array[i];
+//   }
 
-  average = sum / n;
-  alert(`Average: ${average}`);
-}
+//   average = sum / n;
+//   alert(`Average: ${average}`);
+// }
+
+// !=====> 63 <=====!
+
+// var users = [
+//   { id: 1, name: "John", family: "Doe", age: 30, email: "example1@gmail.com" },
+//   { id: 2, name: "Jane", family: "Doe", age: 25, email: "example2@gmail.com" },
+//   { id: 3, name: "Jack", family: "Doe", age: 20, email: "example3@gmail.com" },
+// ];
+
+// var userName = "";
+// var userFamily = "";
+// var userAge = "";
+// var userEmail = "";
+
+// var statusName = false;
+
+// userName = prompt("Enter your name:");
+// userFamily = prompt("Enter your family:");
+// userAge = prompt("Enter your age:");
+// userEmail = prompt("Enter your email:");
+
+// while (!statusName) {
+//   if (
+//     userName === null ||
+//     userFamily === null ||
+//     userAge === null ||
+//     userEmail === null
+//   ) {
+//     alert("Cancelled");
+//     break;
+//   } else if (
+//     userName === "" ||
+//     userFamily === "" ||
+//     userAge === "" ||
+//     userEmail === ""
+//   ) {
+//     alert("No input");
+//     userName = prompt("Enter your name:");
+//     userFamily = prompt("Enter your family:");
+//     userAge = prompt("Enter your age:");
+//     userEmail = prompt("Enter your email:");
+//   } else if (isNaN(userAge)) {
+//     alert("Not a number");
+//     userAge = prompt("Enter your age:");
+//   } else if (userName.length < 3 || userFamily.length < 3) {
+//     alert("Name and family must be at least 3 characters long");
+//     userName = prompt("Enter your name:");
+//     userFamily = prompt("Enter your family:");
+//   } else if (userName.length > 10 || userFamily.length > 15) {
+//     alert("Name and family must be at most 20 characters long");
+//     userName = prompt("Enter your name:");
+//     userFamily = prompt("Enter your family:");
+//   } else if (userAge > 100 || userAge < 0) {
+//     alert("Age must be between 0 and 100");
+//     userAge = prompt("Enter your age:");
+//   } else if (!userEmail.includes("@") || !userEmail.includes(".")) {
+//     alert("Invalid email");
+//     userEmail = prompt("Enter your email:");
+//   } else {
+//     users.push({
+//       id: users.length + 1,
+//       name: userName,
+//       family: userFamily,
+//       age: +userAge,
+//       email: userEmail,
+//     });
+//     alert("User added successfully");
+//     for (var i = 0; i < users.length; i++) {
+//       console.log(
+//         `Id: ${users[i].id}, Name: ${users[i].name}, Family: ${users[i].family}, Age: ${users[i].age}, Email: ${users[i].email}`
+//       );
+//     }
+//     statusName = true;
+//   }
+// }
+
+// !=====> 65 <=====!
+
+var users = [
+  { id: 1, name: "John", family: "Doe", age: 30, email: "example1@gmail.com" },
+  { id: 2, name: "Jane", family: "Doe", age: 25, email: "example2@gmail.com" },
+  { id: 3, name: "Jack", family: "Doe", age: 20, email: "example3@gmail.com" },
+];
+
+users.forEach(function (user) {
+  console.log(
+    `id: ${user.name} | name: ${user.family} | age: ${user.age} | email: ${user.email}`
+  );
+});
 
 // !=====> Test <=====!
+var arrayName = ["Value1", "Value2", "Value3", "Value2", { key: "Value2" }];
+console.log(arrayName.includes({ key: "Value2" }));
