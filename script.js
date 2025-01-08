@@ -304,18 +304,136 @@
 
 // !=====> 65 <=====!
 
-var users = [
-  { id: 1, name: "John", family: "Doe", age: 30, email: "example1@gmail.com" },
-  { id: 2, name: "Jane", family: "Doe", age: 25, email: "example2@gmail.com" },
-  { id: 3, name: "Jack", family: "Doe", age: 20, email: "example3@gmail.com" },
-];
+// var users = [
+//   { id: 1, name: "John", family: "Doe", age: 30, email: "example1@gmail.com" },
+//   { id: 2, name: "Jane", family: "Doe", age: 25, email: "example2@gmail.com" },
+//   { id: 3, name: "Jack", family: "Doe", age: 20, email: "example3@gmail.com" },
+// ];
 
-users.forEach(function (user) {
-  console.log(
-    `id: ${user.name} | name: ${user.family} | age: ${user.age} | email: ${user.email}`
-  );
-});
+// users.forEach(function (user) {
+//   console.log(
+//     `id: ${user.name} | name: ${user.family} | age: ${user.age} | email: ${user.email}`
+//   );
+// });
+
+// !=====> 68 <=====!
+
+// var products = [
+//   { id: 1, name: "Product 1", price: 100 },
+//   { id: 2, name: "Product 2", price: 200 },
+//   { id: 3, name: "Product 3", price: 300 },
+// ];
+// var cart = [];
+// var userChoice;
+// var whileStatus = true;
+
+// function addProduct() {
+//   var productName = prompt("Enter the product name:");
+//   var cartLength = cart.length;
+//   products.some(function (product) {
+//     if (product.name === productName) {
+//       cart.push(product);
+//       alert("Product added to cart");
+//       return true;
+//     }
+//   });
+//   if (cartLength === cart.length) {
+//     alert("Product not found");
+//   }
+// }
+
+// function removeProduct() {
+//   var productName = prompt("Enter the product name:");
+//   var cartLength = cart.length;
+//   cart.some(function (product, index) {
+//     if (product.name === productName) {
+//       cart.splice(index, 1);
+//       alert("Product removed from cart");
+//       return true;
+//     }
+//   });
+//   if (cartLength === cart.length) {
+//     alert("Product not found");
+//   }
+// }
+
+// function showCart() {
+//   var allPrice = 0;
+//   if (cart.length === 0) {
+//     alert("Cart is empty");
+//   } else {
+//     console.log("=====> Cart <=====");
+//     cart.forEach(function (product, index) {
+//       console.log(
+//         `${index + 1}_ id: ${product.id} | name: ${product.name} | price: ${
+//           product.price
+//         }`
+//       );
+//       allPrice += product.price;
+//     });
+//     console.log(`Price All: ${allPrice}`);
+//     console.log("==================");
+//   }
+// }
+
+// function main() {
+//   while (whileStatus) {
+//     userChoice = prompt(
+//       "1- Add Product\n2- Remove Product\n3- Show Cart\n4- Cancel"
+//     );
+
+//     if (userChoice === null) {
+//       alert("Cancelled");
+//       whileStatus = false;
+//     } else if (userChoice === "") {
+//       alert("No input");
+//     } else if (isNaN(userChoice - 1)) {
+//       alert("Not a number");
+//     } else {
+//       switch (userChoice) {
+//         case "1":
+//           addProduct();
+//           break;
+//         case "2":
+//           removeProduct();
+//           break;
+//         case "3":
+//           showCart();
+//           break;
+//         case "4":
+//           alert("Cancelled");
+//           whileStatus = false;
+//           break;
+//         default:
+//           alert("Invalid choice");
+//           break;
+//       }
+//     }
+//   }
+// }
+
+// main();
+
+// !=====> 70 <=====!
+
+// var users = [
+//   { id: 1, userName: "Ali", age: 23 },
+//   { id: 2, userName: "Mohahmmad", age: 12 },
+//   { id: 3, userName: "Reza", age: 30 },
+// ];
+
+// var userAgeCheck = users.every(function (user) {
+//   return user.age > 18;
+// });
+
+// if (userAgeCheck === true) {
+//   alert("Yes");
+// } else {
+//   alert("No");
+// }
 
 // !=====> Test <=====!
-var arrayName = ["Value1", "Value2", "Value3", "Value2", { key: "Value2" }];
-console.log(arrayName.includes({ key: "Value2" }));
+var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+
+console.log(numArray.splice(2, 3, "Test"));
+console.log(numArray);

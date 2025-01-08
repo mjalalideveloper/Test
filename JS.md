@@ -77,6 +77,18 @@
 </body>
 ```
 
+## Comment
+
+---
+
+```js
+// This Is A Comment
+
+/*
+This Is A Comment
+*/
+```
+
 ## Variables
 
 ---
@@ -118,18 +130,6 @@ null
 [1, 2, 3, 4, 5]
 ```
 
-## Comment
-
----
-
-```js
-// This Is A Comment
-
-/*
-This Is A Comment
-*/
-```
-
 ## Console
 
 ---
@@ -164,7 +164,9 @@ Boolean("0"); // true -> typeof : boolean
 Boolean(""); // false -> typeof : boolean
 ```
 
-## Logical Operators
+## Operators
+
+### Arithmetic Operators
 
 ---
 
@@ -182,24 +184,106 @@ Boolean(""); // false -> typeof : boolean
 5 % 3; // 2
 ```
 
-## Concat Action On Strings
+### Assignment Operators
 
 ```js
-"Hello" + "World"; // HelloWorld
-"Hello" + " " + "World"; // Hello World
-"Hello World " + 25; // Hello World 25
-"12" + 4; // 124
-"12" / 4; // 3
+var num = 10;
 
-// \n : New Line
+num += 5; // 15 (num = num + 5)
 
-"Hello" + "\n" + "World";
-// Hello
-// World
+num -= 5; // 5 (num = num - 5)
 
-// \" , \' : " , '
+num *= 5; // 50 (num = num * 5)
 
-'Hello "World"' + " " + "Hello 'World'"; // Hello "World" Hello 'World'
+num /= 5; // 2 (num = num / 5)
+
+num %= 5; // 0 (num = num % 5)
+
+num **= 5; // 100000 (num = num ** 5)
+
+num++; // 11 (num = num + 1) (increment) (Arithmetic Operator)
+++num; // 12 (num = num + 1) (increment) (Arithmetic Operator)
+
+num--; // 11 (num = num - 1) (decrement) (Arithmetic Operator)
+--num; // 10 (num = num - 1) (decrement) (Arithmetic Operator)
+```
+
+> **Tip:**
+
+The difference between x++ and ++x
+
+- num++ (post-increment): Returns the current value of num first, then increments num by one.
+
+- ++num (pre-increment): Increments num by one first, then returns the new value of num.
+
+```js
+let num = 5;
+
+console.log(num++); // Output: 5
+console.log(num); // Output: 6
+
+num = 5;
+
+console.log(++num); // Output: 6
+console.log(num); // Output: 6
+```
+
+### Comparison Operators
+
+```js
+== // equal to (only value)
+=== // equal value and equal type (strict)
+!= // not equal to (only value)
+!== // not equal value or not equal type (strict)
+> // greater than
+< // less than
+>= // greater than or equal to
+<= // less than or equal to
+? // ternary operator
+
+// Example:
+
+5 == 5 // true
+5 == "5" // true
+5 === 5 // true
+5 === "5" // false
+5 != 5 // false
+5 != "5" // false
+5 !== 5 // false
+5 !== "5" // true
+5 > 5 // false
+5 < 5 // false
+5 >= 5 // true
+5 <= 5 // true
+```
+
+### Logical Operators
+
+---
+
+> OR
+
+```js
+true || true; // true
+true || false; // true
+false || true; // true
+false || false; // false
+```
+
+> AND
+
+```js
+true && true; // true
+true && false; // false
+false && true; // false
+false && false; // false
+```
+
+> NOT
+
+```js
+!true; // false
+!false; // true
 ```
 
 ## NaN(Not a Number)
@@ -247,7 +331,7 @@ if (Boolean) {
 }
 ```
 
-## Ternary Condition
+### Ternary Condition
 
 ---
 
@@ -265,37 +349,6 @@ Boolean
     )
   ? "Yes"
   : "No"; // No
-```
-
-## Logical Operators => OR =>||
-
----
-
-```js
-true || true; // true
-true || false; // true
-false || true; // true
-false || false; // false
-```
-
-## Logical Operators => AND => &&
-
----
-
-```js
-true && true; // true
-true && false; // false
-false && true; // false
-false && false; // false
-```
-
-## Logical Operators => NOT => !
-
----
-
-```js
-!true; // false
-!false; // true
 ```
 
 ## Switch Case
@@ -423,6 +476,26 @@ text[4]; // o (index 4)
 text[5]; // undefined (index 5)
 
 text[-1]; // undefined (index -1)
+```
+
+### Concat Action On Strings
+
+```js
+"Hello" + "World"; // HelloWorld
+"Hello" + " " + "World"; // Hello World
+"Hello World " + 25; // Hello World 25
+"12" + 4; // 124
+"12" / 4; // 3
+
+// \n : New Line
+
+"Hello" + "\n" + "World";
+// Hello
+// World
+
+// \" , \' : " , '
+
+'Hello "World"' + " " + "Hello 'World'"; // Hello "World" Hello 'World'
 ```
 
 ### String Properties
@@ -623,78 +696,6 @@ Math.random(); // 0.123456789 (returns a random number between 0 and 1)
 Math.floor(Math.random() * 10); // 0 - 9 (returns a random integer from 0 to 9)
 
 Math.floor(Math.random() * 10) + 1; // 1 - 10 (returns a random integer from 1 to 10)
-```
-
-## Assignment Operators
-
-```js
-var num = 10;
-
-num += 5; // 15 (num = num + 5)
-
-num -= 5; // 5 (num = num - 5)
-
-num *= 5; // 50 (num = num * 5)
-
-num /= 5; // 2 (num = num / 5)
-
-num %= 5; // 0 (num = num % 5)
-
-num **= 5; // 100000 (num = num ** 5)
-
-num++; // 11 (num = num + 1) (increment)
-++num; // 12 (num = num + 1) (increment)
-
-num--; // 11 (num = num - 1) (decrement)
---num; // 10 (num = num - 1) (decrement)
-```
-
-> **Tip:**
-
-The difference between x++ and ++x
-
-- num++ (post-increment): Returns the current value of num first, then increments num by one.
-
-- ++num (pre-increment): Increments num by one first, then returns the new value of num.
-
-```js
-let num = 5;
-
-console.log(num++); // Output: 5
-console.log(num); // Output: 6
-
-num = 5;
-
-console.log(++num); // Output: 6
-console.log(num); // Output: 6
-```
-
-## Comparison Operators
-
-```js
-== // equal to (only value)
-=== // equal value and equal type (strict)
-!= // not equal to (only value)
-!== // not equal value or not equal type (strict)
-> // greater than
-< // less than
->= // greater than or equal to
-<= // less than or equal to
-
-// Example:
-
-5 == 5 // true
-5 == "5" // true
-5 === 5 // true
-5 === "5" // false
-5 != 5 // false
-5 != "5" // false
-5 !== 5 // false
-5 !== "5" // true
-5 > 5 // false
-5 < 5 // false
-5 >= 5 // true
-5 <= 5 // true
 ```
 
 ## Loops
@@ -1043,6 +1044,70 @@ arrayName.some(function (element, index, array) {
 arrayName.some(function (element, index, array) {
   return element === { key: "Value2" };
 }); // false (object)
+```
+
+> every()
+
+fff
+
+```js
+var numArray = [5, 6, 7, 8, 9, 10]
+
+numArray.every(function(num)) { return num > 5 } // false
+
+numArray.every(function(num)) { return num > 4 } // true
+
+// Example:
+
+var users = [
+  { id: 1, userName: "Ali", age: 23 },
+  { id: 2, userName: "Mohahmmad", age: 12 },
+  { id: 3, userName: "Reza", age: 30 },
+];
+
+var userAgeCheck = users.every(function (user) { return user.age > 18; }); // false
+
+// Example:
+
+var users = [
+  { id: 1, userName: "Ali", age: 23 },
+  { id: 2, userName: "Mohahmmad", age: 20 },
+  { id: 3, userName: "Reza", age: 30 },
+];
+
+var userAgeCheck = users.every(function (user) { return user.age > 18; }); // true
+```
+
+> splice()
+
+fff
+
+```js
+var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+
+console.log(numArray.splice(2, 1)); // ["Value3"]
+console.log(numArray); // ["Value1","Value2","Value4","Value5","Value6"]
+
+//
+
+var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+
+console.log(numArray.splice(2, 3)); // ["Value3","Value4","Value5"]
+console.log(numArray); // ["Value1","Value2","Value6"]
+
+//
+
+var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+
+console.log(numArray.splice(2, 3, "Test")); // ["Value3","Value4","Value5"]
+console.log(numArray); // ["Value1","Value2","Test","Value6"]
+
+//
+
+var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+
+console.log(numArray.splice(2, 3, "Test1", "Test2")); // ["Value3","Value4","Value5"]
+console.log(numArray); // ["Value1","Value2","Test1","Test2","Value6"]
 ```
 
 ## Objects
