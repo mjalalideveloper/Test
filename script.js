@@ -316,7 +316,7 @@
 //   );
 // });
 
-// !=====> 68 <=====!
+// !=====> 68, 73 <=====!
 
 // var products = [
 //   { id: 1, name: "Product 1", price: 100 },
@@ -433,7 +433,118 @@
 // }
 
 // !=====> Test <=====!
-var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
+var numArray = [1, 2, 3, 4, 5];
 
-console.log(numArray.splice(2, 3, "Test"));
+var filterResult = numArray.filter(function (num) {
+  return num % 2 === 0;
+});
+
 console.log(numArray);
+console.log(filterResult);
+
+var userName = ["Ali", "Amin", "Amir", "Babak"];
+
+var filteredNames = userName.filter(function (name) {
+  return name.length === 4;
+});
+
+console.log(userName); // ["Ali", "Amin", "Amir", "Babak"]
+console.log(filteredNames); // ['Amin', 'Amir']
+
+// !=====> 76 <=====!
+
+// var products = [
+//   { id: 1, name: "Product 1", price: 100 },
+//   { id: 2, name: "Product 2", price: 200 },
+//   { id: 3, name: "Product 3", price: 300 },
+// ];
+// var cart = [];
+// var userChoice;
+// var whileStatus = true;
+
+// function addProduct() {
+//   var productName = prompt("Enter the product name:");
+//   var cartLength = cart.length;
+//   products.some(function (product) {
+//     if (product.name === productName) {
+//       cart.push(product);
+//       alert("Product added to cart");
+//       return true;
+//     }
+//   });
+//   if (cartLength === cart.length) {
+//     alert("Product not found");
+//   }
+// }
+
+// function removeProduct() {
+//   var productName = prompt("Enter the product name:");
+//   var cartLength = cart.length;
+//   cart.some(function (product, index) {
+//     if (product.name === productName) {
+//       cart.splice(index, 1);
+//       alert("Product removed from cart");
+//       return true;
+//     }
+//   });
+//   if (cartLength === cart.length) {
+//     alert("Product not found");
+//   }
+// }
+
+// function showCart() {
+//   var allPrice = 0;
+//   if (cart.length === 0) {
+//     alert("Cart is empty");
+//   } else {
+//     console.log("=====> Cart <=====");
+//     cart.forEach(function (product, index) {
+//       console.log(
+//         `${index + 1}_ id: ${product.id} | name: ${product.name} | price: ${
+//           product.price
+//         }`
+//       );
+//       allPrice += product.price;
+//     });
+//     console.log(`Price All: ${allPrice}`);
+//     console.log("==================");
+//   }
+// }
+
+// function main() {
+//   while (whileStatus) {
+//     userChoice = prompt(
+//       "1- Add Product\n2- Remove Product\n3- Show Cart\n4- Cancel"
+//     );
+
+//     if (userChoice === null) {
+//       alert("Cancelled");
+//       whileStatus = false;
+//     } else if (userChoice === "") {
+//       alert("No input");
+//     } else if (isNaN(userChoice - 1)) {
+//       alert("Not a number");
+//     } else {
+//       switch (userChoice) {
+//         case "1":
+//           addProduct();
+//           break;
+//         case "2":
+//           removeProduct();
+//           break;
+//         case "3":
+//           showCart();
+//           break;
+//         case "4":
+//           alert("Cancelled");
+//           whileStatus = false;
+//           break;
+//         default:
+//           alert("Invalid choice");
+//           break;
+//       }
+//     }
+//   }
+// }
+
+// main();

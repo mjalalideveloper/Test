@@ -1110,6 +1110,88 @@ console.log(numArray.splice(2, 3, "Test1", "Test2")); // ["Value3","Value4","Val
 console.log(numArray); // ["Value1","Value2","Test1","Test2","Value6"]
 ```
 
+> findindex()
+
+fff
+
+```js
+var arrayName = ["Value1", "Value2", "Value3", "Value4"];
+
+arrayName.findIndex(function (element) {
+  return element === "Value3";
+}); // 2
+
+//
+
+var arrayName = ["Value1", "Value2", "Value3", "Value4"];
+
+console.log(
+  arrayName.findIndex(function (element) {
+    console.log(element);
+    return element === "Value2";
+  })
+);
+
+// Output:
+// Value1
+// Value2
+// 1
+```
+
+> map()
+
+fff
+
+the defrint foreach() and map()
+
+```js
+var numArray = [1, 2, 3, 4, 5];
+
+var numsPower = numArray.map(function (num) {
+  return num ** 2;
+});
+
+console.log(numArray); // [1, 2, 3, 4, 5]
+console.log(numsPower); // [1, 4, 9, 16, 25]
+```
+
+> filter()
+
+fff
+
+```js
+var numArray = [1, 2, 3, 4, 5];
+
+var filterResult = numArray.filter(function (num) {
+  return num % 2 === 0;
+});
+
+console.log(numArray); // [1, 2, 3, 4, 5]
+console.log(filterResult); // [2, 4]
+
+// Example:
+
+var scores = [18, 19, 16, 20, 14, 12];
+
+var filteredScores = scores.filter(function (score) {
+  return score >= 18;
+});
+
+console.log(scores); // [18, 19, 16, 20, 14, 12]
+console.log(filteredScores); // [18, 19, 20]
+
+// Example:
+
+var userName = ["Ali", "Amin", "Amir", "Babak"];
+
+var filteredNames = userName.filter(function (name) {
+  return name.length === 4;
+});
+
+console.log(userName); // ["Ali", "Amin", "Amir", "Babak"]
+console.log(filteredNames); // ['Amin', 'Amir']
+```
+
 ## Objects
 
 ### Object Syntax
