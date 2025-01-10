@@ -670,6 +670,28 @@ text.substring(6); // World (index 6 - end)
 text.substring(-5); // Hello World (index 0 - end)
 ```
 
+> join() & split()
+
+fff
+
+fff
+
+```js
+// join()
+var arrayName = ["Value1", "Value1", "Value2"];
+
+console.log(arrayName.join()); // "Value1,Value1,Value2"
+console.log(arrayName.join("/")); // "Value1/Value1/Value2"
+console.log(arrayName.join("")); // "Value1Value1Value2"
+
+// split()
+var string = "Value1.Value2";
+
+console.log(string.split()); // ['Value1.Value2']
+console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
+console.log(string.split(".")); // ['Value1', 'Value2']
+```
+
 ## Math Object
 
 ```js
@@ -1190,6 +1212,90 @@ var filteredNames = userName.filter(function (name) {
 
 console.log(userName); // ["Ali", "Amin", "Amir", "Babak"]
 console.log(filteredNames); // ['Amin', 'Amir']
+```
+
+> Array.isArray()
+
+fff
+
+```js
+var arrayName = ["Value1", "Value2", "Value3"];
+var string = "Hello World";
+var number = 25;
+
+console.log(Array.isArray(arrayName)); // true
+console.log(Array.isArray(string)); // false
+console.log(Array.isArray(string)); // false
+```
+
+> indexOf()
+
+fff
+
+```js
+var arrayName = [25, "Value1", "Value2", 25];
+
+console.log(arrayName.indexOf(25)); // 0
+console.log(arrayName.indexOf(25, 1)); // 3
+console.log(arrayName.indexOf("Value2")); // 2
+console.log(arrayName.indexOf("Value10")); // -1
+```
+
+> lastIndexOf()
+
+fff
+
+```js
+var arrayName = [25, "Value1", "Value2", 25];
+
+console.log(arrayName.lastIndexOf(25)); // 3
+console.log(arrayName.lastIndexOf(25, 2)); // 0
+console.log(arrayName.lastIndexOf("Value2")); // 2
+console.log(arrayName.lastIndexOf("Value10")); // -1
+```
+
+> slice()
+
+fff
+
+```js
+var arrayName = [25, "Value1", "Value2", 25];
+
+console.log(arrayName.slice(1, 3)); // ['Value1', 'Value2']
+console.log(arrayName.slice()); // [25, 'Value1', 'Value2', 25]
+console.log(arrayName); // [25, 'Value1', 'Value2', 25]
+```
+
+> reverse()
+
+fff
+
+```js
+var arrayName = ["Value1", "Value1", "Value2"];
+
+console.log(arrayName.reverse()); // ['Value2', 'Value1', 'Value1']
+```
+
+> join() & split()
+
+fff
+
+fff
+
+```js
+// join()
+var arrayName = ["Value1", "Value1", "Value2"];
+
+console.log(arrayName.join()); // "Value1,Value1,Value2"
+console.log(arrayName.join("/")); // "Value1/Value1/Value2"
+console.log(arrayName.join("")); // "Value1Value1Value2"
+
+// split()
+var string = "Value1.Value2";
+
+console.log(string.split()); // ['Value1.Value2']
+console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
+console.log(string.split(".")); // ['Value1', 'Value2']
 ```
 
 ## Objects

@@ -432,31 +432,15 @@
 //   alert("No");
 // }
 
-// !=====> Test <=====!
-var numArray = [1, 2, 3, 4, 5];
-
-var filterResult = numArray.filter(function (num) {
-  return num % 2 === 0;
-});
-
-console.log(numArray);
-console.log(filterResult);
-
-var userName = ["Ali", "Amin", "Amir", "Babak"];
-
-var filteredNames = userName.filter(function (name) {
-  return name.length === 4;
-});
-
-console.log(userName); // ["Ali", "Amin", "Amir", "Babak"]
-console.log(filteredNames); // ['Amin', 'Amir']
-
 // !=====> 76 <=====!
 
 // var products = [
-//   { id: 1, name: "Product 1", price: 100 },
-//   { id: 2, name: "Product 2", price: 200 },
-//   { id: 3, name: "Product 3", price: 300 },
+//   { id: 1, name: "Product 1", price: 100000 },
+//   { id: 2, name: "Product 2", price: 200000 },
+//   { id: 3, name: "Product 3", price: 300000 },
+//   { id: 4, name: "Product 4", price: 10000 },
+//   { id: 5, name: "Product 5", price: 40000 },
+//   { id: 6, name: "Product 6", price: 50000 },
 // ];
 // var cart = [];
 // var userChoice;
@@ -494,6 +478,7 @@ console.log(filteredNames); // ['Amin', 'Amir']
 
 // function showCart() {
 //   var allPrice = 0;
+//   var p = 0;
 //   if (cart.length === 0) {
 //     alert("Cart is empty");
 //   } else {
@@ -505,8 +490,13 @@ console.log(filteredNames); // ['Amin', 'Amir']
 //         }`
 //       );
 //       allPrice += product.price;
+//       if (product.price < 100000) {
+//         allPrice += 10000;
+//         postPrice += 10000;
+//       }
 //     });
-//     console.log(`Price All: ${allPrice}`);
+//     console.log(`All Price: ${allPrice}`);
+//     console.log(`Post Price: ${postPrice}`);
 //     console.log("==================");
 //   }
 // }
@@ -514,7 +504,7 @@ console.log(filteredNames); // ['Amin', 'Amir']
 // function main() {
 //   while (whileStatus) {
 //     userChoice = prompt(
-//       "1- Add Product\n2- Remove Product\n3- Show Cart\n4- Cancel"
+//       "1- Add Product\n2- Remove Product\n3- Show Cart\n4- Cancel\n5- Close"
 //     );
 
 //     if (userChoice === null) {
@@ -539,6 +529,11 @@ console.log(filteredNames); // ['Amin', 'Amir']
 //           alert("Cancelled");
 //           whileStatus = false;
 //           break;
+//         case "5":
+//           alert("Are you sure to close the tab?");
+//           whileStatus = false;
+//           close();
+//           break;
 //         default:
 //           alert("Invalid choice");
 //           break;
@@ -548,3 +543,11 @@ console.log(filteredNames); // ['Amin', 'Amir']
 // }
 
 // main();
+
+// !=====> Test <=====!
+
+var string = "Value1.Value2";
+
+console.log(string.split()); // ['Value1.Value2']
+console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
+console.log(string.split(".")); // ['Value1', 'Value2']
