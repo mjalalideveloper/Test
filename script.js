@@ -544,10 +544,28 @@
 
 // main();
 
+// !=====> 78 <=====!
+
+var userWord = prompt("Enter Your Word");
+
+// userWord === null ? alert("Cancelled") : userWord === "" ? alert("No input") : userWord === userWord.split("").reverse().join("") ? alert("Yes") : alert("No");
+
+// !=====> 78 <=====!
+
+// var userWord = prompt("Enter Your Word");
+
+// if (userWord === null) {
+//   alert("Cancelled");
+// } else if (userWord === "") {
+//   alert("No input");
+// } else {
+//   var lettersWord = userWord.split("");
+//   var reversedWord = lettersWord.reverse().join("");
+//   if (userWord === reversedWord) {
+//     alert("Yes");
+//   } else {
+//     alert("No");
+//   }
+// }
+
 // !=====> Test <=====!
-
-var string = "Value1.Value2";
-
-console.log(string.split()); // ['Value1.Value2']
-console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
-console.log(string.split(".")); // ['Value1', 'Value2']

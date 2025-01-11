@@ -58,6 +58,10 @@
 
 > Js is case-sensitive
 
+### Best Practice
+
+good.js.org
+
 ## Using JavaScript In HTML
 
 ---
