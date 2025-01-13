@@ -546,7 +546,7 @@
 
 // !=====> 78 <=====!
 
-var userWord = prompt("Enter Your Word");
+// var userWord = prompt("Enter Your Word");
 
 // userWord === null ? alert("Cancelled") : userWord === "" ? alert("No input") : userWord === userWord.split("").reverse().join("") ? alert("Yes") : alert("No");
 
@@ -568,4 +568,212 @@ var userWord = prompt("Enter Your Word");
 //   }
 // }
 
-// !=====> Test <=====!
+// !=====> 80 <=====!
+
+// var todoList = [];
+
+// function addTodo() {
+//   var userTodo = prompt("Enter Your Todo.");
+
+//   if (userTodo === null) {
+//   } else if (userTodo === "") {
+//     alert("No Input");
+//   } else if (!isNaN(userTodo)) {
+//     alert("You Can Not Enter A Number!");
+//   } else {
+//     var check = todoList.some(function (todo) {
+//       if (userTodo == todo.todoName) {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     });
+
+//     if (!check) {
+//       todoList.push({
+//         id: todoList.length + 1,
+//         todoName: userTodo,
+//         todoStatus: false,
+//       });
+//       alert("Todo Added To Todo List");
+//     } else {
+//       alert("The Todo Is In The List");
+//     }
+//   }
+// }
+
+// function removeTodo() {
+//   var userTodo = prompt("Enter The Number For Todo.");
+
+//   if (userTodo === null) {
+//   } else if (userTodo === "") {
+//     alert("No Input");
+//   } else if (isNaN(userTodo)) {
+//     alert("Not A Number");
+//     // TODO: NaN
+//   } else {
+//     userTodo = Number(userTodo);
+//     var lengthOfTodoList = todoList.length;
+//     todoList.some(function (todo, index) {
+//       if (userTodo == todo.id) {
+//         alert(`The ( ${todoList.splice(index, 1)[0].todoName} ) Todo Deleted`);
+//         todoList.forEach(function (todo, index) {
+//           todo.id = index + 1;
+//         });
+//         return true;
+//       }
+//     });
+//     if (lengthOfTodoList === todoList.length) {
+//       alert("The Todo Not Found");
+//     }
+//   }
+// }
+
+// function compleateTodo() {
+//   var userTodo = prompt("Enter The Number For Todo.");
+
+//   if (userTodo === null) {
+//   } else if (userTodo === "") {
+//     alert("No Input");
+//   } else if (isNaN(userTodo)) {
+//     alert("Not A Number");
+//   } else {
+//     userTodo = Number(userTodo);
+//     var check = todoList.some(function (todo) {
+//       if (userTodo == todo.id) {
+//         todo.todoStatus = true;
+//         alert(`${todo.todoName} Todo is compleate`);
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     });
+//     if (!check) {
+//       alert("The Todo Not Found");
+//     }
+//   }
+// }
+
+// function showTodoList() {
+//   console.clear();
+//   todoList.forEach(function (todo) {
+//     console.log(
+//       `${todo.id}- ${todo.todoName} ( ${
+//         todo.todoStatus ? "Compleate" : "Not Compleate"
+//       } )`
+//     );
+//   });
+// }
+
+// function main() {
+//   var whileStatus = true;
+//   var userChoice;
+//   showTodoList();
+
+//   while (whileStatus) {
+//     userChoice = prompt(
+//       "1-Add Todo\n2-Remove Todo\n3-Compleate Todo\n4-Cancel"
+//     );
+
+//     if (userChoice === null) {
+//       alert("Cancelled");
+//       whileStatus = false;
+//       break;
+//     } else if (userChoice === "") {
+//       alert("No Input");
+//     } else if (isNaN(userChoice)) {
+//       alert("Not A Number");
+//     } else {
+//       switch (userChoice) {
+//         case "1":
+//           addTodo();
+//           showTodoList();
+//           break;
+//         case "2":
+//           removeTodo();
+//           showTodoList();
+//           break;
+//         case "3":
+//           compleateTodo();
+//           showTodoList();
+//           break;
+//         case "4":
+//           alert("Cancelled");
+//           showTodoList();
+//           whileStatus = false;
+//           break;
+
+//         default:
+//           showTodoList();
+//       }
+//     }
+//   }
+// }
+
+// main();
+
+// !======> 81 <=====!
+
+// var tasks = {
+//   amin: [],
+//   mohammad: [],
+//   amir: [],
+//   ahmad: [],
+// };
+// console.log(tasks);
+
+// var userChoice;
+// var whileStatus = true;
+
+// var task;
+// var user;
+
+// function addTask() {
+//   var task = prompt("Enter The Task.");
+//   if (!(task === null) && !(task === "")) {
+//     var user = prompt("User :");
+//   }
+
+//   if (task === null || user === null) {
+//   } else if (task === "" || user === "") {
+//     alert("No Input");
+//   } else {
+//     tasks[user].push(task);
+//   }
+// }
+
+// function showTasks(params) {
+//   console.clear();
+//   console.log(tasks)
+// }
+
+// showTasks();
+
+// while (whileStatus) {
+//   userChoice = prompt("1-Add Task\n2-Cancel");
+
+//   if (userChoice === null) {
+//     alert("Cancelled");
+//     whileStatus = false;
+//     break;
+//   } else if (userChoice === "") {
+//     alert("No Input");
+//   } else if (isNaN(userChoice)) {
+//     alert("Not A Number");
+//   } else {
+//     switch (userChoice) {
+//       case "1":
+//         addTask();
+//         showTasks();
+//         break;
+//       case "2":
+//         alert("Cancelled");
+//         whileStatus = false;
+//         break;
+//       default:
+//         showTasks();
+//     }
+//   }
+// }
+
+// !======> Test <=====!
