@@ -776,4 +776,49 @@
 //   }
 // }
 
-// !======> Test <=====!
+// !======> 83 <=====!
+
+// var provinces = {
+//   khozestan: ["ahwaz", "hamidye", "abadan"],
+//   tehran: ["tehran", "varamin", "rey"],
+//   mazandaran: ["sari", "babolsar", "chalus"],
+//   ilam: ["ilam", "mehran", "eyvan"],
+// };
+
+// var userOrigin = prompt(
+//   "Enter The Province\nKhozestan, Tehran, Mazandaran, Ilam"
+// );
+
+// if (userOrigin === null) {
+//   alert("Cancelled");
+// } else if (userOrigin === "") {
+//   alert("No Input");
+// } else {
+//   var provinceArray = provinces[userOrigin.toLowerCase()];
+
+//   provinceArray.forEach(function (element) {
+//     console.log(element);
+//   });
+// }
+
+// !======> 84 <=====!
+
+// var questions = [
+//   { question: "a?", answer: "yes" },
+//   { question: "B?", answer: "yes" },
+//   { question: "C?", answer: "no" },
+//   { question: "L?", answer: "no" },
+//   { question: "T?", answer: "yes" },
+// ];
+
+// var useranswer;
+// var score = 0;
+
+// questions.forEach(function (question, index) {
+//   useranswer = prompt(`${index + 1}- ${question.question}`);
+//   if (useranswer.toLowerCase() === question.answer) {
+//     score += 1;
+//   }
+// });
+
+// alert(`Your Score: ${score}`);
