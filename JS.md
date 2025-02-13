@@ -1074,7 +1074,7 @@ arrayName.some(function (element, index, array) {
 
 > every()
 
-fff
+Check if all the elements in an array pass a test
 
 ```js
 var numArray = [5, 6, 7, 8, 9, 10]
@@ -1106,7 +1106,7 @@ var userAgeCheck = users.every(function (user) { return user.age > 18; }); // tr
 
 > splice()
 
-fff
+Adds/Removes elements from an array
 
 ```js
 var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
@@ -1114,21 +1114,21 @@ var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
 console.log(numArray.splice(2, 1)); // ["Value3"]
 console.log(numArray); // ["Value1","Value2","Value4","Value5","Value6"]
 
-//
+// Example:
 
 var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
 
 console.log(numArray.splice(2, 3)); // ["Value3","Value4","Value5"]
 console.log(numArray); // ["Value1","Value2","Value6"]
 
-//
+// Example:
 
 var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
 
 console.log(numArray.splice(2, 3, "Test")); // ["Value3","Value4","Value5"]
 console.log(numArray); // ["Value1","Value2","Test","Value6"]
 
-//
+// Example:
 
 var numArray = ["Value1", "Value2", "Value3", "Value4", "Value5", "Value6"];
 
@@ -1138,7 +1138,7 @@ console.log(numArray); // ["Value1","Value2","Test1","Test2","Value6"]
 
 > findindex()
 
-fff
+Returns the index of the first element in an array that pass a test
 
 ```js
 var arrayName = ["Value1", "Value2", "Value3", "Value4"];
@@ -1147,7 +1147,7 @@ arrayName.findIndex(function (element) {
   return element === "Value3";
 }); // 2
 
-//
+// Example:
 
 var arrayName = ["Value1", "Value2", "Value3", "Value4"];
 
@@ -1166,7 +1166,7 @@ console.log(
 
 > map()
 
-fff
+Creates a new array with the result of calling a function for each array element
 
 the defrint foreach() and map()
 
@@ -1183,7 +1183,7 @@ console.log(numsPower); // [1, 4, 9, 16, 25]
 
 > filter()
 
-fff
+Creates a new array with every element in an array that pass a test
 
 ```js
 var numArray = [1, 2, 3, 4, 5];
@@ -1220,7 +1220,7 @@ console.log(filteredNames); // ['Amin', 'Amir']
 
 > Array.isArray()
 
-fff
+Checks if a value is an array
 
 ```js
 var arrayName = ["Value1", "Value2", "Value3"];
@@ -1234,7 +1234,7 @@ console.log(Array.isArray(string)); // false
 
 > indexOf()
 
-fff
+Returns the first index at which a given element can be found in the array, or -1 if it is not present
 
 ```js
 var arrayName = [25, "Value1", "Value2", 25];
@@ -1247,7 +1247,7 @@ console.log(arrayName.indexOf("Value10")); // -1
 
 > lastIndexOf()
 
-fff
+Returns the last index at which a given element can be found in the array, or -1 if it is not present
 
 ```js
 var arrayName = [25, "Value1", "Value2", 25];
@@ -1260,7 +1260,7 @@ console.log(arrayName.lastIndexOf("Value10")); // -1
 
 > slice()
 
-fff
+Selects a part of an array, and returns the new array
 
 ```js
 var arrayName = [25, "Value1", "Value2", 25];
@@ -1272,7 +1272,7 @@ console.log(arrayName); // [25, 'Value1', 'Value2', 25]
 
 > reverse()
 
-fff
+Reverses the elements in an array
 
 ```js
 var arrayName = ["Value1", "Value1", "Value2"];
@@ -1281,10 +1281,6 @@ console.log(arrayName.reverse()); // ['Value2', 'Value1', 'Value1']
 ```
 
 > join() & split()
-
-fff
-
-fff
 
 ```js
 // join()
@@ -1300,6 +1296,25 @@ var string = "Value1.Value2";
 console.log(string.split()); // ['Value1.Value2']
 console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
 console.log(string.split(".")); // ['Value1', 'Value2']
+```
+
+> find()
+
+Returns the value of the first element in an array that pass a test
+
+```js
+var arrayName = [
+  { id: 1, value: "value1" },
+  { id: 2, value: "value2" },
+  { id: 3, value: "value3" },
+  { id: 4, value: "value4" },
+];
+
+arrayName.find(function (value) {
+    return value.value === "value3";
+} // { id: 3, value: "value3" }
+
+
 ```
 
 ## Objects
