@@ -452,6 +452,34 @@ var result = name(); // "Hello World" (no alert)
 alert(result); // alert("Hello World"); (no return)
 ```
 
+### Anonymous Function
+
+```js
+function (params) {
+}
+
+// Example:
+
+var name = function () {
+  alert("Hello World");
+};
+
+name(); // Hello World
+```
+
+### IIFE (Immediately Invoked Function Expression)
+
+```js
+(function () {})();
+(function () {})();
+
+// Example:
+
+(function () {
+  alert("Hello World");
+})(); // Hello World
+```
+
 ## String
 
 ---
@@ -1311,10 +1339,8 @@ var arrayName = [
 ];
 
 arrayName.find(function (value) {
-    return value.value === "value3";
-} // { id: 3, value: "value3" }
-
-
+  return value.value === "value3";
+}); // { id: 3, value: "value3" }
 ```
 
 ## Objects
@@ -1355,4 +1381,107 @@ objectName["key3"]; // Value3 (key3)
 
 objectName["key4"]; // undefined (key4)
 objectName["key-1"]; // undefined (key-1)
+```
+
+## eval() Is Evil
+
+The eval() function evaluates JavaScript code represented as a string.
+
+NEVER USE eval() : eval() is a dangerous function, which executes the code it's passed with the privileges of the caller. If you run eval() with a string that could be affected by a malicious party, you may end up running malicious code on the user's machine with the permissions of your webpage/extension. More importantly, a third-party code can see the scope in which eval() was invoked, which can lead to possible attacks in ways to which the similar Function is not susceptible.
+
+eval() Is Slower : The eval() function is used to execute text, and it's similar to using the Function constructor. It executes slower than the equivalent code executed directly. It also provides no performance benefit over a direct call.
+
+```js
+var x = 10;
+var y = 20;
+
+eval("x * y"); // 200
+```
+
+## setInterval() & clearInterval()
+
+setInterval() : Calls a function or evaluates an expression at specified intervals (in milliseconds).
+clearInterval() : Stops the executions of the function specified in setInterval().
+
+```js
+setInterval(function, milliseconds);
+// 1000ms = 1s
+
+var interval = setInterval(function () {
+  console.log("Hello World");
+}, 1000);
+
+// Output:
+// Hello World
+// Hello World (every 1s)
+// Hello World (every 1s)
+
+clearInterval(interval); // Stop setInterval()
+
+// Example:
+var i = 10;
+
+var timer = setInterval(function () {
+  if (i === 0) {
+      clearInterval(timer);
+  }
+  console.log(i);
+  i--;
+}, 1000);
+```
+
+## setTimeout() & clearTimeout()
+
+setTimeout() : Calls a function or evaluates an expression after a specified number of milliseconds.
+clearTimeout() : Stops the executions of the function specified in setTimeout().
+
+```js
+setTimeout(function, milliseconds, param1, param2, ...);
+// 1000ms = 1s
+
+setTimeout(function () {
+  console.log("Hello World");
+}, 1000);
+
+// Output:
+// Hello World (after 1s)
+
+// Example:
+var message = "Hello World";
+var timer = setTimeout(function (message) {
+  console.log(message);
+}, 1000, messasge);
+
+// Output:
+// Hello World (after 1s)
+
+clearTimeout(timer); // Stop setTimeout()
+```
+
+## Falsy Values & Truthy Values
+
+Falsy Values : A falsy value is a value that translates to false when evaluated in a Boolean context.
+
+- false
+- 0
+- ""
+- null
+- undefined
+- NaN
+- ...
+
+Truthy Values : A truthy value is a value that translates to true when evaluated in a Boolean context.
+
+- true
+- 1
+- " "
+- "0"
+- "Hello World"
+- []
+- {}
+- function () {}
+- ...
+
+```js
+
 ```

@@ -827,6 +827,81 @@
 
 //
 
+// !======> 87 <=====!
+
+// var users = [
+//   { id: 1, userName: "mohammad", password: "mm12345" },
+//   { id: 2, userName: "jasem", password: "jj12345" },
+//   { id: 3, userName: "amir", password: "aa12345" },
+//   { id: 4, userName: "reza", password: "rr12345" },
+// ];
+
+// function forgetPassword(username) {
+//   var user = users.find((user) => {
+//     return user.userName == username;
+//   });
+
+//   if (user === undefined) {
+//     return false;
+//   } else {
+//     return user.password;
+//   }
+// }
+
+// var userInput = prompt("Inter Your Username:");
+
+// if (userInput === null) {
+//   alert("Cancelled");
+// } else if (userInput === "") {
+//   alert("No Input");
+// } else if (userInput.isNaN) {
+//   alert("Not A Number");
+// } else {
+//   var password = forgetPassword(userInput.toLowerCase());
+//   if (password) {
+//     alert(`Your Password ${password}`);
+//   } else {
+//     alert("User Not Found");
+//   }
+// }
+
+// !======> 93 <=====!
+// userMinutes = prompt("Enter Minutes:");
+// userSeconds = prompt("Enter Seconds:");
+
+// if (userMinutes === null || userSeconds === null) {
+//     alert("Cancelled");
+// } else if (userMinutes === "" || userSeconds === "") {
+//     alert("No Input");
+// } else if (isNaN(userMinutes) || isNaN(userSeconds)) {
+//     alert("Not A Number");
+// } else {
+//     userMinutes = Number(userMinutes);
+//     userSeconds = Number(userSeconds);
+//     var timer = setInterval(function () {
+//         if (userMinutes === 0 && userSeconds === 0) {
+//             clearInterval(timer);
+//             alert("Time Out");
+//         } else if (userSeconds === 0) {
+//             userMinutes--;
+//             userSeconds = 60;
+//         }
+//         userSeconds--;
+//         console.clear();
+//         console.log(`${userMinutes}:${userSeconds}`);
+//     }, 1000);
+// }
+
+// !======> 96 <=====!
+//
+
 // !======> Test <=====!
 
-
+var message = "Hello World";
+var timer = setTimeout(
+  function (message) {
+    console.log(message);
+  },
+  1000,
+  message
+);
