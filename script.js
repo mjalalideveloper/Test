@@ -897,11 +897,6 @@
 
 // !======> Test <=====!
 
-var message = "Hello World";
-var timer = setTimeout(
-  function (message) {
-    console.log(message);
-  },
-  1000,
-  message
-);
+y = 5
+console.log(y)
+let y

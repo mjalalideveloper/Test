@@ -54,6 +54,8 @@
   •
 </p>
 
+# basic
+
 ## Js
 
 > Js is case-sensitive
@@ -1484,4 +1486,314 @@ Truthy Values : A truthy value is a value that translates to true when evaluated
 
 ```js
 
+```
+
+## Flag
+
+Flag : A flag is a variable that is used to store a true/false condition.
+
+```js
+var flag = true;
+
+if (flag) {
+  // Code
+}
+
+if (!flag) {
+  // Code
+}
+```
+
+## Hoisting
+
+Hoisting : Hoisting is JavaScript's default behavior of moving declarations to the top.
+
+```js
+console.log(x); // undefined
+var x = 5;
+
+// Example:
+
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+// Example:
+
+x = 5;
+console.log(x); // 5
+var x;
+
+// Example:
+
+console.log(x); // undefined
+var x;
+x = 5;
+console.log(x); // 5
+```
+
+## Difference Between `var`, `let`, and `const`
+
+### `var`
+
+- Function-scoped.
+- Can be re-declared and updated.
+- Hoisted to the top of its scope and initialized with `undefined`.
+
+```js
+var x = 1;
+if (true) {
+  var x = 2; // same variable
+  console.log(x); // 2
+}
+console.log(x); // 2
+```
+
+### `let`
+
+- Block-scoped.
+- Cannot be re-declared but can be updated.
+- Hoisted to the top of its block but not initialized.
+
+```js
+let y = 1;
+if (true) {
+  let y = 2; // different variable
+  console.log(y); // 2
+}
+console.log(y); // 1
+
+// Example:
+
+let a = 10;
+a = 20; // Allowed
+console.log(a); // 20
+
+// Example:
+
+let b = 30;
+if (true) {
+  let b = 40; // different variable
+  console.log(b); // 40
+}
+console.log(b); // 30
+
+// Example:
+
+let c = 50;
+if (true) {
+  c = 60; // same variable
+  console.log(c); // 60
+}
+console.log(c); // 60
+```
+
+### `const`
+
+- Block-scoped.
+- Cannot be re-declared or updated.
+- Must be initialized at the time of declaration.
+
+```js
+const z = 1;
+if (true) {
+  const z = 2; // different variable
+  console.log(z); // 2
+}
+console.log(z); // 1
+```
+
+# DOM
+
+## DOM (Document Object Model)
+
+DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
+
+## Selecting Elements
+
+### getElementById()
+
+getElementById() : The getElementById() method returns the element that has the ID attribute with the specified value.
+
+```js
+document.getElementById("id");
+```
+
+### getElementsByClassName()
+
+getElementsByClassName() : The getElementsByClassName() method returns a **_collection_** of all elements in the document with the specified class name.
+
+```js
+document.getElementsByClassName("class");
+```
+
+### getElementsByTagName()
+
+getElementsByTagName() : The getElementsByTagName() method returns a **_collection_** of all elements in the document with the specified tag name.
+
+```js
+document.getElementsByTagName("tag");
+```
+
+### querySelector()
+
+querySelector() : The querySelector() method returns the first element that matches a specified CSS selector(s) in the document.
+
+```js
+document.querySelector("selector");
+```
+
+### querySelectorAll()
+
+querySelectorAll() : The querySelectorAll() method returns all elements in the document that matches a specified CSS selector(s), as a static **_NodeList object_**.
+
+```js
+document.querySelectorAll("selector");
+```
+
+> collection : A collection is an ordered set of elements that are accessible by index or by using the methods and properties of the collection.
+
+> NodeList : A NodeList object is a collection of nodes, usually returned by properties such as **_Node.childNodes_** and methods such as **_document.querySelectorAll()_**.
+
+## Accessing Elements
+
+### innerHTML
+
+innerHTML : The innerHTML property sets or returns the HTML content (inner HTML) of an element.
+
+```js
+document.getElementById("id").innerHTML = "Hello World";
+```
+
+### innerText
+
+innerText : The innerText property sets or returns the text content of the specified node, and all its descendants.
+
+```js
+document.getElementById("id").innerText = "Hello World";
+```
+
+### textContent
+
+textContent : The textContent property sets or returns the text content of the specified node, and all its descendants.
+
+```js
+document.getElementById("id").textContent = "Hello World";
+```
+
+### value
+
+value : The value property sets or returns the value of the value attribute of a text field.
+
+```js
+document.getElementById("id").value = "Hello World";
+```
+
+### style
+
+style : The style property sets or returns the style attribute of an element.
+
+```js
+document.getElementById("id").style.color = "red";
+document.getElementById("id").style.fontSize = "25px";
+document.getElementById("id").style.backgroundColor = "yellow";
+```
+
+### className
+
+className : The className property sets or returns the value of the class attribute of an element.
+
+```js
+document.getElementById("id").className = "class";
+```
+
+### classList
+
+classList : The classList property returns the class name(s) of an element, as a DOMTokenList object.
+
+```js
+document.getElementById("id").classList.add("class");
+document.getElementById("id").classList.remove("class");
+document.getElementById("id").classList.toggle("class");
+document.getElementById("id").classList.contains("class");
+```
+
+### attributes
+
+attributes : The attributes property returns a collection of all attributes of the specified element.
+
+```js
+document.getElementById("id").attributes;
+```
+
+### getAttribute()
+
+getAttribute() : The getAttribute() method returns the value of the attribute with the specified name, of an element.
+
+```js
+document.getElementById("id").getAttribute("attribute");
+```
+
+### setAttribute()
+
+setAttribute() : The setAttribute() method adds the specified attribute to an element, and gives it the specified value.
+
+```js
+document.getElementById("id").setAttribute("attribute", "value");
+```
+
+### removeAttribute()
+
+removeAttribute() : The removeAttribute() method removes the specified attribute from an element.
+
+```js
+document.getElementById("id").removeAttribute("attribute");
+```
+
+## Creating Elements
+
+### createElement()
+
+createElement() : The createElement() method creates an Element Node with the specified name.
+
+```js
+document.createElement("tag");
+
+// Example:
+
+var element = document.createElement("div");
+element.innerHTML = "Hello World";
+```
+
+## Adding Elements
+
+### appendChild()
+
+appendChild() : The appendChild() method appends a node as the last child of a node.
+
+```js
+var newElement = document.createElement("tag");
+document.getElementById("id").appendChild(newElement);
+
+// Example:
+
+var element = document.createElement("div");
+element.innerHTML = "Hello World";
+document.body.appendChild(element);
+```
+
+### append()
+
+append() : The append() method appends a set of Node objects or DOMString objects to the parent element.
+
+```js
+document.getElementById("id").append("text", element, "text", element, ...);
+
+// Example:
+
+var element1 = document.createElement("div");
+
+var element2 = document.createElement("div");
+
+document.body.append("Hello World", element1, "Hello World", element2);
 ```
