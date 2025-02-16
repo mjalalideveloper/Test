@@ -1797,3 +1797,109 @@ var element2 = document.createElement("div");
 
 document.body.append("Hello World", element1, "Hello World", element2);
 ```
+
+## Removing Elements
+
+### removeChild()
+
+removeChild() : The removeChild() method removes a specified child node of the specified element.
+
+```js
+document.getElementById("id").removeChild(element);
+
+// Example:
+
+var element = document.createElement("div");
+document.body.appendChild(element);
+
+document.body.removeChild(element);
+```
+
+### remove()
+
+remove() : The remove() method removes the specified element from the DOM.
+
+```js
+element.remove();
+
+// Example:
+
+var element = document.createElement("div");
+document.body.appendChild(element);
+
+element.remove();
+```
+
+## Replacing Elements
+
+### replaceChild()
+
+replaceChild() : The replaceChild() method replaces a child node within the specified (parent) node.
+
+```js
+document.getElementById("id").replaceChild(newElement, oldElement);
+
+// Example:
+
+var newElement = document.createElement("div");
+newElement.innerHTML = "Hello World";
+
+var oldElement = document.createElement("div");
+oldElement.innerHTML = "Hello";
+
+document.body.replaceChild(newElement, oldElement);
+```
+
+### replaceWith()
+
+replaceWith() : The replaceWith() method replaces the specified element with another element or text.
+
+```js
+element.replaceWith(newElement);
+
+// Example:
+
+var newElement = document.createElement("div");
+newElement.innerHTML = "Hello World";
+
+var oldElement = document.createElement("div");
+oldElement.innerHTML = "Hello";
+
+oldElement.replaceWith(newElement);
+```
+
+## Events
+
+### onclick
+
+onclick : The onclick event occurs when the user clicks on an element.
+
+```html
+<button onclick="function()">Click Me</button>
+```
+
+### onkeypress
+
+onkeypress : The onkeypress event occurs when the user presses a key (on the keyboard).
+
+```html
+<input type="text" onkeypress="function()">
+```
+
+### onkeydown
+
+onkeydown : The onkeydown event occurs when the user is pressing a key (on the keyboard).
+
+```html
+<input type="text" onkeydown="function()">
+```
+
+### onkeyup
+
+onkeyup : The onkeyup event occurs when the user releases a key (on the keyboard).
+
+```html
+<input type="text" onkeyup="function()">
+```
+
+

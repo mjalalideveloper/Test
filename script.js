@@ -895,8 +895,21 @@
 // !======> 96 <=====!
 //
 
-// !======> Test <=====!
+// !======> 109 <=====!
 
-y = 5
-console.log(y)
-let y
+let imgElement = document.getElementById("img");
+let buttonElement = document.getElementById("button");
+
+function turnOn() {
+  imgElement.setAttribute("src", "img/on.png");
+  buttonElement.setAttribute("onclick", "turnOff()");
+  buttonElement.innerText = "Turn Off";
+}
+
+function turnOff() {
+  imgElement.setAttribute("src", "img/off.png");
+  buttonElement.setAttribute("onclick", "turnOn()");
+  buttonElement.innerText = "Turn On";
+}
+
+// !======> Test <=====!
