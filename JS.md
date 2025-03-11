@@ -1883,7 +1883,7 @@ onclick : The onclick event occurs when the user clicks on an element.
 onkeypress : The onkeypress event occurs when the user presses a key (on the keyboard).
 
 ```html
-<input type="text" onkeypress="function()">
+<input type="text" onkeypress="function()" />
 ```
 
 ### onkeydown
@@ -1891,7 +1891,7 @@ onkeypress : The onkeypress event occurs when the user presses a key (on the key
 onkeydown : The onkeydown event occurs when the user is pressing a key (on the keyboard).
 
 ```html
-<input type="text" onkeydown="function()">
+<input type="text" onkeydown="function()" />
 ```
 
 ### onkeyup
@@ -1899,7 +1899,26 @@ onkeydown : The onkeydown event occurs when the user is pressing a key (on the k
 onkeyup : The onkeyup event occurs when the user releases a key (on the keyboard).
 
 ```html
-<input type="text" onkeyup="function()">
+<input type="text" onkeyup="function()" />
 ```
 
+### onfocus
+
+fff
+
+### onblur
+
+fff
+
+### ondblclick
+
+fff
+
+### onchange
+
+fff
+
+## addEventListener
+
+fff
 
