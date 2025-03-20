@@ -1198,7 +1198,7 @@ console.log(
 
 Creates a new array with the result of calling a function for each array element
 
-the defrint foreach() and map()
+the Different foreach() and map()
 
 ```js
 var numArray = [1, 2, 3, 4, 5];
@@ -2037,3 +2037,191 @@ nodeValue : The nodeValue property returns the value of the specified node.
 ```js
 document.getElementById("id").nodeValue;
 ```
+
+## Navigation
+
+### parentNode
+
+parentNode : The parentNode property returns the parent node of the specified node, as a Node object.
+
+```js
+document.getElementById("id").parentNode;
+```
+
+### parentElement
+
+parentElement : The parentElement property returns the parent element of the specified element, as a Node object.
+
+```js
+document.getElementById("id").parentElement;
+```
+
+### previousElementSibling
+
+previousElementSibling : The previousElementSibling property returns the previous element of the specified element, as a Node object.
+
+```js
+document.getElementById("id").previousElementSibling;
+```
+
+### nextElementSibling
+
+nextElementSibling : The nextElementSibling property returns the next element of the specified element, as a Node object.
+
+```js
+document.getElementById("id").nextElementSibling;
+```
+
+### previousSibling
+
+previousSibling : The previousSibling property returns the previous node of the specified node, as a Node object.
+
+Different previousElementSibling : The previousElementSibling property returns the previous element of the specified element, as a Node object.
+
+```js
+document.getElementById("id").previousSibling;
+```
+
+### nextSibling
+
+nextSibling : The nextSibling property returns the next node of the specified node, as a Node object.
+
+Different nextElementSibling : The nextElementSibling property returns the next element of the specified element, as a Node object.
+
+```js
+document.getElementById("id").nextSibling;
+```
+
+### childElementCount
+
+childElementCount : The childElementCount property returns the number of child elements an element has.
+
+```js
+document.getElementById("id").childElementCount;
+```
+
+Example :
+
+```html
+<div id="parent">
+  <div id="child1">Child 1</div>
+  <div id="child2">Child 2</div>
+  <div id="child3">Child 3</div>
+</div>
+```
+
+```js
+var parent = document.getElementById("parent");
+
+console.log(parent.childElementCount); // 3
+
+```
+
+### children
+
+children : The children property returns a collection of an element's child elements, as an HTMLCollection object.
+
+```js
+document.getElementById("id").children;
+
+// Output:
+// HTMLCollection
+```
+
+Example :
+
+```html
+<div id="parent">
+  <div id="child1">Child 1</div>
+  <div id="child2">Child 2</div>
+  <div id="child3">Child 3</div>
+</div>
+```
+
+```js
+var parent = document.getElementById("parent");
+
+console.log(parent.children);
+// Output:
+// HTMLCollection [div#child1, div#child2, div#child3]
+```
+
+### childNodes
+
+childNodes : The childNodes property returns a collection of a node's child nodes, as a NodeList object.
+
+```js
+document.getElementById("id").childNodes;
+
+// Output:
+// NodeList
+```
+
+Example :
+
+```html
+<div id="parent">
+  <div id="child1">Child 1</div>
+  <div id="child2">Child 2</div>
+  <div id="child3">Child 3</div>
+</div>
+```
+
+```js
+var parent = document.getElementById("parent");
+
+console.log(parent.childNodes);
+// Output:
+// NodeList [text, div#child1, text, div#child2, text, div#child3, text]
+```
+
+### hasChildNodes()
+
+hasChildNodes() : The hasChildNodes() method returns true if an element has any child nodes, otherwise false.
+
+```js
+document.getElementById("id").hasChildNodes();
+```
+
+Example :
+
+```html
+<div id="parent">
+  <div id="child1">Child 1</div>
+  <div id="child2">Child 2</div>
+  <div id="child3">Child 3</div>
+</div>
+```
+
+```js
+var parent = document.getElementById("parent");
+
+console.log(parent.hasChildNodes()); // true
+```
+
+### firstElementChild & lastElementChild
+
+firstElementChild : The firstElementChild property returns the first child element of the specified element.
+
+lastElementChild : The lastElementChild property returns the last child element of the specified element.
+
+```js
+document.getElementById("id").firstElementChild;
+document.getElementById("id").lastElementChild;
+```
+
+### firstChild & lastChild
+
+firstChild : The firstChild property returns the first child node of the specified node.
+
+lastChild : The lastChild property returns the last child node of the specified node.
+
+Different firstElementChild & firstChild : The firstElementChild property returns the first child element of the specified element. The firstChild property returns the first child node of the specified node.
+
+Different lastElementChild & lastChild : The lastElementChild property returns the last child element of the specified element. The lastChild property returns the last child node of the specified node.
+
+```js
+document.getElementById("id").firstChild;
+document.getElementById("id").lastChild;
+```
+
