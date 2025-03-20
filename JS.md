@@ -1750,6 +1750,14 @@ removeAttribute() : The removeAttribute() method removes the specified attribute
 document.getElementById("id").removeAttribute("attribute");
 ```
 
+### hasAttribute()
+
+hasAttribute() : The hasAttribute() method returns true if an element has the specified attribute, otherwise false.
+
+```js
+document.getElementById("id").hasAttribute("attribute");
+```
+
 ## Creating Elements
 
 ### createElement()
@@ -1904,21 +1912,128 @@ onkeyup : The onkeyup event occurs when the user releases a key (on the keyboard
 
 ### onfocus
 
-fff
+onfocus : The onfocus event occurs when an element gets focus.
+
+```html
+<input type="text" onfocus="function()" />
+```
 
 ### onblur
 
-fff
+onblur : The onblur event occurs when an element loses focus.
+
+```html
+<input type="text" onblur="function()" />
+```
 
 ### ondblclick
 
-fff
+ondblclick : The ondblclick event occurs when the user double-clicks on an element.
+
+```html
+<button ondblclick="function()">Double Click Me</button>
+```
 
 ### onchange
 
-fff
+onchange : The onchange event occurs when the value of an element has been changed.
 
-## addEventListener
+Tip : The onchange event is often used in combination with validation of input fields.
 
-fff
+```html
+<input type="text" onchange="function()" />
+```
 
+### onsubmit
+
+onsbumit : The onsubmit event occurs when a form is submitted.
+
+```html
+<form id="form">
+  <input type="text" placeholder="Username" />
+  <input type="password" placeholder="Password" />
+  <input type="submit" value="Submit" />
+</form>
+```
+
+```js
+document.getElementById("form").addEventListener("submit", function (params) {
+  console.log("Submited");
+});
+```
+
+### addEventListener()
+
+addEventListener() : The addEventListener() method attaches an event handler to the specified element.
+
+```js
+document.getElementById("id").addEventListener("event", function);
+```
+
+### removeEventListener()
+
+removeEventListener() : The removeEventListener() method removes an event handler that has been attached with the addEventListener() method.
+
+```js
+document.getElementById("id").removeEventListener("event", function);
+```
+
+### The Third Way To Set The Event
+
+```js
+document.getElementById("id").onclick = functionName;
+
+document.getElementById("id").onclick = function () {
+  console.log("Hello World");
+};
+```
+
+## Event Object
+
+```js
+document.getElementById("id").addEventListener("event", function (event) {
+  console.log(event);
+});
+```
+
+### event.preventDefault()
+
+event.preventDefault() : The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+
+Tip : For example, this can be useful when: Clicking on a "Submit" button, prevent it from submitting a form. Clicking on a link, prevent the link from following the URL.
+
+Tip : cancelable : A Boolean value indicating whether the event is cancelable.
+
+```js
+document.getElementById("id").addEventListener("click", function (event) {
+  event.preventDefault();
+});
+```
+
+## Node
+
+Node : The Node interface is a key part of the DOM. It's an abstract base class upon which many other DOM API objects are based, thus letting those object types to be treated similarly; for example, inheriting the same set of methods, or being testable in the same way.
+
+### nodeType
+
+nodeType : The nodeType property returns the type of the specified node.
+
+```js
+document.getElementById("id").nodeType;
+```
+
+### nodeName
+
+nodeName : The nodeName property returns the name of the specified node.
+
+```js
+document.getElementById("id").nodeName;
+```
+
+### nodeValue
+
+nodeValue : The nodeValue property returns the value of the specified node.
+
+```js
+document.getElementById("id").nodeValue;
+```
