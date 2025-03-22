@@ -1962,6 +1962,68 @@ document.getElementById("form").addEventListener("submit", function (params) {
 });
 ```
 
+### oncontextmenu
+
+oncontextmenu : The oncontextmenu event occurs when the user right-clicks on an element to open a context menu.
+
+```html
+<div oncontextmenu="function()">Right Click Me</div>
+```
+
+Tip : Prevent the context menu from opening
+
+```html
+<body oncontextmenu="return false">...</body>
+```
+
+### oncopy
+
+oncopy : The oncopy event occurs when the user copies the content of an element.
+
+```html
+<div oncopy="function()">Copy Me</div>
+```
+
+can preventDefault() : The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+
+```js
+document.getElementById("id").addEventListener("event", function (event) {
+  event.preventDefault();
+});
+```
+
+### oncut
+
+oncut : The oncut event occurs when the user cuts the content of an element.
+
+```html
+<div oncut="function()">Cut Me</div>
+```
+
+can preventDefault() : The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+
+```js
+document.getElementById("id").addEventListener("event", function (event) {
+  event.preventDefault();
+});
+```
+
+### onpaste
+
+onpaste : The onpaste event occurs when the user pastes some content in an element.
+
+```html
+<div onpaste="function()">Paste Me</div>
+```
+
+can preventDefault() : The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+
+```js
+document.getElementById("id").addEventListener("event", function (event) {
+  event.preventDefault();
+});
+```
+
 ### addEventListener()
 
 addEventListener() : The addEventListener() method attaches an event handler to the specified element.
@@ -2224,4 +2286,3 @@ Different lastElementChild & lastChild : The lastElementChild property returns t
 document.getElementById("id").firstChild;
 document.getElementById("id").lastChild;
 ```
-
