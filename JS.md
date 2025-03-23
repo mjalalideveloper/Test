@@ -2024,6 +2024,102 @@ document.getElementById("id").addEventListener("event", function (event) {
 });
 ```
 
+### onload & DOMContentLoaded
+
+onload : The onload event occurs when an object has been loaded.
+```html
+<img src="image.jpg" onload="function()" />
+
+<body onload="function()">...</body> // The onload event is mostly written for the body tag.
+```
+
+```js
+window.addEventListener("load", function () {
+  console.log("Page Loaded");
+});
+```
+
+DOMContentLoaded : The DOMContentLoaded event occurs when the HTML document has been loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
+
+```js
+window.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM Content Loaded");
+});
+```
+
+### Different Between onload & DOMContentLoaded
+
+- The onload event occurs when an object has been loaded.
+- The DOMContentLoaded event occurs when the HTML document has been loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
+
+### onunload
+
+onunload : The onunload event occurs once a page has unloaded (or the browser window has been closed).
+
+```html
+<body onunload="function()">...</body>
+```
+
+```js
+window.addEventListener("unload", function () {
+  console.log("Page Unloaded");
+});
+```
+
+### onbeforeunload
+
+onbeforeunload : The onbeforeunload event occurs before the document is about to be unloaded.
+
+```html
+<body onbeforeunload="function()">...</body>
+```
+
+```js
+window.addEventListener("beforeunload", function (event) {
+  event.preventDefault();
+  event.returnValue = "";
+});
+```
+
+### onselect
+
+onselect : The onselect event occurs after some text has been selected in an element.
+
+Just for input, textarea, and text fields.
+
+```html
+<input type="text" onselect="function()" />
+```
+
+### Touch Events
+
+- ontouchstart : The ontouchstart event occurs when a finger is placed on a touch screen.
+
+```html
+<div ontouchstart="function()">Touch Me</div>
+```
+
+- ontouchend : The ontouchend event occurs when a finger is removed from a touch screen.
+
+```html
+<div ontouchend="function()">Touch Me</div>
+```
+
+- ontouchmove : The ontouchmove event occurs when a finger is dragged across the screen.
+
+```html
+<div ontouchmove="function()">Touch Me</div>
+```
+
+- ontouchcancel : The ontouchcancel event occurs when a touch event is interrupted.
+
+```html
+<div ontouchcancel="function()">Touch Me</div>
+```
+
+
+
+
 ### addEventListener()
 
 addEventListener() : The addEventListener() method attaches an event handler to the specified element.
@@ -2038,6 +2134,16 @@ removeEventListener() : The removeEventListener() method removes an event handle
 
 ```js
 document.getElementById("id").removeEventListener("event", function);
+
+// Example :
+
+document.getElementById("id").addEventListener("click", function () {
+  console.log("Hello World");
+});
+
+document.getElementById("id").removeEventListener("click", function () {
+  console.log("Hello World");
+});
 ```
 
 ### The Third Way To Set The Event
@@ -2050,11 +2156,22 @@ document.getElementById("id").onclick = function () {
 };
 ```
 
+
 ## Event Object
 
 ```js
 document.getElementById("id").addEventListener("event", function (event) {
   console.log(event);
+});
+```
+
+### event.cancelBubble
+
+event.cancelBubble : The cancelBubble property is used to stop the bubbling of an event to parent elements, preventing any parent event handlers from being executed.
+
+```js
+document.getElementById("id").addEventListener("click", function (event) {
+  event.cancelBubble = true;
 });
 ```
 
@@ -2071,6 +2188,27 @@ document.getElementById("id").addEventListener("click", function (event) {
   event.preventDefault();
 });
 ```
+
+### event.target
+
+event.target : The target property of the Event interface is a reference to the object that dispatched the event.
+
+```js
+document.getElementById("id").addEventListener("click", function (event) {
+  console.log(event.target);
+}); // The element that was clicked
+```
+
+### event.pageX & event.pageY
+
+event.pageX & event.pageY : The pageX and pageY properties return the X and Y coordinates of the mouse pointer when an event is triggered.
+
+```js
+document.getElementById("id").addEventListener("click", function (event) {
+  console.log(event.pageX, event.pageY);
+});
+```
+
 
 ## Node
 
