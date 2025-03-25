@@ -2091,6 +2091,48 @@ Just for input, textarea, and text fields.
 <input type="text" onselect="function()" />
 ```
 
+### onscroll
+
+onscroll : The onscroll event occurs when an element's scrollbar is being scrolled.
+
+```html
+<div onscroll="function()">Scroll Me</div>
+
+<body onscroll="function()">...</body>
+```
+
+```js
+document.addEventListener("scroll", function () {
+  console.log("Scrolled");
+});
+```
+
+document.documentElement.scrollTop : The scrollTop property sets or returns the number of pixels an element's content is scrolled vertically.
+
+```js
+document.documentElement.scrollTop;
+```
+
+document.documentElement.scrollLeft : The scrollLeft property sets or returns the number of pixels an element's content is scrolled horizontally.
+
+```js
+document.documentElement.scrollLeft;
+```
+
+
+scrollTo(positionX, positionY) : The scrollTo() method scrolls the document to the specified coordinates.
+
+```js
+window.scrollTo(0, 0);
+```
+
+scrollBy(x, y) : The scrollBy() method scrolls the document by the specified number of pixels.
+
+```js
+window.scrollBy(0, 100);
+```
+
+
 ### Touch Events
 
 - ontouchstart : The ontouchstart event occurs when a finger is placed on a touch screen.
@@ -2424,3 +2466,14 @@ Different lastElementChild & lastChild : The lastElementChild property returns t
 document.getElementById("id").firstChild;
 document.getElementById("id").lastChild;
 ```
+
+## Data Set
+
+dataset : The dataset property allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element.
+
+```html
+<div id="id" data-name="value"></div>
+```
+
+```js
+
