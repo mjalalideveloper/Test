@@ -1603,6 +1603,32 @@ if (true) {
 console.log(z); // 1
 ```
 
+## async & defer
+
+async : The async attribute is a boolean attribute. When present, it specifies that the script will be executed asynchronously as soon as it is available. (just like the script tag in the head section) (just external script)
+
+defer : The defer attribute is a boolean attribute. When present, it specifies that the script is executed when the page has finished parsing. (just like the script tag in the body section) (just external script)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js"></script>
+    <script src="script.js" async></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+![async & defer](https://i.sstatic.net/wfL82.png)
+
 # DOM
 
 ## DOM (Document Object Model)
@@ -1973,7 +1999,9 @@ oncontextmenu : The oncontextmenu event occurs when the user right-clicks on an 
 Tip : Prevent the context menu from opening
 
 ```html
-<body oncontextmenu="return false">...</body>
+<body oncontextmenu="return false">
+  ...
+</body>
 ```
 
 ### oncopy
@@ -2027,10 +2055,14 @@ document.getElementById("id").addEventListener("event", function (event) {
 ### onload & DOMContentLoaded
 
 onload : The onload event occurs when an object has been loaded.
+
 ```html
 <img src="image.jpg" onload="function()" />
 
-<body onload="function()">...</body> // The onload event is mostly written for the body tag.
+<body onload="function()">
+  ...
+</body>
+// The onload event is mostly written for the body tag.
 ```
 
 ```js
@@ -2057,7 +2089,9 @@ window.addEventListener("DOMContentLoaded", function () {
 onunload : The onunload event occurs once a page has unloaded (or the browser window has been closed).
 
 ```html
-<body onunload="function()">...</body>
+<body onunload="function()">
+  ...
+</body>
 ```
 
 ```js
@@ -2071,7 +2105,9 @@ window.addEventListener("unload", function () {
 onbeforeunload : The onbeforeunload event occurs before the document is about to be unloaded.
 
 ```html
-<body onbeforeunload="function()">...</body>
+<body onbeforeunload="function()">
+  ...
+</body>
 ```
 
 ```js
@@ -2098,7 +2134,9 @@ onscroll : The onscroll event occurs when an element's scrollbar is being scroll
 ```html
 <div onscroll="function()">Scroll Me</div>
 
-<body onscroll="function()">...</body>
+<body onscroll="function()">
+  ...
+</body>
 ```
 
 ```js
@@ -2119,7 +2157,6 @@ document.documentElement.scrollLeft : The scrollLeft property sets or returns th
 document.documentElement.scrollLeft;
 ```
 
-
 scrollTo(positionX, positionY) : The scrollTo() method scrolls the document to the specified coordinates.
 
 ```js
@@ -2131,7 +2168,6 @@ scrollBy(x, y) : The scrollBy() method scrolls the document by the specified num
 ```js
 window.scrollBy(0, 100);
 ```
-
 
 ### Touch Events
 
@@ -2158,9 +2194,6 @@ window.scrollBy(0, 100);
 ```html
 <div ontouchcancel="function()">Touch Me</div>
 ```
-
-
-
 
 ### addEventListener()
 
@@ -2197,7 +2230,6 @@ document.getElementById("id").onclick = function () {
   console.log("Hello World");
 };
 ```
-
 
 ## Event Object
 
@@ -2250,7 +2282,6 @@ document.getElementById("id").addEventListener("click", function (event) {
   console.log(event.pageX, event.pageY);
 });
 ```
-
 
 ## Node
 
@@ -2356,7 +2387,6 @@ Example :
 var parent = document.getElementById("parent");
 
 console.log(parent.childElementCount); // 3
-
 ```
 
 ### children
@@ -2469,11 +2499,107 @@ document.getElementById("id").lastChild;
 
 ## Data Set
 
-dataset : The dataset property allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element.
+dataset : The dataset property allows access, both in reading and writing mode, to all the custom data attributes (data-\*) set on the element.
 
 ```html
 <div id="id" data-name="value"></div>
 ```
 
 ```js
+document.getElementById("id").dataset.name; // value
+document.getElementById("id").dataset.name = "newValue"; // newValue
+```
 
+```js
+document.getElementById("id").dataset; // DOMStringMap {name: "value"}
+```
+
+## Audio & Video
+
+### Audio
+
+```html
+<audio id="audio" src="audio.mp3" controls></audio>
+```
+
+```js
+var audio = document.getElementById("audio");
+
+// Play the audio
+audio.play();
+
+// Pause the audio
+audio.pause();
+
+// Stop the audio
+audio.pause();
+audio.currentTime = 0; // Reset the audio to the beginning
+
+// Get the duration of the audio (in seconds)
+audio.duration;
+
+// Get the current time of the audio (in seconds)
+audio.currentTime;
+
+// Set the current time of the audio (in seconds)
+audio.currentTime = 10; // Set the audio to start at 10 seconds
+
+// Get the playback rate of the audio
+audio.playBackRate; // Get the playback rate of the audio (1.0 is normal speed)
+
+// Set the playback rate of the audio
+audio.playBackRate = 1.5; // Set the playback rate of the audio to 1.5x speed
+audio.playBackRate = 0.5; // Set the playback rate of the audio to 0.5x speed
+
+// Get the volume of the audio (0.0 to 1.0)
+audio.volume; // Get the volume of the audio (0.0 to 1.0)
+
+// Set the volume of the audio (0.0 to 1.0)
+audio.volume = 0.5; // Set the volume of the audio to 50%
+audio.volume = 0.0; // Set the volume of the audio to 0% (muted)
+audio.volume = 1.0; // Set the volume of the audio to 100%
+```
+
+### Video
+
+```html
+<video id="video" src="video.mp4" controls></video>
+```
+
+```js
+var video = document.getElementById("video");
+
+// Play the video
+video.play();
+
+// Pause the video
+video.pause();
+
+// Stop the audio
+video.pause();
+video.currentTime = 0; // Reset the video to the beginning
+
+// Get the duration of the audio (in seconds)
+video.duration;
+
+// Get the current time of the audio (in seconds)
+video.currentTime;
+
+// Set the current time of the audio (in seconds)
+video.currentTime = 10; // Set the video to start at 10 seconds
+
+// Get the playback rate of the audio
+video.playBackRate; // Get the playback rate of the video (1.0 is normal speed)
+
+// Set the playback rate of the audio
+video.playBackRate = 1.5; // Set the playback rate of the video to 1.5x speed
+video.playBackRate = 0.5; // Set the playback rate of the video to 0.5x speed
+
+// Get the volume of the audio (0.0 to 1.0)
+video.volume; // Get the volume of the video (0.0 to 1.0)
+
+// Set the volume of the audio (0.0 to 1.0)
+video.volume = 0.5; // Set the volume of the video to 50%
+video.volume = 0.0; // Set the volume of the video to 0% (muted)
+video.volume = 1.0; // Set the volume of the video to 100%
+```
