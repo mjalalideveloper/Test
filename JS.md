@@ -1629,6 +1629,40 @@ defer : The defer attribute is a boolean attribute. When present, it specifies t
 
 ![async & defer](https://i.sstatic.net/wfL82.png)
 
+## Local Storage
+
+Local Storage : Local Storage is a web storage that allows you to store data in the browser. The data is stored as key/value pairs, and it persists even after the browser is closed. Local Storage has a larger storage capacity compared to cookies.
+
++ The data is stored as key/value pairs.
++ The data is stored in the browser.
++ The data is stored as strings.
++ The data is stored in the same origin (domain, protocol, and port).
+
+```js
+localstorage.setItem("key", "value"); // Set item
+
+
+localstorage.getItem("key"); // Get item (string)
+
+
+localstorage.clear(); // Clear all items
+
+// Add Array to Local Storage
+
+var array = ["Value1", "Value2", "Value3"];
+localstorage.setItem("array", JSON.stringify(array)); // Set item (string)
+// Output : "["Value1","Value2","Value3"]" (string)
+
+JSON.parse(localstorage.getItem("array")); // Get item (array)
+// Output : ["Value1", "Value2", "Value3"] (array)
+
+// Replace Value
+
+localstorage.setItem("key", "value"); // Set item (string)
+
+localstorage.setItem("key", "new value"); // Replace value
+```
+
 # DOM
 
 ## DOM (Document Object Model)
@@ -2195,6 +2229,129 @@ window.scrollBy(0, 100);
 <div ontouchcancel="function()">Touch Me</div>
 ```
 
+### Drag & Drop Events
+
+draggable attribute : The draggable attribute specifies whether an element is draggable or not.
+
+```html
+<div draggable="true" ondrag="function()" ondrop="function()">Drag Me</div>
+```
+
+event.transfer : The dataTransfer property of the drag event contains the data that is being dragged during a drag-and-drop operation.
+
+```js
+event.dataTransfer.setData("text/plain", data);
+```
+
+```js
+// for element
+function dragStartHandler (event) {
+    console.log('Drag');
+
+    event.dataTransfer.setData('elemId', event.target.id)
+
+}
+// for drop target
+function dragOverHandler (event) {
+    event.preventDefault()
+
+}
+// for drop target
+function dropHandler (event) {
+    let targetId = event.dataTransfer.getData('elemId')
+    let targetElem = document.getElementById(targetId)
+
+    event.target.append(targetElem)
+
+}
+```
+
+**Dragged => ondragstart => ondrag => ondragend**
+
+**ondragstart :** The ondragstart event occurs when the user starts to drag an element.
+
+**ondrag :** The ondrag event occurs when an element is being dragged.
+
+**ondragend :** The ondragend event occurs when the user has finished dragging an element.
+
+
+**Dropped => ondragenter => ondragover => ondragleave => ondrop**
+
+**ondragenter :** The ondragenter event occurs when the dragged element enters a valid drop target.
+
+**ondragover :** The ondragover event occurs when the dragged element is being dragged over a valid drop target.
+
+**ondragleave :** The ondragleave event occurs when the dragged element leaves a valid drop target.
+
+**ondrop :** The ondrop event occurs when the dragged element is dropped on a valid drop target.
+
+```js
+// for element
+function dragStartHandler (event) {
+    console.log('Drag');
+
+    event.dataTransfer.setData('elemId', event.target.id)
+
+}
+
+// for drop target
+function dragOverHandler (event) {
+    event.preventDefault()
+
+}
+
+// for drop target
+function dropHandler (event) {
+    let targetId = event.dataTransfer.getData('elemId')
+    let targetElem = document.getElementById(targetId)
+
+    event.target.append(targetElem)
+
+}
+```
+
+Example:
+
+```html
+<h1 id="react" draggable="true" ondragstart="dragStartHandler(event)">
+  React Js
+</h1>
+
+<h1 id="vue" draggable="true" ondragstart="dragStartHandler(event)">Vue Js</h1>
+
+<h1 id="angular" draggable="true" ondragstart="dragStartHandler(event)">
+  Angular Js
+</h1>
+
+<div
+  class="drop"
+  ondrop="dropHandler(event)"
+  ondragover="dragOverHandler(event)"
+></div>
+```
+
+```js
+function dragStartHandler (event) {
+    console.log('Drag');
+
+    event.dataTransfer.setData('elemId', event.target.id)
+
+}
+
+function dropHandler (event) {
+    let targetId = event.dataTransfer.getData('elemId')
+    let targetElem = document.getElementById(targetId)
+
+    event.target.append(targetElem)
+
+}
+
+function dragOverHandler (event) {
+    event.preventDefault()
+    // console.log('DragOver');
+}
+```
+
 ### addEventListener()
 
 addEventListener() : The addEventListener() method attaches an event handler to the specified element.
@@ -2603,3 +2760,5 @@ video.volume = 0.5; // Set the volume of the video to 50%
 video.volume = 0.0; // Set the volume of the video to 0% (muted)
 video.volume = 1.0; // Set the volume of the video to 100%
 ```
+
+##
