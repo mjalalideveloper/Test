@@ -1647,6 +1647,8 @@ localstorage.getItem("key"); // Get item (string)
 
 localstorage.clear(); // Clear all items
 
+localstorage.removeItem("key"); // Remove Item
+
 // Add Array to Local Storage
 
 var array = ["Value1", "Value2", "Value3"];
