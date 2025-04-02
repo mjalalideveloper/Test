@@ -1665,6 +1665,49 @@ localstorage.setItem("key", "value"); // Set item (string)
 localstorage.setItem("key", "new value"); // Replace value
 ```
 
+## Error Handling
+
+### try...catch
+
+try...catch : The try statement allows you to define a block of code to be tested for errors while it is being executed. The catch statement allows you to define a block of code to be executed if an error occurs in the try block.
+
+```js
+try {
+  // Code
+} catch (error) {
+  // Code
+}
+
+// Example:
+
+try {
+  console.log(x);
+} catch (error) {
+  console.log(error);
+}
+
+// Output:
+// ReferenceError: x is not defined
+```
+
+### throw
+
+throw : The throw statement allows you to create a custom error.
+
+```js
+throw "Error Message";
+
+throw 404;
+
+try {
+    throw "Error"
+} catch (error){
+    console.log(error)
+}
+```
+
+### f
+
 # DOM
 
 ## DOM (Document Object Model)
@@ -1759,6 +1802,20 @@ style : The style property sets or returns the style attribute of an element.
 document.getElementById("id").style.color = "red";
 document.getElementById("id").style.fontSize = "25px";
 document.getElementById("id").style.backgroundColor = "yellow";
+```
+
+## getComputedStyle()
+
+getComputedStyle() : The getComputedStyle() method returns the computed style of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+
+Different from style : The getComputedStyle() method returns the computed style of an element, while the style property returns the inline style of an element.
+
+```js
+getComputedStyle(document.getElementById("id"));
+
+getComputedStyle(document.getElementById("id")).color;
+
+getComputedStyle(document.getElementById("id")).getPropertyValue("color");
 ```
 
 ### className
@@ -2389,6 +2446,21 @@ document.getElementById("id").onclick = function () {
   console.log("Hello World");
 };
 ```
+
+### Animation Events
+
+- onanimationstart
+
+fff
+
+- onanimationiteration
+
+fff
+
+- onanimationend
+
+fff
+
 
 ## Event Object
 
