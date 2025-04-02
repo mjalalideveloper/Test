@@ -1706,7 +1706,19 @@ try {
 }
 ```
 
-### f
+### finally
+
+finally : The finally statement allows you to execute code after try...catch, regardless of the result.
+
+```js
+try {
+  // Code
+} catch (error) {
+  // Code
+} finally {
+  // Code
+}
+```
 
 # DOM
 
@@ -1804,7 +1816,15 @@ document.getElementById("id").style.fontSize = "25px";
 document.getElementById("id").style.backgroundColor = "yellow";
 ```
 
-## getComputedStyle()
+### style.cssText
+
+style.cssText : The cssText property sets or returns the inline style of an element (the CSS styles that are set directly on the element).
+
+```js
+document.getElementById("id").style.cssText = "color: red; font-size: 25px; background-color: yellow;";
+```
+
+### getComputedStyle()
 
 getComputedStyle() : The getComputedStyle() method returns the computed style of an element, after applying active stylesheets and resolving any basic computation those values may contain.
 
@@ -2062,6 +2082,10 @@ Tip : The onchange event is often used in combination with validation of input f
 ```html
 <input type="text" onchange="function()" />
 ```
+
+### oninput
+
+fff
 
 ### onsubmit
 
@@ -2835,4 +2859,18 @@ video.volume = 0.0; // Set the volume of the video to 0% (muted)
 video.volume = 1.0; // Set the volume of the video to 100%
 ```
 
-##
+## Variables In CSS
+
+fff
+
+```css
+:root {
+    --color: green
+}
+```
+
+```js
+document.documentElement.style.setProperty("--color", "red")
+
+document.documentElement.style.getProperty("--color") // red
+```
