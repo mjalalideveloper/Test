@@ -1720,6 +1720,26 @@ try {
 }
 ```
 
+## Date Object
+
+Date Object : The Date object is used to work with dates and times. The Date object is created with the new Date() constructor.
+
+```js
+var date = new Date(); // Current date and time
+
+console.log(date) // 2023-10-01T00:00:00.000Z (current date and time)
+
+date.getDate(); // 1 (day of the month) (1-31)
+date.getDay(); // 0 (day of the week) (0-6) (0 = Sunday, 1 = Monday, ...)
+date.getFullYear(); // 2023 (4 digits year)
+date.getMonth(); // 9 (month) (0-11) (0 = January, 1 = February, ...)
+date.getHours(); // 0 (hours) (0-23)
+date.getMinutes(); // 0 (minutes) (0-59)
+date.getSeconds(); // 0 (seconds) (0-59)
+date.getMilliseconds(); // 0 (milliseconds) (0-999)
+date.getTime(); // 1696118400000 (milliseconds since January 1, 1970)
+```
+
 # DOM
 
 ## DOM (Document Object Model)
@@ -2485,6 +2505,17 @@ fff
 
 fff
 
+### onresize
+
+onresize : The onresize event occurs when the document view (window) has been resized.
+
+```js
+window.onresize = function () {
+  console.log(`width: ${window.innerWidth} | height: ${window.innerHeight}`);
+};
+```
+
+### Mouse Events
 
 ## Event Object
 
