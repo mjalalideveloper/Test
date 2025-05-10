@@ -140,6 +140,82 @@ null
 
 ---
 
+- console.log() : Print to console
+
+```js
+console.log("Hello World"); // Hello World
+console.log(25); // 25
+console.log(true); // true
+console.log(false); // false
+console.log(undefined); // undefined
+console.log(null); // null
+```
+
+- console.error() : Print to console (error)
+
+```js
+console.error("Hello World"); // Hello World
+```
+
+- console.warn() : Print to console (warning)
+
+```js
+console.warn("Hello World"); // Hello World
+```
+
+- console.info() : Print to console (info)
+
+```js
+console.info("Hello World"); // Hello World
+```
+
+- console.table() : Print to console (table)
+
+```js
+console.table([
+  { name: "Ali", age: 25 },
+  { name: "Amin", age: 30 },
+]); // Table
+```
+
+- console.assert() : Print to console (assert)
+
+```js
+console.assert(1 === 2, "1 is not equal to 2"); // 1 is not equal to 2
+console.assert(1 === 1, "1 is not equal to 1"); // No output
+```
+
+- console.time() & console.timeEnd() : Print to console (time)
+
+```js
+console.time("Time"); // Start time
+
+console.log("Hello World"); // Hello World
+console.log(25); // 25
+
+console.timeEnd("Time"); // End time
+
+// output:
+// Time: 0.123ms (time)
+```
+
+- console.clear() : Clear console
+
+```js
+console.clear(); // Clear console
+```
+
+- console.group() & console.groupEnd() : Print to console (group)
+
+```js
+console.group("Group"); // Start group
+console.log("Hello World"); // Hello World
+console.log(25); // 25
+console.groupEnd("Group"); // End group
+```
+
+
+
 ## Alert & Prompt
 
 ---
@@ -1740,7 +1816,38 @@ date.getMilliseconds(); // 0 (milliseconds) (0-999)
 date.getTime(); // 1696118400000 (milliseconds since January 1, 1970)
 ```
 
-# DOM
+## delete keyword
+
+delete : The delete operator deletes a property from an object.
+
+delete return true if the property was successfully deleted, and false if the property could not be deleted.
+
+```js
+var objectName = {
+  key1: "Value1",
+  key2: "Value2",
+  key3: "Value3",
+};
+
+delete objectName.key1; // Delete key1
+delete objectName["key2"]; // Delete key2
+delete objectName.key4; // Delete key4 (undefined)
+
+console.log(objectName); // { key3: "Value3" } (key1 and key2 are deleted)
+
+console.log(delete objectName.key1); // true (key1 is deleted)
+
+//
+
+var arrayName = ["Value1", "Value2", "Value3"];
+
+delete arrayName[0]; // Delete index 0 (Value1)
+
+console.log(arrayName); // [undefined, "Value2", "Value3"] (index 0 is undefined)
+// JS does not delete the index, it just sets it to undefined
+```
+
+# DOM => Document Object Model
 
 ## DOM (Document Object Model)
 
@@ -2034,6 +2141,21 @@ oldElement.innerHTML = "Hello";
 
 oldElement.replaceWith(newElement);
 ```
+
+## Element.insertAdjacentHTML(position, text)
+insertAdjacentHTML() : The insertAdjacentHTML() method parses the specified text as HTML and inserts the resulting nodes into the DOM tree at the specified position.
+
+position : The position parameter specifies where to insert the HTML. It can be one of the following values:
+- beforebegin : Before the element itself.
+- afterbegin : Just inside the element, before its first child.
+- beforeend : Just inside the element, after its last child.
+- afterend : After the element itself.
+
+```js
+element.insertAdjacentHTML("position", "text");
+
+
+
 
 ## Events
 
@@ -2517,13 +2639,19 @@ window.onresize = function () {
 
 ### Mouse Events
 
-## Event Object
+- onmousedown : The onmousedown event occurs when the user presses a mouse button.
 
-```js
-document.getElementById("id").addEventListener("event", function (event) {
-  console.log(event);
-});
-```
+- onmouseup : The onmouseup event occurs when the user releases a mouse button.
+
+- onmousemove : The onmousemove event occurs when the user moves the mouse pointer.
+
+- onmouseenter : The onmouseenter event occurs when the mouse pointer is moved onto an element.
+
+- onmouseleave : The onmouseleave event occurs when the mouse pointer is moved out of an element.
+
+- onmouseover : The onmouseover event occurs when the mouse pointer is moved onto an element.
+
+- onmouseout : The onmouseout event occurs when the mouse pointer is moved out of an element.
 
 ### event.cancelBubble
 
@@ -2905,3 +3033,88 @@ document.documentElement.style.setProperty("--color", "red")
 
 document.documentElement.style.getProperty("--color") // red
 ```
+
+## Fragment
+
+Fragment : A DocumentFragment is a minimal document object that has no parent. It is a lightweight version of a Document that stores a portion of the document tree.
+
+```js
+var container = document.getElementById("container");
+var fragment = document.createDocumentFragment();
+
+fragment.appendChild(document.createElement("div"));
+fragment.appendChild(document.createElement("p"));
+fragment.appendChild(document.createElement("span"));
+fragment.appendChild(document.createElement("h1"));
+
+container.appendChild(fragment);
+```
+
+output :
+
+```html
+<div id="container">
+  <div></div>
+  <p></p>
+  <span></span>
+  <h1></h1>
+</div>
+```
+
+# BOM => Browser Object Model
+
+## BOM (Browser Object Model)
+
+BOM : The Browser Object Model (BOM) is a set of objects that allow JavaScript to interact with the browser. It provides methods and properties to manipulate the browser window, history, location, and navigator.
+
+## Width & Height
+
+window.innerWidth : The innerWidth property returns the width of the window's content area (viewport) in pixels.
+
+```js
+window.innerWidth; // 1920
+```
+
+window.innerHeight : The innerHeight property returns the height of the window's content area (viewport) in pixels.
+
+```js
+window.innerHeight; // 1080
+```
+
+window.outerWidth : The outerWidth property returns the width of the window's content area (viewport) in pixels, including the window's borders and scrollbars.
+
+```js
+window.outerWidth; // 1920
+```
+
+window.outerHeight : The outerHeight property returns the height of the window's content area (viewport) in pixels, including the window's borders and scrollbars.
+
+```js
+window.outerHeight; // 1080
+```
+
+window.screenTop : The screenTop property returns the distance of the current window from the top edge of the screen in pixels.
+
+```js
+window.screenTop; // 0
+```
+
+window.screenLeft : The screenLeft property returns the distance of the current window from the left edge of the screen in pixels.
+
+```js
+window.screenLeft; // 0
+```
+
+document.documentElement.clientWidth : The clientWidth property returns the width of the element's content area in pixels, including padding but excluding borders, scrollbars, and margins.
+
+```js
+document.documentElement.clientWidth; // 1920
+```
+
+document.documentElement.clientHeight : The clientHeight property returns the height of the element's content area in pixels, including padding but excluding borders, scrollbars, and margins.
+
+```js
+document.documentElement.clientHeight; // 1080
+```
+
+
