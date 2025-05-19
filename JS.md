@@ -60,6 +60,53 @@
 
 > Js is case-sensitive
 
+### History Of JavaScript
+
+- Mocha (1995)
+> Mocha was the original name of JavaScript.
+
+> Created by Brendan Eich at Netscape.
+
+> Created in 10 days.
+- LiveScript (1995)
+> The name was changed to LiveScript in 1995.
+
+> The name was changed to JavaScript in 1995.
+- JavaScript (1995)
+> The name was changed to JavaScript in 1995.
+- JScript (1996)
+> JScript is Microsoft's implementation of JavaScript.
+- ECMAScript (1997)
+> ECMAScript is the standard for JavaScript.
+
+> ECMAScript is a trademark of Ecma International.
+
+> ECMAScript is a scripting language specification.
+- ES1 (1997)
+- ES2 (1998)
+- ES3 (1999)
+- ES4 (2000)
+- ES5 (2009)
+- ES6 (2015)
+- ...
+
+### Engine
+
+Engine : JavaScript engine is a program or interpreter that executes JavaScript code.
+
+- V8 (Google Chrome, Node.js)
+- SpiderMonkey (Mozilla Firefox)
+- JavaScriptCore (Safari)
+- Chakra (Microsoft Edge)
+- Nashorn (Java 8)
+
+> How JavaScript Engine Works?
+
+> 1. Memory Heap : Memory heap is a region of memory used for dynamic memory allocation.
+
+> 2. Call Stack : Call stack is a data structure that stores information about the active subroutines of a computer program.
+![Call Stack](https://media.licdn.com/dms/image/v2/D5612AQFnV0Ld0vEsag/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1705135591339?e=2147483647&v=beta&t=axtpp_OBCzbvCXpscYgN2o2afrEH6_venRgil4F3Rj8)
+
 ### Best Practice
 
 good.js.org
@@ -626,7 +673,7 @@ text[text.length - 1]; // d (index 10)
 
 ### String Methods
 
-> chaeAt(index)
+> charAt(index)
 
 Returns the character at the specified index (position)
 
@@ -2072,6 +2119,26 @@ var element2 = document.createElement("div");
 document.body.append("Hello World", element1, "Hello World", element2);
 ```
 
+## Element.insertAdjacentHTML(position, text)
+insertAdjacentHTML() : The insertAdjacentHTML() method parses the specified text as HTML and inserts the resulting nodes into the DOM tree at the specified position.
+
+position : The position parameter specifies where to insert the HTML. It can be one of the following values:
+- beforebegin : Before the element itself.
+- afterbegin : Just inside the element, before its first child.
+- beforeend : Just inside the element, after its last child.
+- afterend : After the element itself.
+
+```js
+element.insertAdjacentHTML("position", "text");
+
+// Example:
+var element = document.createElement("div");
+element.innerHTML = "Hello World";
+document.body.appendChild(element);
+element.insertAdjacentHTML("beforebegin", "<p>Before</p>");
+element.insertAdjacentHTML("afterbegin", "<p>After Begin</p>");
+```
+
 ## Removing Elements
 
 ### removeChild()
@@ -2141,21 +2208,6 @@ oldElement.innerHTML = "Hello";
 
 oldElement.replaceWith(newElement);
 ```
-
-## Element.insertAdjacentHTML(position, text)
-insertAdjacentHTML() : The insertAdjacentHTML() method parses the specified text as HTML and inserts the resulting nodes into the DOM tree at the specified position.
-
-position : The position parameter specifies where to insert the HTML. It can be one of the following values:
-- beforebegin : Before the element itself.
-- afterbegin : Just inside the element, before its first child.
-- beforeend : Just inside the element, after its last child.
-- afterend : After the element itself.
-
-```js
-element.insertAdjacentHTML("position", "text");
-
-
-
 
 ## Events
 
@@ -2577,13 +2629,26 @@ function dragOverHandler (event) {
 }
 ```
 
-### addEventListener()
+### addEventListener(event, function, options)
 
 addEventListener() : The addEventListener() method attaches an event handler to the specified element.
 
 ```js
 document.getElementById("id").addEventListener("event", function);
 ```
+
+> Options : The options parameter is an optional object that specifies characteristics about the event listener. It can have the following properties:
+```js
+element.addEventListener("event", function, {
+  capture: true, // Boolean value indicating whether the event should be captured or not.
+  once: true, // Boolean value indicating whether the event should be executed at most once after being added.
+  passive: true, // Boolean value indicating that the function will never call preventDefault().
+});
+```
+
+- once : The once property is a Boolean value that indicates whether the event handler should be invoked at most once after being added. If true, the event handler will be removed automatically after its first invocation.
+
+- capture : The capture property is a Boolean value that indicates whether the event handler should be invoked during the capture phase or the bubbling phase. If true, the event handler will be invoked during the capture phase.
 
 ### removeEventListener()
 
@@ -3117,4 +3182,77 @@ document.documentElement.clientHeight : The clientHeight property returns the he
 document.documentElement.clientHeight; // 1080
 ```
 
+## Screen Object
+window.screen : The screen object contains information about the user's screen, such as its width, height, and color depth.
 
+```js
+window.screen.width; // width of the screen in pixels => 1920
+window.screen.height; // height of the screen in pixels => 1080
+window.screen.availWidth; // available width of the screen in pixels => 1920
+window.screen.availHeight; // available height of the screen in pixels => 1080
+window.screen.colorDepth; // color depth of the screen in bits => 24
+window.screen.pixelDepth; // pixel depth of the screen in bits => 24
+```
+
+## History Object
+window.history : The history object contains the URLs visited by the user in the current browser session.
+
+```js
+window.history.length; // number of URLs in the history stack => 10
+window.history.back(); // go back to the previous URL
+window.history.forward(); // go forward to the next URL
+window.history.go(-1); // go back to the previous URL
+window.history.go(1); // go forward to the next URL
+window.history.go(0); // reload the current URL
+```
+
+## Location Object
+window.location : The location object contains information about the current URL of the document.
+
+```js
+window.location.href; // current URL of the document => "https://www.example.com"
+window.location.protocol; // protocol of the URL => "https:"
+window.location.host; // host of the URL => "www.example.com"
+window.location.hostname; // hostname of the URL => "www.example.com"
+window.location.port; // port of the URL => "80"
+window.location.pathname; // pathname of the URL => "/path/to/file.html"
+window.location.search; // query string of the URL => "?query=string"
+window.location.hash; // anchor of the URL => "#anchor"
+window.location.reload(); // reload the current URL
+window.location.replace("https://www.example.com"); // replace the current URL with a new URL
+window.location.assign("https://www.example.com"); // navigate to a new URL
+window.location.href = "https://www.example.com"; // navigate to a new URL
+```
+
+> URLSearchParams : The URLSearchParams interface defines utility methods to work with the query string of a URL.
+
+```js
+
+const url = new URL("https://www.example.com?param1=value1&param2=value2");
+
+location.search.slice(1).split("=")[1]; // get the value of the first query parameter (Bad Way)
+
+// OR
+
+const params = new URLSearchParams(location.search);
+
+params.get("param1"); // get the value of the first query parameter (Good Way) => value1
+params.get("param2"); // get the value of the second query parameter => value2
+```
+
+## Connection Events
+ononline : The online event occurs when the browser goes online.
+
+```js
+window.addEventListener("online", function () {
+  console.log("Browser is online");
+});
+```
+
+onoffline : The offline event occurs when the browser goes offline.
+
+```js
+window.addEventListener("offline", function () {
+  console.log("Browser is offline");
+});
+```
