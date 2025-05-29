@@ -577,6 +577,131 @@ var result = name(); // "Hello World" (no alert)
 alert(result); // alert("Hello World"); (no return)
 ```
 
+### Callback Function
+
+```js
+function name(callback) {
+  // Code
+  callback(); // Call the callback function
+}
+
+// Example:
+function greet() {
+  alert("Hello World");
+}
+
+name(greet); // Call the name function with the greet function as a callback
+
+// Example:
+
+function add(a, b, callback) {
+  var result = a + b;
+  callback(result); // Call the callback function with the result
+}
+
+add(5, 10, function (result) {
+  alert("The result is: " + result); // The result is: 15
+});
+```
+
+### Sync & Async Functions
+
+```js
+function syncFunction() {
+  console.log("This is a synchronous function.");
+}
+
+function asyncFunction() {
+  setTimeout(function () {
+    console.log("This is an asynchronous function.");
+  }, 1000); // 1 second delay
+}
+
+syncFunction(); // This is a synchronous function.
+asyncFunction(); // This is an asynchronous function. (after 1 second)
+```
+
+![Synchronous vs. Asynchronous JavaScript](https://miro.medium.com/v2/format:webp/1*V5syja2casc0gCuu9zKV5g.png)
+
+> Synchronous & Asynchronous Functions And Callbacks
+
+```js
+function firstLog () {
+    console.log("1");
+    console.log("2");
+}
+function middleLog () {
+    setTimeout(function () {
+        console.log("3");
+    }, 1000);
+}
+function lastLog () {
+    console.log("4");
+    console.log("5");
+}
+
+firstLog(); // 1, 2
+middleLog(); // 3 (after 1 second)
+lastLog(); // 4, 5
+// output: 1, 2, 4, 5, 3
+
+// Resolution
+function firstLog() {
+  console.log("1");
+  console.log("2");
+}
+function middleLog (callback) {
+    setTimeout(function () {
+        console.log("3");
+        callback(); // Call the callback function after 1 second
+    }, 1000);
+}
+function lastLog() {
+  console.log("4");
+  console.log("5");
+}
+
+firstLog(); // 1, 2
+middleLog(lastLog); // 3 (after 1 second), 4, 5
+// output: 1, 2, 3, 4, 5
+```
+
+
+
+### Pure Function
+
+Pure functions are functions that always produce the same output for the same input and do not cause any side effects (i.e., they do not modify any external state or variables). They are predictable and easier to test.
+
+A pure function should not:
+- Modify any external state or variables.
+- Depend on any external state or variables that can change.
+- Cause any side effects, such as modifying global variables, changing the DOM, or performing I/O operations.
+
+```js
+function pureFunction(a, b) {
+  return a + b; // Pure function (no side effects)
+}
+
+// Example:
+function add(a, b) {
+  return a + b; // Pure function (no side effects)
+}
+function multiply(a, b) {
+  return a * b; // Pure function (no side effects)
+}
+
+// Non-pure functions:
+function nonPureFunction(a, b) {
+  globalVariable = a + b; // Non-pure function (modifies external state)
+  return globalVariable;
+}
+
+function nonPureFunctionWithSideEffect(a, b) {
+  console.log("This is a side effect"); // Non-pure function (causes side effect)
+  return a + b;
+}
+```
+
 ### Anonymous Function
 
 ```js
