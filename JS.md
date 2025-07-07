@@ -667,6 +667,70 @@ middleLog(lastLog); // 3 (after 1 second), 4, 5
 ```
 
 
+### Arguments Keyword
+
+The `arguments` keyword is an array-like object that contains the arguments passed to a function. It is available within all non-arrow functions.
+
+```js
+function showArguments() {
+  console.log(arguments); // Array-like object of arguments
+}
+showArguments("Hello", 25, true); // ["Hello", 25, true]
+
+// Example
+function sum() {
+  let total = 0;
+  let arrayArgs = Array.from(arguments); // Convert arguments to an array
+
+  arrayArgs.forEach(function (num) {
+    total += num; // Sum all arguments
+  });
+
+  return total; // Return the total sum
+}
+console.log(sum(1, 2, 3, 4)); // 10
+
+// in Arrow Function
+const showArguments = () => {
+  console.log(arguments); // Error: arguments is not defined in arrow functions
+};
+```
+
+### Rest Parameters
+
+Rest parameters allow you to represent an indefinite number of arguments as an array. It is defined by three dots (`...`) followed by a parameter name.
+
+```js
+function sum(...args) {
+  let total = 0;
+  args.forEach(function (num) {
+    total += num; // Sum all arguments
+  });
+  return total; // Return the total sum
+}
+
+console.log(sum(1, 2, 3, 4)); // 10
+
+// in Arrow Function
+
+const sum = (...args) => {
+  let total = 0;
+  args.forEach(num => {
+    total += num; // Sum all arguments
+  });
+  return total; // Return the total sum
+};
+
+console.log(sum(1, 2, 3, 4)); // 10
+
+// Rest Parameter must be last formal parameter
+function example(a, b, ...rest) {
+  console.log(a, b, rest); // a, b, rest (array of remaining arguments)
+}
+
+function example(...args, a) {
+  console.log(args, a); // Error: Rest parameter must be last formal parameter
+```
 
 ### Pure Function
 
@@ -751,6 +815,40 @@ greetAli(); // Hello, Ali!
 greet("Ali")(); // Hello, Ali!
 ```
 
+
+### Arrow Function
+
+```js
+// Syntax:
+const functionName = (params) => {
+  // Code
+};
+
+// Example:
+const greet = (name) => {
+  return "Hello, " + name + "!";
+};
+greet("Ali"); // Hello, Ali!
+// Or
+const greet = (name) => "Hello, " + name + "!"; // Implicit return
+greet("Ali"); // Hello, Ali!
+// Or
+const greet = name => "Hello, " + name + "!"; // Implicit return (no parentheses for single parameter)
+
+
+// Example with no parameters:
+const sayHello = () => {
+  console.log("Hello World");
+};
+sayHello(); // Hello World
+// Or
+const sayHello = () => console.log("Hello World");
+sayHello(); // Hello World
+
+// Returning an object:
+const generateUser = (name, age = 25) => ({name: name,age: age,});
+console.log(generateUser("Ali", 25)); // {name: "Ali", age: 25}
+```
 
 ### Anonymous Function
 
@@ -2107,6 +2205,73 @@ function myFunction() {
   // Code
 }
 ```
+
+## Spread Operator
+
+The spread operator (`...`) allows you to expand an iterable (like an array or object) into individual elements. It can be used in function calls, array literals, and object literals.
+
+```js
+// Array Example (ES6+)
+var array1 = [1, 2, 3];
+var array2 = [4, 5, 6];
+var combinedArray = [...array1, ...array2]; // [1, 2, 3, 4, 5, 6]
+
+// Object Example (ES9+)
+var obj1 = { a: 1, b: 2 };
+var obj2 = { c: 3, d: 4 };
+var combinedObject = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
+
+// Copying an Array
+var originalArray = [1, 2, 3];
+var copiedArray = originalArray; // [1, 2, 3] // this creates a reference to the original array
+// Using Spread Operator to Copy an Array
+var copiedArray = [...originalArray]; // [1, 2, 3]
+
+// copying an Object
+var originalObject = { a: 1, b: 2, c: 3 };
+var copiedObject = { ...originalObject }; // { a: 1, b: 2, c: 3 }
+
+// logging the items of the array
+console.log(...originalArray); // 1 2 3
+
+// logging the items of the object
+console.log(...Object.values(originalObject)); // 1 2 3
+
+
+```
+
+## Array Destructuring (Dest) & Object Destructuring (Dest)
+
+Array Destructuring : Array destructuring allows you to unpack values from arrays into distinct variables.
+
+```js
+// Array Destructuring Example
+var array = [1, 2, 3];
+var [first, second, third] = array; // first = 1, second = 2, third = 3
+// Skipping elements
+var [first, , third] = array; // first = 1, third = 3
+// Default values
+var [first, second = 10] = [1]; // first = 1, second = 10
+// Nested Array Destructuring
+var nestedArray = [1, [2, 3]];
+var [first, [second, third]] = nestedArray; // first = 1, second = 2, third = 3
+```
+
+Object Destructuring : Object destructuring allows you to unpack properties from objects into distinct variables.
+
+```js
+// Object Destructuring Example
+var object = { a: 1, b: 2, c: 3 };
+var { a, b, c } = object; // a = 1, b = 2, c = 3
+// Renaming variables
+var { a: first, b: second } = object; // first = 1, second = 2
+// Default values
+var { a, b = 10 } = { a: 1 }; // a = 1, b = 10
+// Nested Object Destructuring
+var nestedObject = { a: 1, b: { c: 2, d: 3 } };
+var { a, b: { c, d } } = nestedObject; // a = 1, c = 2, d = 3
+```
+
 
 # DOM => Document Object Model
 
