@@ -702,6 +702,56 @@ function nonPureFunctionWithSideEffect(a, b) {
 }
 ```
 
+### Composition Function
+
+Function composition is a technique where you combine two or more functions to create a new function. The output of one function becomes the input of the next function.
+
+```js
+function trim(val) {
+    val.trim();
+}
+function toLowerCase(val) {
+    val.toLowerCase();
+}
+
+function getVal() {
+    toLowerCase(trim(prompt("Enter a value:"))); // Call the functions in order => Composition
+}
+
+getVal();
+```
+
+### HOF (Higher-Order Function)
+
+A higher-order function is a function that either takes one or more functions as arguments or returns a function as its result. Higher-order functions allow you to create more abstract and reusable code.
+
+```js
+function higherOrderFunction(callback) {
+  // Code
+  callback(); // Call the callback function
+}
+
+// And
+
+function higherOrderFunction() {
+  return function () {
+    // Code
+  };
+}
+
+// Example:
+function greet(name) {
+  return function () {
+    console.log("Hello, " + name + "!");
+  };
+}
+var greetAli = greet("Ali"); // Create a new function with the name "Ali"
+greetAli(); // Hello, Ali!
+//Or
+greet("Ali")(); // Hello, Ali!
+```
+
+
 ### Anonymous Function
 
 ```js
@@ -2017,6 +2067,45 @@ delete arrayName[0]; // Delete index 0 (Value1)
 
 console.log(arrayName); // [undefined, "Value2", "Value3"] (index 0 is undefined)
 // JS does not delete the index, it just sets it to undefined
+```
+
+## Global Scope & Local Scope & Block Scope
+
+Global Scope : Variables declared outside of any function or block are in the global scope. They can be accessed from anywhere in the code.
+
+Local Scope : Variables declared inside a function are in the local scope. They can only be accessed from within that function.
+
+Block Scope : Variables declared with `let` or `const` inside a block (e.g., inside `{}`) are in the block scope. They can only be accessed from within that block.
+
+```js
+var globalVar = "I am global"; // Global scope
+
+function myFunction() {
+  var localVar = "I am local"; // Local scope
+  console.log(globalVar); // Accessible
+  console.log(localVar); // Accessible
+}
+myFunction();
+console.log(globalVar); // Accessible
+// console.log(localVar); // Uncaught ReferenceError: localVar is not defined (not accessible)
+if (true) {
+  let blockVar = "I am block scoped"; // Block scope
+  console.log(blockVar); // Accessible
+}
+// console.log(blockVar); // Uncaught ReferenceError: blockVar is not defined (not accessible)
+```
+
+## Strict Mode
+
+Strict Mode : Strict mode is a way to opt in to a restricted variant of JavaScript. It helps you write cleaner code by catching common coding mistakes and "unsafe" actions such as defining global variables.
+
+```js
+"use strict"; // Enable strict mode for global scope & local scope (at the top of the file or function => line 1)
+
+function myFunction() {
+  "use strict"; // Enable strict mode for this function
+  // Code
+}
 ```
 
 # DOM => Document Object Model
