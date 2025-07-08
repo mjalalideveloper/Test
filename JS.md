@@ -928,6 +928,30 @@ text[-1]; // undefined (index -1)
 'Hello "World"' + " " + "Hello 'World'"; // Hello "World" Hello 'World'
 ```
 
+### Template Literals (Template Strings)
+
+```js
+var name = "Ali";
+var age = 25;
+var text = `Hello ${name}, you are ${age} years old.`; // Template string
+console.log(text); // Hello Ali, you are 25 years old.
+
+// Example with expressions:
+var a = 5;
+var b = 10;
+var sum = `The sum of ${a} and ${b} is ${a + b}.`; // Template string with expression
+console.log(sum); // The sum of 5 and 10 is 15.
+
+// Example with multi-line string:
+
+var multiLineText = `This is a multi-line string.
+It can span multiple lines without using \n.`;
+console.log(multiLineText);
+// This is a multi-line string.
+// It can span multiple lines without using \n.
+```
+
+
 ### String Properties
 
 > length
@@ -1120,6 +1144,25 @@ var string = "Value1.Value2";
 console.log(string.split()); // ['Value1.Value2']
 console.log(string.split("")); // ['V', 'a', 'l', 'u', 'e', '1', '.', 'V', 'a', 'l', 'u', 'e', '2']
 console.log(string.split(".")); // ['Value1', 'Value2']
+```
+
+### String Padding
+
+```js
+// padStart(targetLength, padString)
+
+var text = "5";
+text.padStart(3, "0"); // "005" (pads the string to a length of 3 with "0" at the start)
+text.padStart(5, "0"); // "00005" (pads the string to a length of 5 with "0" at the start)
+
+// padEnd(targetLength, padString)
+
+text.padEnd(3, "0"); // "500" (pads the string to a length of 3 with "0" at the end)
+text.padEnd(5, "0"); // "50000" (pads the string to a length of 5 with "0" at the end)
+
+// Example for Phone Number
+var phoneNumber = "1234567890";
+phoneNumber.slice(-4).padEnd(10, "*"); // "7890******" (pads the last 4 digits of the phone number with "*" to a length of 10)
 ```
 
 ## Math Object
@@ -1320,6 +1363,77 @@ do {
 
 // Output:
 // 0
+```
+
+### For Of Loop
+
+For of loop is used to iterate over iterable objects like arrays, strings, maps, sets, etc. It provides a simpler way to loop through elements without needing an index.
+
+Iterating Data :
+1- Array
+2- String
+3- Like Array Objects (NodeList, HTMLCollection, etc., arguments object)
+
+```js
+// Example with Array:
+var arrayName = ["Value1", "Value2", "Value3"];
+for (var value of arrayName) {
+  console.log(value);
+}
+// Output:
+// Value1
+// Value2
+// Value3
+
+// Example with String:
+var text = "Hello";
+for (var char of text) {
+  console.log(char);
+}
+// Output:
+// H
+// e
+// l
+// l
+// o
+```
+
+### For In Loop
+
+For in loop is used to iterate over the properties of an object. It allows you to access each property name (key) in the object.
+
+```js
+// Example with Object:
+var objectName = { key1: "Value1", key2: "Value2", key3: "Value3" };
+for (var key in objectName) {
+  console.log(key + ": " + objectName[key]);
+}
+// Output:
+// key1: Value1
+// key2: Value2
+// key3: Value3
+
+// Example with Array:
+var arrayName = ["Value1", "Value2", "Value3"];
+for (var index in arrayName) {
+  console.log("Index: " + index + ", Value: " + arrayName[index]);
+}
+// Output:
+// Index: 0, Value: Value1
+// Index: 1, Value: Value2
+// Index: 2, Value: Value3
+
+// Example with String:
+var text = "Hello";
+for (var index in text) {
+  console.log("Index: " + index + ", Character: " + text[index]);
+}
+// Output:
+// Index: 0, Character: H
+// Index: 1, Character: e
+// Index: 2, Character: l
+// Index: 3, Character: l
+// Index: 4, Character: o
 ```
 
 ## Array
@@ -2272,6 +2386,15 @@ var nestedObject = { a: 1, b: { c: 2, d: 3 } };
 var { a, b: { c, d } } = nestedObject; // a = 1, c = 2, d = 3
 ```
 
+## Numeric Separators
+
+Numeric Separators : Numeric separators are used to make large numbers more readable by allowing you to use underscores (`_`) as visual separators.
+
+```js
+// Numeric Separators Example
+var largeNumber = 1_000_000; // 1 million
+console.log(largeNumber); // 1000000
+```
 
 # DOM => Document Object Model
 
