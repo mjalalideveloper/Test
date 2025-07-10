@@ -415,6 +415,27 @@ false && false; // false
 !false; // true
 ```
 
+> AND operators in depth
+
+```js
+// If both conditions are true, the code will execute
+true && console.log("Hello World"); // Hello World (true)
+false && console.log("Hello World"); // No output (false)
+// If the first condition is false, the second condition will not be evaluated
+// If the first condition is true, the second condition will be evaluated
+```
+
+> OR operators in depth
+
+```js
+// If either condition is true, the code will execute
+true || console.log("Hello World"); // No output (true)
+false || console.log("Hello World"); // Hello World (false)
+// If the first condition is true, the second condition will not be evaluated
+// If the first condition is false, the second condition will be evaluated
+```
+
+
 ## NaN(Not a Number)
 
 ---
