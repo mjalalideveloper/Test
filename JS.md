@@ -2417,6 +2417,100 @@ var largeNumber = 1_000_000; // 1 million
 console.log(largeNumber); // 1000000
 ```
 
+## Module
+
+Module : A module is a file that contains code that can be reused in other files. Modules can export variables, functions, and classes, and they can import variables, functions, and classes from other modules.
+
+```js
+// ↓ For Export (Not Exported by default) ↓
+// =====> in module.js <=====
+// Exporting variables and functions
+export const variableName = "Hello World";
+export function functionName() {
+  console.log("Hello World");
+}
+// OR
+export { variableName, functionName };
+
+// =====> in main.js <=====
+// Importing variables and functions
+// You can import variables and functions from a module using the import statement.
+import { variableName, functionName } from "./module.js"; // Importing variables and functions
+console.log(variableName); // Hello World
+functionName(); // Hello World
+// OR
+import * as module from "./module.js"; // Importing all exports as an object
+console.log(module.variableName); // Hello World
+module.functionName(); // Hello World
+
+// ↓ For Default Export ↓
+// =====> in module.js <=====
+// Exporting a single value as the default export
+// in module.js we can export a single value as the default export
+export default function defaultFunction() {
+  console.log("This is the default export");
+}
+// OR
+function defaultFunction() {
+  console.log("This is the default export");
+}
+export default defaultFunction;
+
+// =====> in main.js <=====
+// Importing the default export
+// You can import the default export from a module using the import statement without curly braces.
+import anyName from "./module.js"; // Importing the default export
+anyName(); // This is the default export
+// Output: This is the default export
+```
+
+> In script tag, you need to add `type="module"` for main javascript files to use modules.
+
+```html
+<script type="module" src="main.js"></script>
+```
+
+
+## Type Coercion
+
+Type Coercion : Type coercion is the automatic or implicit conversion of values from one data type to another. JavaScript performs type coercion when it encounters an operation that requires a specific data type.
+
+**Explicit**
+
+Explicit Type Coercion : Explicit type coercion is when you manually convert a value from one data type to another using functions like `String()`, `Number()`, or `Boolean()`.
+
+```js
+// Explicit Type Coercion
+var num = 10;
+var str = String(num); // Convert number to string
+var bool = Boolean(num); // Convert number to boolean
+var numFromStr = Number(str); // Convert string to number
+console.log(str); // "10"
+console.log(bool); // true
+console.log(numFromStr); // 10
+```
+
+**Implicit**
+
+Implicit Type Coercion : Implicit type coercion is when JavaScript automatically converts a value from one data type to another without you explicitly asking for it. This often happens during operations like addition, subtraction, or comparisons.
+
+```js
+// Implicit Type Coercion
+true + false
+true + true
+12 / "3"
+12 / 3
+12 == "12"
+1 == null
+
+// Tip
+Boolean("0" && {}) // true (non-empty string and non-empty object are truthy values)
+Boolean(0 && {}) // false (0 is falsy, empty object is truthy, but && returns the first falsy value)
+Boolean(0 == "0") // true (both are falsy values, but == performs type coercion)
+```
+
+[wtfjs.com](wtfjs.com) : A great resource to learn about JavaScript quirks, including type coercion and other unexpected behaviors.
+
 # DOM => Document Object Model
 
 ## DOM (Document Object Model)
