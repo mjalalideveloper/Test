@@ -63,25 +63,28 @@
 ### History Of JavaScript
 
 - Mocha (1995)
-> Mocha was the original name of JavaScript.
+  > Mocha was the original name of JavaScript.
 
 > Created by Brendan Eich at Netscape.
 
 > Created in 10 days.
+
 - LiveScript (1995)
-> The name was changed to LiveScript in 1995.
+  > The name was changed to LiveScript in 1995.
 
 > The name was changed to JavaScript in 1995.
+
 - JavaScript (1995)
-> The name was changed to JavaScript in 1995.
+  > The name was changed to JavaScript in 1995.
 - JScript (1996)
-> JScript is Microsoft's implementation of JavaScript.
+  > JScript is Microsoft's implementation of JavaScript.
 - ECMAScript (1997)
-> ECMAScript is the standard for JavaScript.
+  > ECMAScript is the standard for JavaScript.
 
 > ECMAScript is a trademark of Ecma International.
 
 > ECMAScript is a scripting language specification.
+
 - ES1 (1997)
 - ES2 (1998)
 - ES3 (1999)
@@ -105,7 +108,7 @@ Engine : JavaScript engine is a program or interpreter that executes JavaScript 
 > 1. Memory Heap : Memory heap is a region of memory used for dynamic memory allocation.
 
 > 2. Call Stack : Call stack is a data structure that stores information about the active subroutines of a computer program.
-![Call Stack](https://media.licdn.com/dms/image/v2/D5612AQFnV0Ld0vEsag/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1705135591339?e=2147483647&v=beta&t=axtpp_OBCzbvCXpscYgN2o2afrEH6_venRgil4F3Rj8)
+>    ![Call Stack](https://media.licdn.com/dms/image/v2/D5612AQFnV0Ld0vEsag/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1705135591339?e=2147483647&v=beta&t=axtpp_OBCzbvCXpscYgN2o2afrEH6_venRgil4F3Rj8)
 
 ### Best Practice
 
@@ -260,8 +263,6 @@ console.log("Hello World"); // Hello World
 console.log(25); // 25
 console.groupEnd("Group"); // End group
 ```
-
-
 
 ## Alert & Prompt
 
@@ -434,7 +435,6 @@ false || console.log("Hello World"); // Hello World (false)
 // If the first condition is true, the second condition will not be evaluated
 // If the first condition is false, the second condition will be evaluated
 ```
-
 
 ## NaN(Not a Number)
 
@@ -647,18 +647,18 @@ asyncFunction(); // This is an asynchronous function. (after 1 second)
 > Synchronous & Asynchronous Functions And Callbacks
 
 ```js
-function firstLog () {
-    console.log("1");
-    console.log("2");
+function firstLog() {
+  console.log("1");
+  console.log("2");
 }
-function middleLog () {
-    setTimeout(function () {
-        console.log("3");
-    }, 1000);
+function middleLog() {
+  setTimeout(function () {
+    console.log("3");
+  }, 1000);
 }
-function lastLog () {
-    console.log("4");
-    console.log("5");
+function lastLog() {
+  console.log("4");
+  console.log("5");
 }
 
 firstLog(); // 1, 2
@@ -671,11 +671,11 @@ function firstLog() {
   console.log("1");
   console.log("2");
 }
-function middleLog (callback) {
-    setTimeout(function () {
-        console.log("3");
-        callback(); // Call the callback function after 1 second
-    }, 1000);
+function middleLog(callback) {
+  setTimeout(function () {
+    console.log("3");
+    callback(); // Call the callback function after 1 second
+  }, 1000);
 }
 function lastLog() {
   console.log("4");
@@ -686,7 +686,6 @@ firstLog(); // 1, 2
 middleLog(lastLog); // 3 (after 1 second), 4, 5
 // output: 1, 2, 3, 4, 5
 ```
-
 
 ### Arguments Keyword
 
@@ -758,6 +757,7 @@ function example(...args, a) {
 Pure functions are functions that always produce the same output for the same input and do not cause any side effects (i.e., they do not modify any external state or variables). They are predictable and easier to test.
 
 A pure function should not:
+
 - Modify any external state or variables.
 - Depend on any external state or variables that can change.
 - Cause any side effects, such as modifying global variables, changing the DOM, or performing I/O operations.
@@ -793,14 +793,14 @@ Function composition is a technique where you combine two or more functions to c
 
 ```js
 function trim(val) {
-    val.trim();
+  val.trim();
 }
 function toLowerCase(val) {
-    val.toLowerCase();
+  val.toLowerCase();
 }
 
 function getVal() {
-    toLowerCase(trim(prompt("Enter a value:"))); // Call the functions in order => Composition
+  toLowerCase(trim(prompt("Enter a value:"))); // Call the functions in order => Composition
 }
 
 getVal();
@@ -836,7 +836,6 @@ greetAli(); // Hello, Ali!
 greet("Ali")(); // Hello, Ali!
 ```
 
-
 ### Arrow Function
 
 ```js
@@ -854,8 +853,7 @@ greet("Ali"); // Hello, Ali!
 const greet = (name) => "Hello, " + name + "!"; // Implicit return
 greet("Ali"); // Hello, Ali!
 // Or
-const greet = name => "Hello, " + name + "!"; // Implicit return (no parentheses for single parameter)
-
+const greet = (name) => "Hello, " + name + "!"; // Implicit return (no parentheses for single parameter)
 
 // Example with no parameters:
 const sayHello = () => {
@@ -867,7 +865,7 @@ const sayHello = () => console.log("Hello World");
 sayHello(); // Hello World
 
 // Returning an object:
-const generateUser = (name, age = 25) => ({name: name,age: age,});
+const generateUser = (name, age = 25) => ({ name: name, age: age });
 console.log(generateUser("Ali", 25)); // {name: "Ali", age: 25}
 ```
 
@@ -971,7 +969,6 @@ console.log(multiLineText);
 // This is a multi-line string.
 // It can span multiple lines without using \n.
 ```
-
 
 ### String Properties
 
@@ -2164,17 +2161,15 @@ defer : The defer attribute is a boolean attribute. When present, it specifies t
 
 Local Storage : Local Storage is a web storage that allows you to store data in the browser. The data is stored as key/value pairs, and it persists even after the browser is closed. Local Storage has a larger storage capacity compared to cookies.
 
-+ The data is stored as key/value pairs.
-+ The data is stored in the browser.
-+ The data is stored as strings.
-+ The data is stored in the same origin (domain, protocol, and port).
+- The data is stored as key/value pairs.
+- The data is stored in the browser.
+- The data is stored as strings.
+- The data is stored in the same origin (domain, protocol, and port).
 
 ```js
 localstorage.setItem("key", "value"); // Set item
 
-
 localstorage.getItem("key"); // Get item (string)
-
 
 localstorage.clear(); // Clear all items
 
@@ -2231,9 +2226,9 @@ throw "Error Message";
 throw 404;
 
 try {
-    throw "Error"
-} catch (error){
-    console.log(error)
+  throw "Error";
+} catch (error) {
+  console.log(error);
 }
 ```
 
@@ -2258,7 +2253,7 @@ Date Object : The Date object is used to work with dates and times. The Date obj
 ```js
 var date = new Date(); // Current date and time
 
-console.log(date) // 2023-10-01T00:00:00.000Z (current date and time)
+console.log(date); // 2023-10-01T00:00:00.000Z (current date and time)
 
 date.getDate(); // 1 (day of the month) (1-31)
 date.getDay(); // 0 (day of the week) (0-6) (0 = Sunday, 1 = Monday, ...)
@@ -2371,8 +2366,6 @@ console.log(...originalArray); // 1 2 3
 
 // logging the items of the object
 console.log(...Object.values(originalObject)); // 1 2 3
-
-
 ```
 
 ## Array Destructuring (Dest) & Object Destructuring (Dest)
@@ -2404,7 +2397,10 @@ var { a: first, b: second } = object; // first = 1, second = 2
 var { a, b = 10 } = { a: 1 }; // a = 1, b = 10
 // Nested Object Destructuring
 var nestedObject = { a: 1, b: { c: 2, d: 3 } };
-var { a, b: { c, d } } = nestedObject; // a = 1, c = 2, d = 3
+var {
+  a,
+  b: { c, d },
+} = nestedObject; // a = 1, c = 2, d = 3
 ```
 
 ## Numeric Separators
@@ -2470,7 +2466,6 @@ anyName(); // This is the default export
 <script type="module" src="main.js"></script>
 ```
 
-
 ## Type Coercion
 
 Type Coercion : Type coercion is the automatic or implicit conversion of values from one data type to another. JavaScript performs type coercion when it encounters an operation that requires a specific data type.
@@ -2496,20 +2491,111 @@ Implicit Type Coercion : Implicit type coercion is when JavaScript automatically
 
 ```js
 // Implicit Type Coercion
-true + false
-true + true
-12 / "3"
-12 / 3
-12 == "12"
-1 == null
+true + false;
+true + true;
+12 / "3";
+12 / 3;
+12 == "12";
+1 == null;
 
 // Tip
-Boolean("0" && {}) // true (non-empty string and non-empty object are truthy values)
-Boolean(0 && {}) // false (0 is falsy, empty object is truthy, but && returns the first falsy value)
-Boolean(0 == "0") // true (both are falsy values, but == performs type coercion)
+Boolean("0" && {}); // true (non-empty string and non-empty object are truthy values)
+Boolean(0 && {}); // false (0 is falsy, empty object is truthy, but && returns the first falsy value)
+Boolean(0 == "0"); // true (both are falsy values, but == performs type coercion)
 ```
 
 [wtfjs.com](wtfjs.com) : A great resource to learn about JavaScript quirks, including type coercion and other unexpected behaviors.
+
+## DB (Database)
+
+Database : A database is an organized collection of structured information, or data, typically stored electronically in a computer system. Databases are managed by Database Management Systems (DBMS).
+
+Table : A table is a collection of related data entries that consists of columns and rows. Each column represents a specific attribute, and each row represents a record.
+
+Column : A column is a vertical set of data in a table, representing a specific attribute or field. Each column has a unique name and contains values for that attribute.
+
+> CRUD (Create, Read, Update, Delete) : CRUD is a set of operations that can be performed on a database. These operations allow you to create, read, update, and delete data in a database.
+
+```js
+let users = [
+  { id: 1, name: "John Doe", email: "john.doe@example.com" },
+  { id: 2, name: "Jane Smith", email: "jane.smith@example.com" },
+  { id: 3, name: "Alice Johnson", email: "alice.johnson@example.com" },
+  { id: 4, name: "Bob Brown", email: "bob.brown@example.com" },
+];
+// Example of CRUD operations in array of objects
+// Create
+function createUser(id, name, email) {
+  users.push({ id, name, email });
+}
+// Read
+function readUser(id) {
+  return users.find((user) => user.id === id);
+}
+// Update
+function updateUser(id, newName, newEmail) {
+  const user = users.find((user) => user.id === id);
+  if (user) {
+    user.name = newName;
+    user.email = newEmail;
+  }
+}
+// Delete
+function deleteUser(id) {
+  users = users.filter((user) => user.id !== id);
+}
+```
+
+## IndexedDB
+
+IndexedDB : IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs. It allows you to create, read, update, and delete data in a database.
+
+```js
+// =====> Open a database <=====
+var request = indexedDB.open("myDatabase", 1);
+
+
+// =====> Event handler for database upgrade <=====
+
+// onerror event : This event is triggered when there is an error opening the database
+request.addEventListener("error", function(event) {
+  console.error("Database error: ", event); // example output : "Database error:  [object Event]"
+  console.error("Database error: ", event.target.errorCode); // example output : "Database error:  12"
+});
+
+//onsuccess event : This event is triggered when the database is opened successfully
+request.addEventListener("success", function(event) {
+  console.log("Database opened successfully");
+});
+
+// onupgradeneeded event : This event is triggered when the database version is upgraded
+request.addEventListener("upgradeneeded", function(event) {
+  console.log("Database upgrade needed");
+  console.log("Old version: ", event.oldVersion); // example output : "Old version:  0"
+  console.log("New version: ", event.newVersion); // example output : "New version:  1"
+});
+
+
+// =====> Create & Delete an object store <=====
+
+// Create an object store
+var request = indexedDB.open("myDatabase", 1);
+request.addEventListener("upgradeneeded", function(event) {
+  var db = event.target.result; // Get the database instance from the event
+  if (!db.objectStoreNames.contains("users")) { // Check if the object store already exists
+    db.createObjectStore("users"); // Create an object store named "users"
+  }
+});
+
+// Delete an object store
+request = indexedDB.open("myDatabase", 2);
+request.addEventListener("upgradeneeded", function(event) {
+  var db = event.target.result; // Get the database instance from the event
+  if (db.objectStoreNames.contains("users")) { // Check if the object store exists
+    db.deleteObjectStore("users"); // Delete the object store named "users"
+  }
+});
+```
 
 # DOM => Document Object Model
 
@@ -2525,7 +2611,7 @@ getElementById() : The getElementById() method returns the element that has the 
 
 ```js
 document.getElementById("id");
-```
+````
 
 ### getElementsByClassName()
 
@@ -2612,7 +2698,8 @@ document.getElementById("id").style.backgroundColor = "yellow";
 style.cssText : The cssText property sets or returns the inline style of an element (the CSS styles that are set directly on the element).
 
 ```js
-document.getElementById("id").style.cssText = "color: red; font-size: 25px; background-color: yellow;";
+document.getElementById("id").style.cssText =
+  "color: red; font-size: 25px; background-color: yellow;";
 ```
 
 ### getComputedStyle()
@@ -2737,9 +2824,11 @@ document.body.append("Hello World", element1, "Hello World", element2);
 ```
 
 ## Element.insertAdjacentHTML(position, text)
+
 insertAdjacentHTML() : The insertAdjacentHTML() method parses the specified text as HTML and inserts the resulting nodes into the DOM tree at the specified position.
 
 position : The position parameter specifies where to insert the HTML. It can be one of the following values:
+
 - beforebegin : Before the element itself.
 - afterbegin : Just inside the element, before its first child.
 - beforeend : Just inside the element, after its last child.
@@ -3139,24 +3228,21 @@ event.dataTransfer.setData("text/plain", data);
 
 ```js
 // for element
-function dragStartHandler (event) {
-    console.log('Drag');
+function dragStartHandler(event) {
+  console.log("Drag");
 
-    event.dataTransfer.setData('elemId', event.target.id)
-
+  event.dataTransfer.setData("elemId", event.target.id);
 }
 // for drop target
-function dragOverHandler (event) {
-    event.preventDefault()
-
+function dragOverHandler(event) {
+  event.preventDefault();
 }
 // for drop target
-function dropHandler (event) {
-    let targetId = event.dataTransfer.getData('elemId')
-    let targetElem = document.getElementById(targetId)
+function dropHandler(event) {
+  let targetId = event.dataTransfer.getData("elemId");
+  let targetElem = document.getElementById(targetId);
 
-    event.target.append(targetElem)
-
+  event.target.append(targetElem);
 }
 ```
 
@@ -3167,7 +3253,6 @@ function dropHandler (event) {
 **ondrag :** The ondrag event occurs when an element is being dragged.
 
 **ondragend :** The ondragend event occurs when the user has finished dragging an element.
-
 
 **Dropped => ondragenter => ondragover => ondragleave => ondrop**
 
@@ -3181,26 +3266,23 @@ function dropHandler (event) {
 
 ```js
 // for element
-function dragStartHandler (event) {
-    console.log('Drag');
+function dragStartHandler(event) {
+  console.log("Drag");
 
-    event.dataTransfer.setData('elemId', event.target.id)
-
+  event.dataTransfer.setData("elemId", event.target.id);
 }
 
 // for drop target
-function dragOverHandler (event) {
-    event.preventDefault()
-
+function dragOverHandler(event) {
+  event.preventDefault();
 }
 
 // for drop target
-function dropHandler (event) {
-    let targetId = event.dataTransfer.getData('elemId')
-    let targetElem = document.getElementById(targetId)
+function dropHandler(event) {
+  let targetId = event.dataTransfer.getData("elemId");
+  let targetElem = document.getElementById(targetId);
 
-    event.target.append(targetElem)
-
+  event.target.append(targetElem);
 }
 ```
 
@@ -3225,24 +3307,22 @@ Example:
 ```
 
 ```js
-function dragStartHandler (event) {
-    console.log('Drag');
+function dragStartHandler(event) {
+  console.log("Drag");
 
-    event.dataTransfer.setData('elemId', event.target.id)
-
+  event.dataTransfer.setData("elemId", event.target.id);
 }
 
-function dropHandler (event) {
-    let targetId = event.dataTransfer.getData('elemId')
-    let targetElem = document.getElementById(targetId)
+function dropHandler(event) {
+  let targetId = event.dataTransfer.getData("elemId");
+  let targetElem = document.getElementById(targetId);
 
-    event.target.append(targetElem)
-
+  event.target.append(targetElem);
 }
 
-function dragOverHandler (event) {
-    event.preventDefault()
-    // console.log('DragOver');
+function dragOverHandler(event) {
+  event.preventDefault();
+  // console.log('DragOver');
 }
 ```
 
@@ -3255,6 +3335,7 @@ document.getElementById("id").addEventListener("event", function);
 ```
 
 > Options : The options parameter is an optional object that specifies characteristics about the event listener. It can have the following properties:
+
 ```js
 element.addEventListener("event", function, {
   capture: true, // Boolean value indicating whether the event should be captured or not.
@@ -3706,14 +3787,14 @@ fff
 
 ```css
 :root {
-    --color: green
+  --color: green;
 }
 ```
 
 ```js
-document.documentElement.style.setProperty("--color", "red")
+document.documentElement.style.setProperty("--color", "red");
 
-document.documentElement.style.getProperty("--color") // red
+document.documentElement.style.getProperty("--color"); // red
 ```
 
 ## Fragment
@@ -3800,6 +3881,7 @@ document.documentElement.clientHeight; // 1080
 ```
 
 ## Screen Object
+
 window.screen : The screen object contains information about the user's screen, such as its width, height, and color depth.
 
 ```js
@@ -3812,6 +3894,7 @@ window.screen.pixelDepth; // pixel depth of the screen in bits => 24
 ```
 
 ## History Object
+
 window.history : The history object contains the URLs visited by the user in the current browser session.
 
 ```js
@@ -3824,6 +3907,7 @@ window.history.go(0); // reload the current URL
 ```
 
 ## Location Object
+
 window.location : The location object contains information about the current URL of the document.
 
 ```js
@@ -3844,7 +3928,6 @@ window.location.href = "https://www.example.com"; // navigate to a new URL
 > URLSearchParams : The URLSearchParams interface defines utility methods to work with the query string of a URL.
 
 ```js
-
 const url = new URL("https://www.example.com?param1=value1&param2=value2");
 
 location.search.slice(1).split("=")[1]; // get the value of the first query parameter (Bad Way)
@@ -3858,6 +3941,7 @@ params.get("param2"); // get the value of the second query parameter => value2
 ```
 
 ## Connection Events
+
 ononline : The online event occurs when the browser goes online.
 
 ```js
