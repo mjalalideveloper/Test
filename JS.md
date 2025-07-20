@@ -436,6 +436,38 @@ false || console.log("Hello World"); // Hello World (false)
 // If the first condition is false, the second condition will be evaluated
 ```
 
+### Nullish Coalescing Operator
+
+---
+
+Nullish Coalescing Operator (??) : Returns the right-hand operand when the left-hand operand is null or undefined, otherwise returns the left-hand operand.
+
+```js
+let nullValue = null;
+let undefinedValue = undefined;
+let defaultValue = "Default Value";
+
+let result = nullValue ?? undefinedValue ?? defaultValue; // "Default Value"
+let result2 = nullValue ?? "Another Default Value"; // "Another Default Value"
+let result3 = undefinedValue ?? "Another Default Value"; // "Another Default Value"
+let result4 = defaultValue ?? "Another Default Value"; // "Default Value"
+let result5 = 0 ?? "Default Value"; // 0 (0 is not null or undefined)
+let result6 = "" ?? "Default Value"; // "" (empty string is not null or undefined)
+
+// Vs Or Operator
+
+let result7 = nullValue || undefinedValue || defaultValue; // "Default Value"
+let result8 = nullValue || "Another Default Value"; // "Another Default Value"
+let result9 = undefinedValue || "Another Default Value"; // "Another Default Value"
+let result10 = defaultValue || "Another Default Value"; // "Default Value"
+let result11 = 0 || "Default Value"; // "Default Value" (0 is falsy)
+let result12 = "" || "Default Value"; // "Default Value" (empty string is falsy)
+let result13 = false || "Default Value"; // "Default Value" (false is falsy)
+let result14 = NaN || "Default Value"; // "Default Value" (NaN is falsy)
+let result15 = true || "Default Value"; // true (true is truthy)
+let result16 = "Hello" || "Default Value"; // "Hello" (non-empty string is truthy)
+```
+
 ## NaN(Not a Number)
 
 ---
@@ -867,6 +899,44 @@ sayHello(); // Hello World
 // Returning an object:
 const generateUser = (name, age = 25) => ({ name: name, age: age });
 console.log(generateUser("Ali", 25)); // {name: "Ali", age: 25}
+```
+
+### Constructor Function
+
+Constructor functions are used to create objects. They are defined using the `function` keyword and are typically named with a capital letter to distinguish them from regular functions.
+
+```js
+function Person(name, age) {
+  this.name = name; // Assign name to the object
+  this.age = age; // Assign age to the object
+}
+// You cannot use `var`, `let`, or `const` inside a constructor function, as it will not create properties on the object.
+// You cannot use `return` inside a constructor function, as it will not return the object.
+// You cannot use arrow functions inside a constructor function, as they do not have their own `this` context.
+
+// Set a method for the object
+
+Person.prototype.greet = function () {
+  console.log("Hello, my name is " + this.name + " and I am " + this.age + " years old.");
+};
+
+// Or
+
+function Person(name, age) {
+  this.name = name; // Assign name to the object
+  this.age = age; // Assign age to the object
+  this.greet = function () {
+    console.log("Hello, my name is " + this.name + " and I am " + this.age + " years old.");
+  };
+}
+
+// Example:
+
+var ali = new Person("Ali", 25); // Create a new object using the constructor function
+ali.greet(); // Hello, my name is Ali and I am 25 years old.
+cosole.log(ali.name); // Ali
+console.log(ali.age); // 25
+console.log(ali); // Person { name: 'Ali', age: 25, greet: [Function] }
 ```
 
 ### Anonymous Function
@@ -2595,11 +2665,216 @@ request.addEventListener("upgradeneeded", function(event) {
     db.deleteObjectStore("users"); // Delete the object store named "users"
   }
 });
+
+// =====> Transaction <=====
+
+dbOpenReq = indexedDB.open("myDatabase", 1);
+let db;
+
+dbOpenReq.addEventListener("success", function(event) {
+  db = event.target.result;
+});
+
+dbOpenReq.addEventListener("upgradeneeded", function(event) {
+  db = event.target.result;
+  if (!db.objectStoreNames.contains("users")) {
+    db.createObjectStore("users", { keyPath: "id" });
+  }
+});
+
+// Create a transaction
+var transaction = db.transaction("users", "readwrite"); // "readwrite" for write
+
+// Get the object store
+var objectStore = transaction.objectStore("users");
+
+// Add data to the object store
+objectStore.add({ id: 1, name: "John Doe", email: "john@example.com" });
+
+// Read data from the object store
+var getRequest = objectStore.get(1); // Get the data with id 1
+getRequest.onsuccess = function(event) {
+  var user = event.target.result;
+  console.log("User found: ", user);
+};
+
+// Update data in the object store
+objectStore.put({ id: 1, name: "John Smith", email: "john.smith@example.com" });
+
+// Delete data from the object store
+objectStore.delete(1); // Delete the data with id 1
+
+// Handle transaction errors
+transaction.onerror = function(event) {
+  console.error("Transaction error: ", event.target.error);
+};
+// Handle transaction completion
+transaction.oncomplete = function(event) {
+  console.log("Transaction completed successfully");
+};
+// get all data from the object store
+var getAllRequest = objectStore.getAll();
+getAllRequest.onsuccess = function(event) {
+  var users = event.target.result;
+  console.log("All users: ", users);
+};
+// Clear all data from the object store
+objectStore.clear(); // Clear all data from the object store
+// Close the database connection
+db.close();
 ```
 
-# DOM => Document Object Model
+## regular expressions (RegExp)
 
-## DOM (Document Object Model)
+Regular Expressions (RegExp) : Regular expressions are patterns used to match character combinations in strings. They are used for searching, replacing, and validating strings.
+
+### Creating a Regular Expression
+
+You can create a regular expression using either a regular expression literal or the RegExp constructor.
+
+```js
+// Regular Expression Literal
+var regex = /pattern/;
+// RegExp Constructor
+var regex = new RegExp("pattern");
+```
+
+### Using Regular Expressions
+
+You can use regular expressions with various string methods like `test()`, `exec()`, `match()`, `replace()`, and `split()`.
+
+```js
+// Test if a string matches a regular expression
+var regex = /hello/;
+var str = "Hello World";
+console.log(regex.test(str)); // true (case-sensitive)
+// Execute a regular expression on a string
+var regex = /hello/i; // 'i' flag for case-insensitive
+console.log(regex.exec(str)); // ["Hello", index: 0, input: "Hello World", groups: undefined]
+// Match a regular expression against a string
+var regex = /hello/i;
+var str = "Hello World";
+console.log(str.match(regex)); // ["Hello", index: 0, input: "Hello World", groups: undefined]
+// Replace a substring in a string using a regular expression
+var regex = /hello/i;
+var str = "Hello World";
+console.log(str.replace(regex, "Hi")); // "Hi World"
+// Split a string using a regular expression
+var regex = /\s+/; // Split by whitespace
+var str = "Hello World";
+console.log(str.split(regex)); // ["Hello", "World"]
+```
+
+## What is This?
+
+This : In JavaScript, `this` refers to the context in which a function is executed. It can refer to different objects depending on how the function is called.
+
+### Global Context
+
+In the global context, `this` refers to the global object (e.g., `window` in browsers).
+
+```js
+console.log(this); // Output : window (in browsers)
+```
+```js
+// Function Context
+function myFunction() {
+  console.log(this); // Output : window (in browsers)
+  "use strict";
+  console.log(this); // Output : undefined (in strict mode)
+}
+```
+
+### Object Context
+
+When a function is called as a method of an object, `this` refers to that object.
+
+```js
+var obj = {
+  name: "John",
+  greet: function () {
+    console.log("Hello, " + this.name); // Output : Hello, John
+  },
+  showThis: function () {
+    console.log(this); // Output : obj
+  },
+};
+obj.greet(); // Call the method, this refers to obj => Output : Hello, John
+obj.showThis(); // Call the method, this refers to obj => Output : obj
+```
+
+### call() & apply() & bind()
+
+call() : The call() method calls a function with a specified `this` value and arguments provided individually.
+
+apply() : The apply() method calls a function with a specified `this` value and arguments provided as an array.
+
+bind() : The bind() method creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+
+```js
+function greet(greeting) {
+  console.log(greeting + ", " + this.name);
+}
+var person = {
+  name: "Alice",
+};
+
+greet.call(person, "Hello"); // Output : Hello, Alice
+
+greet.apply(person, ["Hi"]); // Output : Hi, Alice
+
+var boundGreet = greet.bind(person, "Hey");
+boundGreet(); // Output : Hey, Alice
+```
+
+### Arrow Functions
+
+Arrow Functions : Arrow functions do not have their own `this` context. Instead, they lexically bind `this`, meaning they inherit `this` from the surrounding code where they are defined.
+
+```js
+var obj1 = {
+  name: "John",
+  greet: function () {
+    var arrowFunction = () => {
+      console.log("Hello, " + this.name); // Output : Hello, John
+    };
+    arrowFunction();
+  },
+};
+
+var obj2 = {
+  name: "John",
+  greet: function () {
+    var arrowFunction = function () {
+      console.log("Hello, " + this.name); // Output : Hello, undefined
+    };
+    arrowFunction();
+  },
+};
+
+obj1.greet(); // Call the method, this refers to obj1 => Output : Hello, John => this = obj1
+obj2.greet(); // Call the method, this refers to obj2 => Output : Hello, undefined => this = global object (window in browsers)
+```
+
+## Built-in Constructors Functions
+
+Built-in Constructor Functions : JavaScript provides several built-in constructor functions that allow you to create objects of specific types. These include `String`, `Number`, `Boolean`, `Array`, `Object`, `Function`, and more.
+
+```js
+// String Constructor
+var str = new String("Hello World");
+console.log(str); // [String: 'Hello World'] => Object
+cosnole.log(typeof str); // object
+console.log("Hello World" === str); // false (string vs object)
+
+// Number Constructor
+var num = new Number(42);
+console.log(num); // [Number: 42] => Object
+console.log(typeof num); // object
+console.log(42 === num); // false (number vs object)
+```
+
+# DOM (Document Object Model)
 
 DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
 
