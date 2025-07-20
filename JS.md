@@ -1983,6 +1983,25 @@ objectName["key4"]; // undefined (key4)
 objectName["key-1"]; // undefined (key-1)
 ```
 
+### object.entries()
+
+The Object.entries() method returns an array of a given object's own enumerable string-keyed property [key, value] pairs.
+
+```js
+var objectName = {
+  key1: "Value1",
+  key2: "Value2",
+  key3: "Value3",
+};
+
+var entries = Object.entries(objectName);
+
+console.log(entries); // [['key1', 'Value1'], ['key2', 'Value2'], ['key3', 'Value3']]
+console.log(entries[0]); // ['key1', 'Value1']
+console.log(entries[0][0]); // 'key1'
+console.log(entries[0][1]); // 'Value1'
+```
+
 ## eval() Is Evil
 
 The eval() function evaluates JavaScript code represented as a string.
@@ -2872,6 +2891,216 @@ var num = new Number(42);
 console.log(num); // [Number: 42] => Object
 console.log(typeof num); // object
 console.log(42 === num); // false (number vs object)
+```
+
+## Optional Chaining
+
+Optional Chaining : Optional chaining is a feature in JavaScript that allows you to safely access deeply nested properties of an object without having to check if each reference in the chain is valid. It short-circuits and returns `undefined` if any part of the chain is `null` or `undefined`.
+
+```js
+var user = {
+  id: 1,
+  name: "Alice",
+  address: {
+    country: "USA",
+  }
+};
+
+let userStreet = user.address.city.street; // Error: Cannot read properties of undefined (reading 'street')
+
+// ==> We can : <==
+
+let userStreet = user.address.city ? user.address.city.street : undefined; // Safe access, but verbose => output: undefined
+
+// Or
+
+// Use optional chaining
+
+let userStreet = user.address.city?.street; // Safe access with optional chaining => output: undefined
+// Or
+let userStreet = user?.address?.city?.street; // Safe access with optional chaining => output: undefined
+```
+
+## Set & Map
+
+Set : A Set is a collection of unique values. It can store any type of value, including primitive values and objects. Sets do not allow duplicate values.
+
+Set Is Iterables
+
+```js
+// Create a Set
+var mySet = new Set();
+
+// Add values to the Set
+mySet.add(1);
+mySet.add(2);
+mySet.add(3);
+mySet.add(2); // Duplicate value, will not be added
+
+// Check if a value exists in the Set
+console.log(mySet.has(2)); // true
+console.log(mySet.has(4)); // false
+
+// Get the size of the Set
+console.log(mySet.size); // 3
+
+// Iterate over the Set
+mySet.forEach(function(value) {
+  console.log(value); // Output: 1, 2, 3
+});
+
+// Convert Set to Array
+var myArray = Array.from(mySet); // [1, 2, 3]
+//  Or
+var myArray = [...mySet]; // [1, 2, 3]
+
+// Convert Array to Set
+var myArray = [1, 2, 3, 2];
+var mySet = new Set(myArray); // Set { 1, 2, 3 }
+
+// Clear the Set
+mySet.clear(); // Removes all values from the Set
+
+// Delete a value from the Set
+mySet.delete(2); // Removes the value 2 from the Set
+
+// Check if the Set is empty
+console.log(mySet.size === 0); // true (after clear)
+```
+
+WeakSet : A WeakSet is a collection of objects, where the objects are held weakly. This means that if there are no other references to an object in a WeakSet, it can be garbage collected.
+
+WeakSets do not allow primitive values and do not have methods like `forEach`, `size`, or `clear`. They are useful for storing objects without preventing garbage collection.
+
+```js
+// Create a WeakSet
+var myWeakSet = new WeakSet();
+
+// Create an object
+var obj1 = { id: 1 };
+
+// Add the object to the WeakSet
+myWeakSet.add(obj1);
+
+// Check if the object exists in the WeakSet
+console.log(myWeakSet.has(obj1)); // true
+
+// Create another object
+var obj2 = { id: 2 };
+
+// Add the object to the WeakSet
+myWeakSet.add(obj2);
+
+// Check if the object exists in the WeakSet
+console.log(myWeakSet.has(obj2)); // true
+
+// Delete an object from the WeakSet
+myWeakSet.delete(obj1); // Removes the object obj1 from the WeakSet
+
+// Check if the object exists in the WeakSet
+console.log(myWeakSet.has(obj1)); // false
+
+// WeakSet does not have size or forEach methods
+// WeakSet does not allow primitive values
+// WeakSet does not allow duplicate values
+// WeakSet does not prevent garbage collection
+// If there are no other references to obj2, it can be garbage collected
+```
+
+Map : A Map is a collection of key-value pairs. It allows you to store values associated with unique keys. Maps maintain the insertion order of the keys.
+
+Map Is Iterables
+
+```js
+// Create a Map
+var myMap = new Map();
+
+// Add key-value pairs to the Map
+myMap.set("name", "Alice");
+myMap.set("age", 30);
+myMap.set("city", "New York");
+
+// Add duplicate key, will update the value
+myMap.set("age", 31); // Updates the value for the key "age"
+
+// Get a value by key
+console.log(myMap.get("name")); // Alice
+
+// Check if a key exists in the Map
+console.log(myMap.has("age")); // true
+console.log(myMap.has("country")); // false
+
+// Get the size of the Map
+console.log(myMap.size); // 3
+
+// Iterate over the Map
+myMap.forEach(function(value, key) {
+  console.log(key + ": " + value);
+});
+// Output:
+// name: Alice
+// age: 31
+// city: New York
+
+// Convert Map to Array of key-value pairs
+var myArray = Array.from(myMap); // [["name", "Alice"], ["age", 31], ["city", "New York"]]
+
+// Convert Map to Array of keys
+var keysArray = Array.from(myMap.keys()); // ["name", "age", "city"]
+
+// Convert Map to Array of values
+var valuesArray = Array.from(myMap.values()); // ["Alice", 31, "New York"]
+
+// Clear the Map
+myMap.clear(); // Removes all key-value pairs from the Map
+
+// Delete a key-value pair from the Map
+myMap.delete("age"); // Removes the key "age" and its value from the Map
+
+// Check if the Map is empty
+console.log(myMap.size === 0); // true (after clear)
+```
+
+WeakMap : A WeakMap is a collection of key-value pairs where the keys are objects and the values can be any type. The keys in a WeakMap are held weakly, meaning that if there are no other references to a key, it can be garbage collected.
+
+WeakMaps do not allow primitive values as keys and do not have methods like `forEach`, `size`, or `clear`. They are useful for associating data with objects without preventing garbage collection.
+
+```js
+// Create a WeakMap
+var myWeakMap = new WeakMap();
+
+// Create an object to use as a key
+var obj1 = { id: 1 };
+
+// Add a key-value pair to the WeakMap
+myWeakMap.set(obj1, "Alice");
+
+// Check if the key exists in the WeakMap
+console.log(myWeakMap.has(obj1)); // true
+
+// Get the value by key
+console.log(myWeakMap.get(obj1)); // Alice
+
+// Create another object to use as a key
+var obj2 = { id: 2 };
+
+// Add a key-value pair to the WeakMap
+myWeakMap.set(obj2, "Bob");
+
+// Check if the key exists in the WeakMap
+console.log(myWeakMap.has(obj2)); // true
+
+// Delete a key-value pair from the WeakMap
+myWeakMap.delete(obj1); // Removes the key obj1 and its value from the WeakMap
+
+// Check if the key exists in the WeakMap
+console.log(myWeakMap.has(obj1)); // false
+
+// WeakMap does not have size or forEach methods
+// WeakMap does not allow primitive values as keys
+// WeakMap does not allow duplicate keys
+// WeakMap does not prevent garbage collection
+// If there are no other references to obj2, it can be garbage collected
 ```
 
 # DOM (Document Object Model)
