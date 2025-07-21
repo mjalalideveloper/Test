@@ -533,6 +533,18 @@ Boolean
   : "No"; // No
 ```
 
+### Multiple Ternary Conditions
+
+```js
+userScore = 19;
+
+userStatus = score > 0 && score <= 5 ? "D"
+  : score > 5 && score <= 10 ? "C"
+  : score > 10 && score <= 15 ? "B"
+  : score > 15 && score <= 20 ? "A"
+  : "Unknown"; // Output: "A"
+```
+
 ## Switch Case
 
 ---
@@ -2002,6 +2014,20 @@ console.log(entries[0][0]); // 'key1'
 console.log(entries[0][1]); // 'Value1'
 ```
 
+### Object Value Shorthand
+
+When the property name and variable name are the same, you can use shorthand syntax to define the object.
+
+```js
+var name = "Ali";
+var age = 25;
+var person = {
+  name, // same as name: name
+  age,  // same as age: age
+};
+console.log(person); // { name: 'Ali', age: 25 }
+```
+
 ## eval() Is Evil
 
 The eval() function evaluates JavaScript code represented as a string.
@@ -3102,6 +3128,111 @@ console.log(myWeakMap.has(obj1)); // false
 // WeakMap does not prevent garbage collection
 // If there are no other references to obj2, it can be garbage collected
 ```
+
+## Proxy
+
+Proxy : A Proxy is an object that wraps another object (the target) and intercepts operations performed on it, such as property access, assignment, enumeration, function invocation, etc. Proxies allow you to define custom behavior for fundamental operations.
+
+```js
+// Create a target object
+var target = {
+  message: "Hello, World!",
+};
+// Create a Proxy to intercept operations on the target object
+var handler = {
+  // Get trap: Intercept property access
+  get: function (obj, prop) {
+    if (prop in obj) {
+      return obj[prop]; // Return the property value if it exists
+    } else {
+      return "Property not found"; // Custom behavior for non-existing properties
+    }
+  },
+
+  // Set trap: Intercept property assignment
+  set: function (obj, prop, value) {
+    obj[prop] = value; // Set the property value
+    return true; // Indicate success
+  },
+};
+var proxy = new Proxy(target, handler);
+
+
+// Access a property through the Proxy
+console.log(proxy.message); // Hello, World!
+
+// Access a non-existing property through the Proxy
+console.log(proxy.nonExistingProperty); // Property not found
+
+// Set a property through the Proxy
+proxy.newProperty = "New Value"; // Set a new property
+console.log(proxy.newProperty); // New Value
+
+// Attempt to set a property on the target object directly
+target.message = "New Message"; // Set a property directly on the target
+console.log(proxy.message); // New Message (the Proxy reflects changes to the target) => output: New Message
+
+// Attempt to access a property on the target object directly
+console.log(target.nonExistingProperty); // undefined (no custom behavior for direct access)
+console.log(proxy.nonExistingProperty); // Property not found (custom behavior for Proxy)
+
+// Attempt to set a property on the Proxy
+proxy.nonExistingProperty = "New Value"; // Set a new property through the Proxy
+console.log(proxy.nonExistingProperty); // New Value
+```
+
+[Mdn Trap Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy#handler) : A reference to the traps that can be used with Proxy objects.
+
+## Symbol()
+
+Symbol : A Symbol is a unique and immutable primitive value that can be used as an identifier for object properties. Symbols are often used to create private or hidden properties in objects, as they do not conflict with other property names.
+
+Symbols are not constractor functions, and they are created using the `Symbol()` function. Each time you call `Symbol()`, it returns a new unique symbol.
+
+```js
+// Create a Symbol
+var mySymbol = Symbol("description"); // The description is optional and used for debugging purposes
+console.log(mySymbol); // Symbol(description)
+console.log(typeof mySymbol); // symbol
+// Create another Symbol with the same description
+var anotherSymbol = Symbol("description");
+console.log(mySymbol === anotherSymbol); // false (each Symbol is unique)
+// Use Symbols as object property keys
+var obj = {
+    [mySymbol]: "This is a symbol property",
+};
+console.log(obj[mySymbol]); // This is a symbol property
+// Accessing a Symbol property
+console.log(obj[Symbol("description")]); // undefined (different Symbol, no conflict with other property names)
+
+// =====> Shared Symbols <=====
+// Create a shared Symbol using Symbol.for()
+var sharedSymbol = Symbol.for("sharedDescription"); // Creates or retrieves a shared Symbol
+var anotherSharedSymbol = Symbol.for("sharedDescription"); // Retrieves the same shared Symbol
+console.log(sharedSymbol === anotherSharedSymbol); // true (both refer to the same shared Symbol
+// Use shared Symbols as object property keys
+var sharedObj = {
+    [sharedSymbol]: "This is a shared symbol property",
+};
+console.log(sharedObj[sharedSymbol]); // This is a shared symbol property
+// Accessing a shared Symbol property
+console.log(sharedObj[Symbol.for("sharedDescription")]); // This is a shared symbol property
+
+// =====> For-in Loop with Symbols <=====
+// Symbols are not included in for-in loops
+for (var key in obj) {
+    console.log(key); // No output, as Symbols are not enumerable in for-in loops
+}
+// However, you can access Symbol properties using Object.getOwnPropertySymbols()
+var symbols = Object.getOwnPropertySymbols(obj);
+console.log(symbols); // [Symbol(description)]
+// You can iterate over the symbols
+symbols.forEach(function (symbol) {
+    console.log(symbol, obj[symbol]); // Output: Symbol(description) This is a symbol property
+});
+```
+
+
 
 # DOM (Document Object Model)
 
