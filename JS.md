@@ -2769,7 +2769,7 @@ objectStore.clear(); // Clear all data from the object store
 db.close();
 ```
 
-## regular expressions (RegExp)
+## regular expressions (RegEx)
 
 Regular Expressions (RegExp) : Regular expressions are patterns used to match character combinations in strings. They are used for searching, replacing, and validating strings.
 
@@ -3233,8 +3233,120 @@ symbols.forEach(function (symbol) {
 ```
 
 
+## What is ASI (Automatic Semicolon Insertion)?
 
-# DOM (Document Object Model)
+Automatic Semicolon Insertion (ASI) : ASI is a feature in JavaScript that allows the interpreter to automatically insert semicolons at the end of statements when they are omitted. This can lead to unexpected behavior if not understood properly.
+
+ASI can cause issues, especially in cases where line breaks are used inappropriately. It is generally recommended to use semicolons explicitly to avoid confusion.
+
+```js
+// 1-
+
+let numbers = [1, 2, 3]
+
+["Hello", "World"].map(item => console.log(item)) // Error: Uncaught TypeError: Cannot read properties of undefined (reading 'map')
+
+// Why? Because ASI inserts a semicolon after the first line, treating it as a complete statement. The second line is then interpreted as a separate statement, leading to an error.
+// To fix this, you can add a semicolon at the end of the first line:
+
+let numbers = [1, 2, 3]; // Add a semicolon here
+
+["Hello", "World"].map(item => console.log(item)); // Now it works correctly
+
+// 2-
+let numbers = [1, 2, 3]
+
+numbers.forEach(num => console.log(num))
+
+(function() {
+  console.log("Hello from IIFE");
+})();
+
+// Error: Uncaught TypeError: numbers.forEach(...) is not a function
+// Why? Because ASI inserts a semicolon after the first line, treating it as a complete statement. The second line is then interpreted as a separate statement, leading to an error.
+// To fix this, you can add a semicolon at the end of the first line:
+
+let numbers = [1, 2, 3]; // Add a semicolon here
+
+numbers.forEach(num => console.log(num));
+(function() {
+  console.log("Hello from IIFE");
+})(); // Now it works correctly
+
+// 3-
+let userGenerator = (usename, age, job) => {
+    return
+    username
+}
+
+let userAli = userGenerator("Ali", 19, "Web developer")
+
+console.log(userAli) // Error: undefined
+// Why? Because ASI inserts a semicolon after the return statement, treating it as a
+// complete statement. The next line is then interpreted as a separate statement, leading to an error.
+// To fix this, you can place the return value on the same line as the return statement:
+
+let userGenerator = (username, age, job) => {
+    return username; // Place the return value on the same line
+}
+
+let userAli = userGenerator("Ali", 19, "Web developer");
+
+console.log(userAli); // Now it works correctly => Output: Ali
+
+// 4-
+let a = 5
+let b = 3 + a
+
+("Ali" + a).toUpperCase() // Error: Uncaught TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+// Why? Because ASI inserts a semicolon after the first line, treating it as a
+// complete statement. The next line is then interpreted as a separate statement, leading to an error.
+
+let a = 5; // Add a semicolon here
+let b = 3 + a;
+("Ali" + a).toUpperCase(); // Now it works correctly => Output: ALI5
+```
+
+## Promise
+
+Callbsck hell : Callback hell is a situation in JavaScript where multiple nested callbacks make the code difficult to read and maintain. It often occurs when dealing with asynchronous operations.
+
+```js
+// Example of Callback Hell
+let books = [
+  { id: 1, title: "Book 1", price: 100 },
+  { id: 2, title: "Book 2", price: 200 },
+  { id: 3, title: "Book 3", price: 300 },
+];
+
+function addBook(bookName, bookPrice, callback) {
+  let newBook = { id: books.length + 1, title: bookName, price: bookPrice };
+  setTimeout(() => {
+    books.push(newBook);
+    callback();
+  }, 1000);
+}
+
+function logBooks() {
+    console.log(books);
+}
+
+addBook("Book 4", 400, logBooks);
+
+// Output after 1 second: [
+//   { id: 1, title: "Book 1", price: 100 },
+//   { id: 2, title: "Book 2", price: 200 },
+//   { id: 3, title: "Book 3", price: 300 },
+//   { id: 4, title: "Book 4", price: 400 }
+// ]
+```
+
+Promises : Promises are a way to handle asynchronous operations in JavaScript. They represent a value that may be available now, or in the future, or never. Promises can be in one of three states: pending, fulfilled, or rejected.
+
+```js
+```
+
+# DOM => (Document Object Model)
 
 DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
 
@@ -4459,7 +4571,7 @@ output :
 </div>
 ```
 
-# BOM => Browser Object Model
+# BOM => (Browser Object Model)
 
 ## BOM (Browser Object Model)
 
