@@ -3344,6 +3344,56 @@ addBook("Book 4", 400, logBooks);
 Promises : Promises are a way to handle asynchronous operations in JavaScript. They represent a value that may be available now, or in the future, or never. Promises can be in one of three states: pending, fulfilled, or rejected.
 
 ```js
+// Syntax of Promise
+let promise = new Promise((resolve, reject) => {
+  // Asynchronous operation
+  setTimeout(() => {
+    let success = true; // Simulate success or failure
+    if (success) {
+      resolve("Operation succeeded"); // Resolve the promise with a value
+    } else {
+      reject("Operation failed"); // Reject the promise with an error
+    }
+  }, 1000);
+});
+
+// Using the Promise
+promise
+  .then((result) => { // Handle the resolved value
+    console.log(result); // Output: Operation succeeded
+  })
+  .catch((error) => { // Handle the rejected value
+    console.error(error); // Output: Operation failed (if rejected)
+  });
+// Or
+promise
+  .then((result) => {console.log(result)}, (error) => {console.error(error)}); // Handle both resolved and rejected values in a single then() method => Not recommended as it can lead to unhandled rejections
+
+// Example of using Promises with the addBook function
+books = [
+  { id: 1, title: "Book 1", price: 100 },
+  { id: 2, title: "Book 2", price: 200 },
+  { id: 3, title: "Book 3", price: 300 },
+];
+
+function addBook(bookName, bookPrice) {
+  return new Promise((resolve, reject) => {
+    let newBook = { id: books.length + 1, title: bookName, price: bookPrice };
+    setTimeout(() => {
+      books.push(newBook);
+      // resolve(); // Resolve the promise when the book is added
+      resolve("message"); // Resolve with params
+    }, 1000);
+  });
+}
+addBook("Book 5", 500)
+  .then((message) => {
+    console.log(message); // Output: message
+    console.log(books); // Output after 1 second: [ { id: 1, title: "Book 1", price: 100 }, { id: 2, title: "Book 2", price: 200 }, { id: 3, title: "Book 3", price: 300 }, { id: 4, title: "Book 4", price: 400 }, { id: 5, title: "Book 5", price: 500 } ]
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
 # DOM => (Document Object Model)
