@@ -3396,6 +3396,167 @@ addBook("Book 5", 500)
   });
 ```
 
+### Primise phase
+Promise Phase : The Promise phase refers to the lifecycle of a promise, which includes three states:
+1. **Pending**: The initial state, neither fulfilled nor rejected.
+2. **Fulfilled**: The operation completed successfully, and the promise has a resolved value.
+3. **Rejected**: The operation failed, and the promise has a reason for rejection (an error).
+
+```js
+// Example of Promise Phase
+let myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve();
+    // reject("Operation failed.");
+
+  }, 4000);
+});
+
+console.log(myPromise); // Output: Promise { <pending> } (initially in pending state)
+
+myPromise
+  .then((message) => {
+    console.log(myPromise); // Output: Promise { <fulfilled> } (after resolution) => after 4 seconds
+  })
+  .catch((error) => {
+    console.error(myPromise); // Output: Promise { <rejected> } (after rejection) => if rejected
+  });
+```
+
+### Promise finally handler
+
+finally() : The finally() method returns a Promise and executes a specified function when the Promise is settled (either fulfilled or rejected). It does not modify the result of the Promise and is useful for cleanup actions.
+
+```js
+// Example of using finally() with a Promise
+let myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Operation succeeded");
+    // reject("Operation failed");
+  }, 2000);
+});
+
+myPromise
+  .then((result) => {
+    console.log(result); // Output: Operation succeeded (after 2 seconds)
+  })
+  .catch((error) => {
+    console.error(error); // Output: Operation failed (if rejected)
+  })
+  .finally(() => {
+    console.log("Promise settled"); // Output: Promise settled (after resolution or rejection) => (after 2 seconds)
+  });
+```
+
+### Chaining handlers
+
+Chaining Handlers : Chaining handlers refers to the ability to attach multiple `.then()` and `.catch()` methods to a promise, allowing you to handle the resolved value or error in a sequential manner.
+
+```js
+// Example of chaining handlers with Promises
+let myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Operation succeeded");
+    // reject("Operation failed");
+  }, 2000);
+});
+
+myPromise
+  .then((result) => {
+    console.log(result); // Output: Operation succeeded (after 2 seconds)
+    return "Next step"; // Return a value to the next handler
+  })
+  .then((nextResult) => {
+    console.log(nextResult); // Output: Next step (after the first then)
+  })
+  .catch((error) => {
+    console.error(error); // Output: Operation failed (if rejected)
+  })
+  .finally(() => {
+    console.log("Promise settled"); // Output: Promise settled (after resolution or rejection) => (after 2 seconds)
+  });
+
+// Example
+let fetchData = () => {
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let data = { id: 1, name: "John Doe" };
+            resolve(data); // Resolve with data
+        }, 2000);
+    })
+
+}
+
+let parseData = (data) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let parsedData = `ID: ${data.id}, Name: ${data.name}`;
+            resolve(parsedData);
+        }, 1000);
+    });
+}
+
+let showData = (parsedData) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(parsedData); // Output: ID: 1, Name: John Doe
+            resolve("Data displayed successfully");
+        }, 500);
+    });
+}
+
+fetchData()
+    .then(parseData) // Pass the data to parseData
+    .then(showData) // Pass the parsed data to showData
+
+// Output:
+// After 2 seconds: ID: 1, Name: John Doe
+// After 1 second: Data displayed successfully
+```
+
+## JSON (JavaScript Object Notation)
+
+JSON (JavaScript Object Notation) : JSON is a lightweight data interchange format that is easy to read and write for humans and machines. It is often used to transmit data between a server and a web application.
+
+JSON is based on a subset of JavaScript and consists of key-value pairs. It is commonly used for APIs and configuration files.
+
+```js
+let users = [
+  { id: 1, name: "Alice", age: 25 },
+  { id: 2, name: "Bob", age: 30 },
+];
+
+// Convert JavaScript object to JSON string
+let jsonString = JSON.stringify(users);
+console.log(jsonString);
+// Output: [{"id":1,"name":"Alice","age":25},{"id":2,"name":"Bob","age":30}]
+
+// Convert JSON string back to JavaScript object
+let parsedUsers = JSON.parse(jsonString);
+console.log(parsedUsers);
+// Output: [
+//   { id: 1, name: 'Alice', age: 25 },
+//   { id: 2, name: 'Bob', age: 30 }
+// ]
+```
+
+## API
+
+AJAX (Asynchronous JavaScript and XML) : AJAX is a technique that allows web applications to send and receive data asynchronously without refreshing the entire page. It enables dynamic updates to web pages by making requests to a server in the background.
+
+AJAX is commonly used to fetch data from a server, submit forms, and update parts of a web page without requiring a full page reload.
+
+API (Application Programming Interface) : An API is a set of rules and protocols that allows different software applications to communicate with each other. APIs define the methods and data formats that applications can use to request and exchange information.
+
+Http Methods : HTTP methods are used to perform actions on resources in a web application. The most common HTTP methods are:
+1. **Create**: POST
+2. **Read**: GET
+3. **Update**: PUT/PATCH
+4. **Delete**: DELETE
+
+
+
 # DOM => (Document Object Model)
 
 DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.

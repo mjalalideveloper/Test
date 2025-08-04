@@ -922,4 +922,82 @@
 
 // !======> Test <=====!
 
-false || console.log("gg");
+// let fetchData = () => {
+
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Then 1 : Fetch");
+//       resolve("Fetch");
+//     }, 2000);
+//   });
+
+// };
+
+// let upperCase = (data) => {
+
+//     return new Promise((resolve, reject) => {})
+
+//     // return new Promise((resolve, reject) => {
+//     //     setTimeout(() => {
+//     //         console.log("Then 2 : Upper")
+//     //         console.log(data)
+//     //         resolve(data.toUpperCase())
+//     //     }, 2000);
+//     // })
+// }
+
+// console.log(upperCase("ff"))
+
+
+// fetchData()
+//     .then(upperCase)
+//     .then((res2) => {console.log(res2)})
+
+
+
+
+
+
+
+
+
+let mainPromise = () => {
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("MainPromise")
+            resolve("1")
+        }, 1000);
+    })
+
+}
+
+let testTwo = () => {
+
+    return new Promise((resolve, reject) => {resolve("Data")})
+
+}
+
+mainPromise()
+    .then(testTwo)
+    .then((data) => {console.log(data)})
+
+// Output:
+// MainPromise
+// Data
+
+console.log(testTwo())
+
+// let testOne = () => {
+
+//     return "2"
+
+// }
+
+// mainPromise()
+//     .then(testOne)
+//     .then((data) => {console.log(data)})
+
+// Output:
+// MainPromise
+// 2
