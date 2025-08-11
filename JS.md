@@ -3555,7 +3555,142 @@ Http Methods : HTTP methods are used to perform actions on resources in a web ap
 3. **Update**: PUT/PATCH
 4. **Delete**: DELETE
 
+### Fetch API
 
+The Fetch API is a modern interface that allows you to make network requests similar to XMLHttpRequest (XHR). It is more powerful and flexible than XHR and is based on Promises.
+
+> GET
+
+GET : The GET method is used to retrieve data from a server. It is the most common HTTP method and is used to request resources such as web pages, images, and data.
+
+```js
+
+let url = "https://test.com/api/data"; // Example API endpoint
+
+// Example of using Fetch API with GET method
+fetch(url)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse the JSON response
+  })
+  .then((data) => {
+    console.log(data); // Output the retrieved data
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+
+// OR
+
+fetch(url, {
+  method: "GET", // Specify the HTTP method => default is GET
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse the JSON response
+  })
+  .then((data) => {
+    console.log(data); // Output the retrieved data
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+```
+
+> POST
+
+POST : The POST method is used to send data to a server to create or update a resource. It is commonly used for submitting forms, uploading files, and sending data to APIs.
+
+```js
+let url = "https://test.com/api/data"; // Example API endpoint
+
+// Example of using Fetch API with POST method
+let data = {
+  name: "Alice",
+  age: 25,
+};
+
+fetch(url, {
+  method: "POST", // Specify the HTTP method
+  headers: {
+    "Content-Type": "application/json", // Set the content type to JSON
+  },
+  body: JSON.stringify(data), // Convert the data to a JSON string
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse the JSON response
+  })
+  .then((data) => {
+    console.log(data); // Output the response data
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+```
+
+> DELETE
+
+DELETE : The DELETE method is used to delete a resource from a server. It is commonly used to remove data from APIs or databases.
+
+```js
+let url = "https://test.com/api/data/1"; // Example API endpoint for deleting a resource
+
+// Example of using Fetch API with DELETE method
+fetch(url, {
+  method: "DELETE", // Specify the HTTP method
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse the JSON response (if any)
+  })
+  .then((data) => {
+    console.log(data); // Output the response data (if any)
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+```
+
+> PUT
+
+PUT : The PUT method is used to update an existing resource on a server. It is commonly used to modify data in APIs or databases.
+
+```js
+let url = "https://test.com/api/data/1"; // Example API endpoint for updating a resource
+
+// Example of using Fetch API with PUT method
+fetch(url, {
+  method: "PUT", // Specify the HTTP method
+  headers: {
+    "Content-Type": "application/json", // Set the content type to JSON
+  },
+  body: JSON.stringify({
+    name: "Alice Updated",
+    age: 26,
+  }), // Convert the updated data to a JSON string
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse the JSON response
+  })
+  .then((data) => {
+    console.log(data); // Output the response data
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+```
 
 # DOM => (Document Object Model)
 
