@@ -3692,6 +3692,18 @@ fetch(url, {
   });
 ```
 
+### Firebase console
+
+[Firebase Console](https://console.firebase.google.com/) : Firebase Console is a web-based interface provided by Firebase, a platform developed by Google for building mobile and web applications. It allows developers to manage their Firebase projects, configure services, and monitor application performance.
+
+### Fake API
+
+Fake API : A Fake API is a simulated API that mimics the behavior of a real API. It is often used for testing and development purposes when the actual API is not available or not yet implemented.
+
+1. [JSONPlaceholder](https://jsonplaceholder.typicode.com/) : JSONPlaceholder is a free online REST API that provides fake data for testing and prototyping. It allows developers to make requests to endpoints like `/posts`, `/comments`, `/users`, etc., and receive JSON responses.
+2. [OpenWeatherMap](https://openweathermap.org/api) : OpenWeatherMap provides a free API for accessing weather data. It allows developers to retrieve current weather, forecasts, and historical data for any location worldwide.
+3. [FreeDictionary API](https://dictionaryapi.dev/) : FreeDictionary API is a free API that provides definitions, synonyms, antonyms, and translations for words in multiple languages. It allows developers to integrate dictionary functionality into their applications.
+
 # DOM => (Document Object Model)
 
 DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.

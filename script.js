@@ -922,7 +922,7 @@
 
 // !======> Test <=====!
 
-let url = "https://test-database-e9755-default-rtdb.firebaseio.com/users.json"
+let url = "https://jsonplaceholder.typicode.com/posts"
 
 const getbutton = document.querySelector(".getbutton")
 const userslist = document.querySelector(".userslist")
@@ -946,7 +946,7 @@ function getUsers() {
 
             users.forEach(user => {
                 console.log(user[1])
-                userslist.insertAdjacentHTML("beforeend", `<li>${user[1].firstname} - ${user[1].lastname} - ${user[1].age}</li>`)
+                userslist.insertAdjacentHTML("beforeend", `<li>${user[1].id} - ${user[1].title} - ${user[1].userId}</li>`)
             });
         })
 }
