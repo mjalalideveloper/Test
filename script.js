@@ -922,18 +922,77 @@
 
 // !======> Test <=====!
 
-let url = "https://randomuser.me/api/"
+let url = "https://test-database-e9755-default-rtdb.firebaseio.com/users.json"
 
-fetch(url)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+const getbutton = document.querySelector(".getbutton")
+const userslist = document.querySelector(".userslist")
+
+const postbutton = document.querySelector(".postbutton")
+
+
+function getUsers() {
+    userslist.innerHTML = ""
+
+    fetch(url)
+        .then((res) => {
+            if (!res.ok) {
+                console.log("Err")
+            } else {
+                return res.json()
+            }
+        })
+        .then((data) => {
+            let users = Object.entries(data)
+
+            users.forEach(user => {
+                console.log(user[1])
+                userslist.insertAdjacentHTML("beforeend", `<li>${user[1].firstname} - ${user[1].lastname} - ${user[1].age}</li>`)
+            });
+        })
+}
+
+function postUser() {
+    let firstnameInp = prompt("Firsname:")
+    let lastnameInp = prompt("Lastname:")
+    let ageInp = prompt("Age:")
+
+    let postData = {
+        firstname: firstnameInp,
+        lastname: lastnameInp,
+        age: ageInp
     }
-    return response.json(); // Parse the JSON response
-  })
-  .then((data) => {
-    console.log(data); // Output the retrieved data
-  })
-  .catch((error) => {
-    console.error("There was a problem with the fetch operation:", error);
-  });
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData)
+    })
+        .then((res) => {
+            if (!res.ok) {
+                console.log("Err")
+            } else {
+                return res.json()
+            }
+        })
+
+}
+
+
+
+// EVENTS
+
+window.addEventListener("load", () => {
+    getUsers()
+})
+
+getbutton.addEventListener("click", () => {
+    console.log("GET")
+    getUsers()
+})
+
+postbutton.addEventListener("click", () => {
+    console.log("POST")
+    postUser()
+})
