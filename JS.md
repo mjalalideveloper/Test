@@ -3775,6 +3775,34 @@ class Person {
 }
 ```
 
+### Static Methods
+
+Static methods are called on the class itself rather than on instances of the class. They are defined using the `static` keyword.
+
+```js
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    static species() {
+        return "Homo sapiens";
+    }
+
+    getSpecies() {
+        return "Homo sapiens";
+    }
+}
+
+let person1 = new Person("Alice", 25);
+console.log(person1.getSpecies()); // Output: Homo sapiens
+console.log(person1.species()); // Output: TypeError: person1.species is not a function
+
+console.log(Person.species()); // Output: Homo sapiens
+console.log(Person.getSpecies()); // Output: TypeError: Person.getSpecies is not a function
+```
+
 ### Extends
 
 Extends : The `extends` keyword is used in class declarations or class expressions to create a class that is a child of another class. The child class inherits properties and methods from the parent class, allowing for code reuse and the creation of more specialized classes.
@@ -3821,8 +3849,6 @@ let student1 = new Student("Bob", 20, "A"); // Create an instance of the child c
 student1.greet(); // Output: Hello, my name is Bob and I am 20 years old. I am a student in grade A.
 student1.haveBirthday(); // Output: Happy birthday! I am now 21 years old.
 student1.study(); // Output: Bob is studying in grade A. I am 21 years old.
-
-
 ```
 
 

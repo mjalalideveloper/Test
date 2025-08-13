@@ -922,77 +922,21 @@
 
 // !======> Test <=====!
 
-let url = "https://jsonplaceholder.typicode.com/posts"
-
-const getbutton = document.querySelector(".getbutton")
-const userslist = document.querySelector(".userslist")
-
-const postbutton = document.querySelector(".postbutton")
-
-
-function getUsers() {
-    userslist.innerHTML = ""
-
-    fetch(url)
-        .then((res) => {
-            if (!res.ok) {
-                console.log("Err")
-            } else {
-                return res.json()
-            }
-        })
-        .then((data) => {
-            let users = Object.entries(data)
-
-            users.forEach(user => {
-                console.log(user[1])
-                userslist.insertAdjacentHTML("beforeend", `<li>${user[1].id} - ${user[1].title} - ${user[1].userId}</li>`)
-            });
-        })
-}
-
-function postUser() {
-    let firstnameInp = prompt("Firsname:")
-    let lastnameInp = prompt("Lastname:")
-    let ageInp = prompt("Age:")
-
-    let postData = {
-        firstname: firstnameInp,
-        lastname: lastnameInp,
-        age: ageInp
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
     }
 
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData)
-    })
-        .then((res) => {
-            if (!res.ok) {
-                console.log("Err")
-            } else {
-                return res.json()
-            }
-        })
+    static species() {
+        return "Homo sapiens";
+    }
 
+    getSpecies() {
+        return "Homo sapiens";
+    }
 }
 
-
-
-// EVENTS
-
-window.addEventListener("load", () => {
-    getUsers()
-})
-
-getbutton.addEventListener("click", () => {
-    console.log("GET")
-    getUsers()
-})
-
-postbutton.addEventListener("click", () => {
-    console.log("POST")
-    postUser()
-})
+let person1 = new Person("Alice", 25);
+console.log(person1.getSpecies()); // Output: Homo sapiens
+console.log(person1.species()); // Output: Homo sapiens
