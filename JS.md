@@ -3704,6 +3704,128 @@ Fake API : A Fake API is a simulated API that mimics the behavior of a real API.
 2. [OpenWeatherMap](https://openweathermap.org/api) : OpenWeatherMap provides a free API for accessing weather data. It allows developers to retrieve current weather, forecasts, and historical data for any location worldwide.
 3. [FreeDictionary API](https://dictionaryapi.dev/) : FreeDictionary API is a free API that provides definitions, synonyms, antonyms, and translations for words in multiple languages. It allows developers to integrate dictionary functionality into their applications.
 
+## Class
+
+Class : A class is a blueprint for creating objects in JavaScript. It defines properties and methods that the objects created from the class will have. Classes were introduced in ECMAScript 2015 (ES6) and provide a more structured way to create objects compared to traditional constructor functions.
+
+```js
+// Define a class
+class Person {}
+
+let person1 = new Person(); // Create an instance of the class
+console.log(person1); // Output: Person {}
+```
+
+### Constructor
+
+Constructor : A constructor is a special method in a class that is called when an instance of the class is created. It is used to initialize the properties of the object.
+
+```js
+// Define a class with a constructor
+class Person {
+    constructor(name, age) {
+        this.name = name; // Initialize the name property
+        this.age = age; // Initialize the age property
+    }
+}
+let person1 = new Person("Alice", 25); // Create an instance of the class
+console.log(person1); // Output: Person { name: 'Alice', age: 25
+console.log(person1.name); // Output: Alice
+console.log(person1.age); // Output: 25
+```
+
+### Methods
+
+Methods : Methods are functions that are defined within a class and can be called on instances of the class. They define the behavior of the objects created from the class.
+
+```js
+// Define a class with methods
+class Person {
+    constructor(name, age) {
+        this.name = name; // Initialize the name property
+        this.age = age; // Initialize the age property
+    }
+
+    // Define a method to greet
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+
+    // Define a method to have a birthday
+    haveBirthday() {
+        this.age += 1; // Increment the age property
+        console.log(`Happy birthday! I am now ${this.age} years old.`);
+    }
+}
+let person1 = new Person("Alice", 25); // Create an instance of the class
+person1.greet(); // Output: Hello, my name is Alice and I am 25
+person1.haveBirthday(); // Output: Happy birthday! I am now 26
+
+// Arrow function as method
+class Person {
+    constructor(name, age) {
+        this.name = name; // Initialize the name property
+        this.age = age; // Initialize the age property
+    }
+
+    // Define a method to greet using arrow function
+    greet = () => {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+}
+```
+
+### Extends
+
+Extends : The `extends` keyword is used in class declarations or class expressions to create a class that is a child of another class. The child class inherits properties and methods from the parent class, allowing for code reuse and the creation of more specialized classes.
+
+```js
+// Define a parent class
+class Person {
+    constructor(name, age) {
+        this.name = name; // Initialize the name property
+        this.age = age; // Initialize the age property
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+
+    haveBirthday() {
+        this.age += 1; // Increment the age property
+        console.log(`Happy birthday! I am now ${this.age} years old.`);
+    }
+
+    getAge() {
+        return this.age; // Return the age property
+    }
+}
+
+// Define a child class that extends the parent class
+class Student extends Person {
+    constructor(name, age, grade) {
+        super(name, age); // Call the parent class constructor
+        this.grade = grade; // Initialize the grade property
+    }
+
+    study() {
+        console.log(`${this.name} is studying in grade ${this.grade}.`);
+        console.log(`I am ${super.getAge()} years old.`); // Call the parent class method to get age
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old. I am a student in grade ${this.grade}.`); // **Override** the parent class greet method
+    }
+}
+let student1 = new Student("Bob", 20, "A"); // Create an instance of the child class
+student1.greet(); // Output: Hello, my name is Bob and I am 20 years old. I am a student in grade A.
+student1.haveBirthday(); // Output: Happy birthday! I am now 21 years old.
+student1.study(); // Output: Bob is studying in grade A. I am 21 years old.
+
+
+```
+
+
 # DOM => (Document Object Model)
 
 DOM : The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
