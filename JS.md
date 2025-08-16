@@ -5210,3 +5210,77 @@ window.addEventListener("offline", function () {
   console.log("Browser is offline");
 });
 ```
+
+## Navigator
+
+### Clipboard
+
+navigator.clipboard : The clipboard API provides an easy way to interact with the clipboard, allowing you to read and write text to the clipboard.
+
+```js
+// Copy text to clipboard
+navigator.clipboard.writeText("Hello, World!").then(function () {
+  console.log("Text copied to clipboard");
+});
+
+// Read text from clipboard
+navigator.clipboard.readText().then(function (text) {
+  console.log("Text read from clipboard: " + text);
+});
+
+// It is better to use it like this: (Because it may not be supported in some browsers)
+if (navigator.clipboard) {
+  // Copy text to clipboard
+  navigator.clipboard.writeText("Hello, World!").then(function () {
+    console.log("Text copied to clipboard");
+  });
+
+  // Read text from clipboard
+  navigator.clipboard.readText().then(function (text) {
+    console.log("Text read from clipboard: " + text);
+  });
+}
+```
+
+### getBattery()
+
+navigator.getBattery() : The getBattery() method returns a Promise that resolves to a BatteryManager object, which provides information about the battery status of the device.
+
+```js
+navigator.getBattery().then(function (battery) {
+  console.log("Battery level: " + battery.level * 100 + "%"); // Output battery level => 55%
+  console.log("Is charging: " + battery.charging); // Output charging status => true
+
+  battery.addEventListener("levelchange", function () { // This event is fired when the battery level changes
+    console.log("Battery level changed: " + battery.level * 100 + "%");
+  });
+
+  battery.addEventListener("chargingchange", function () { // This event is fired when the charging status changes
+    console.log("Battery charging status changed: " + battery.charging);
+  });
+});
+
+// It is better to use it like this: (Because it may not be supported in some browsers)
+if (navigator.getBattery) {
+  navigator.getBattery().then(function (battery) {
+    console.log("Battery level: " + battery.level * 100 + "%"); // Output battery level => 55%
+    console.log("Is charging: " + battery.charging); // Output charging status => true
+
+    battery.addEventListener("levelchange", function () { // This event is fired when the battery level changes
+      console.log("Battery level changed: " + battery.level * 100 + "%");
+    });
+
+    battery.addEventListener("chargingchange", function () { // This event is fired when the charging status changes
+      console.log("Battery charging status changed: " + battery.charging);
+    });
+  });
+}
+```
+
+### UserAgent
+
+navigator.userAgent : The userAgent property returns the user agent string for the current browser.
+
+```js
+console.log(navigator.userAgent); // Output the user agent string => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3
+```
