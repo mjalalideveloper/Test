@@ -922,21 +922,16 @@
 
 // !======> Test <=====!
 
-class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
+let users = ['ali', 'mmd', 'ahmad', 'ali', 'amin', 'mmd', 'ali']
+
+let repeatObj = users.reduce((obj, currentValue) => {
+    if (obj[currentValue]) {
+        obj[currentValue] += 1
+    } else {
+        obj[currentValue] = 1
     }
 
-    static species() {
-        return "Homo sapiens";
-    }
+    return obj
+}, {})
 
-    getSpecies() {
-        return "Homo sapiens";
-    }
-}
-
-let person1 = new Person("Alice", 25);
-console.log(person1.getSpecies()); // Output: Homo sapiens
-console.log(person1.species()); // Output: Homo sapiens
+console.log(repeatObj)

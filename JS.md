@@ -1955,6 +1955,49 @@ arrayName.find(function (value) {
 }); // { id: 3, value: "value3" }
 ```
 
+> reduce()
+
+Reduce the values of an array to a single value (going left to right)
+
+```js
+var numArray = [1, 2, 3, 4, 5];
+var result = numArray.reduce((previousValue, currentValue) => {
+    console.log(`Previous Value: ${previousValue}, Current Value: ${currentValue}`);
+    return currentValue;
+});
+
+// Output:
+// Previous Value: 1, Current Value: 2
+// Previous Value: 2, Current Value: 3
+// Previous Value: 3, Current Value: 4
+// Previous Value: 4, Current Value: 5
+
+console.log(result); // 5
+
+// Example with Object to count repetitions of values in an array:
+let users = ['ali', 'mmd', 'ahmad', 'ali', 'amin', 'mmd', 'ali']
+
+let repeatObj = users.reduce((obj, currentValue) => {
+    if (obj[currentValue]) {
+        obj[currentValue] += 1
+    } else {
+        obj[currentValue] = 1
+    }
+
+    return obj
+}, {})
+
+console.log(repeatObj)
+
+// Output:
+// { ali: 3, mmd: 2, ahmad: 1, amin: 1 }
+
+// Example
+var numArray = [1, 2, 3, 4, 5];
+var sum = numArray.reduce((previousValue, currentValue) => previousValue + currentValue);
+console.log(sum); // 15
+```
+
 ## Objects
 
 ### Object Syntax
@@ -3851,6 +3894,134 @@ student1.haveBirthday(); // Output: Happy birthday! I am now 21 years old.
 student1.study(); // Output: Bob is studying in grade A. I am 21 years old.
 ```
 
+## What is XML(eXtensible Markup Language)?
+
+XML (eXtensible Markup Language) : XML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is used to store and transport data, and it is often used in web services and APIs.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <to>Alice</to>
+  <from>Bob</from>
+  <heading>Reminder</heading>
+  <body>Don't forget our meeting tomorrow!</body>
+</note>
+```
+
+### XML vs JSON
+
+JSON :
+```json
+{students: [
+    {id: 1, name: "Alice", age: 25},
+    {id: 2, name: "Bob", age: 30}
+]}
+```
+
+XML :
+```xml
+<students>
+    <student>
+        <id>1</id>
+        <name>Alice</name>
+        <age>25</age>
+    </student>
+    <student>
+        <id>2</id>
+        <name>Bob</name>
+        <age>30</age>
+    </student>
+</students>
+```
+## Custom Elements(Web Components)
+
+Custom Elements : Custom Elements is a web standard that allows developers to create their own HTML elements. These elements can have custom behavior, properties, and methods, and can be used just like standard HTML elements.
+
+Components : Components are reusable pieces of code that can be used to build complex user interfaces. They can be created using various frameworks and libraries, such as React, Angular, and Vue.js.
+
+```js
+// Define a custom element
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+        this.innerHTML = "<h1>Hello, World!</h1>"; // Set the inner HTML of the element
+    }
+}
+
+// Register the custom element
+customElements.define("my-element", MyElement);
+```
+Use the custom element in HTML
+```html
+<my-element></my-element>
+```
+
+### Shadow DOM
+
+Shadow DOM : Shadow DOM is a web standard that allows developers to encapsulate the internal structure and styling of a web component. It creates a separate DOM tree that is isolated from the main document, preventing styles and scripts from leaking in or out.
+
+```js
+// Define a custom element with Shadow DOM
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: red;
+                }
+            </style>
+            <h1>Hello, Shadow DOM!</h1>
+        `; // Set the inner HTML of the shadow root
+
+        // Or:
+        this.shadowRoot.innerHTML = `
+            <link rel="stylesheet" href="MyElement.css">
+            <h1>Hello, Shadow DOM!</h1>
+        `;
+    }
+}
+
+// Register the custom element
+customElements.define("my-element", MyElement);
+```
+
+### With Template
+
+Template : The `<template>` element is a web standard that allows developers to define HTML fragments that are not rendered when the page loads. These fragments can be cloned and inserted into the document later, making it easier to create reusable components.
+
+```js
+const template = document.createElement("template"); // Create a template element
+template.innerHTML = `
+    <style>
+        h1 {
+            color: blue;
+        }
+    </style>
+    <h1>Hello, Template!</h1>
+`; // Set the inner HTML of the template
+
+// Define a custom element with Shadow DOM and Template
+
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.appendChild(template.content.cloneNode(true)); // Clone the template content and append it to the shadow root
+    }
+}
+
+// Register the custom element
+
+customElements.define("my-element", MyElement);
+```
+
+### Slots
+
+Slot
 
 # DOM => (Document Object Model)
 
