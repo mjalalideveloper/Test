@@ -3933,6 +3933,7 @@ XML :
     </student>
 </students>
 ```
+
 ## Custom Elements(Web Components)
 
 Custom Elements : Custom Elements is a web standard that allows developers to create their own HTML elements. These elements can have custom behavior, properties, and methods, and can be used just like standard HTML elements.
@@ -3951,6 +3952,7 @@ class MyElement extends HTMLElement {
 // Register the custom element
 customElements.define("my-element", MyElement);
 ```
+
 Use the custom element in HTML
 ```html
 <my-element></my-element>
@@ -4021,7 +4023,150 @@ customElements.define("my-element", MyElement);
 
 ### Slots
 
-Slot
+Slots : Slots are a web standard that allows developers to define placeholders in a web component's template. These placeholders can be filled with content from the main document, making it easier to create flexible and reusable components.
+
+```html
+<my-element>
+    <h1 slot="title">Hello, Slots!</h1>
+    <span slot="content">Hello, Slots!</span>
+</my-element>
+```
+
+```js
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: green;
+                }
+            </style>
+            <slot name="title"></slot>
+            <slot name="content"></slot>
+        `; // Set the inner HTML of the shadow root
+    }
+}
+
+// Register the custom element
+customElements.define("my-element", MyElement);
+```
+
+### Observed Attributes
+
+Observed attributes: Observed attributes are attributes that you want to monitor for changes. You can specify which attributes to observe by defining a static `observedAttributes` getter in your custom element class.
+
+```html
+<my-element element-title="Hello"></my-element>
+```
+
+```js
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: blue;
+                }
+            </style>
+            <h1></h1>
+            <p></p>
+        `;
+    }
+
+    connectedCallback() {
+        this.shadowRoot.querySelector("h1").textContent = this.getAttribute("element-title");
+        this.shadowRoot.querySelector("p").textContent = this.getAttribute("element-content");
+    }
+}
+
+customElements.define("my-element", MyElement);
+
+// Or:
+
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: blue;
+                }
+            </style>
+            <h1></h1>
+            <p></p>
+        `;
+    }
+
+    static observedAttributes() {
+        return ["element-title", "element-content"];
+    } // For example => Output: { element-title: "Hello", element-content: "World" }
+
+    connectedCallback() {
+        this.shadowRoot.querySelector("h1").textContent = this.getAttribute("element-title");
+        this.shadowRoot.querySelector("p").textContent = this.getAttribute("element-content");
+    }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+
+
+### Lifecycle Callbacks
+
+**Lifecycle callbacks are methods that are called at specific points in a web component's lifecycle. They allow developers to run code in response to changes in the component's state.**
+
+1. connectedCallback : This method is called when the element is added to the document. It is a good place to perform setup tasks, such as fetching data or initializing state.
+
+2. disconnectedCallback : This method is called when the element is removed from the document. It is a good place to perform cleanup tasks, such as cancelling network requests or removing event listeners.
+
+3. attributeChangedCallback : This method is called when an observed attribute is added, removed, or changed. It is a good place to respond to changes in the element's attributes.
+
+```js
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: green;
+                }
+            </style>
+            <h1>Hello, Slots!</h1>
+            <button>Click me</button>
+        `; // Set the inner HTML of the shadow root
+    }
+
+    connectedCallback() {
+        console.log("Element added to the document");
+
+        // Example:
+        const button = this.shadowRoot.querySelector("button");
+        button.addEventListener("click", () => {
+            console.log("Button clicked");
+        });
+    }
+
+    disconnectedCallback() {
+        console.log("Element removed from the document");
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log(`Attribute ${name} changed from ${oldValue} to ${newValue}`);
+    }
+}
+
+// Register the custom element
+customElements.define("my-element", MyElement);
+```
 
 # DOM => (Document Object Model)
 

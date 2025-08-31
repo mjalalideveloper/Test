@@ -922,16 +922,31 @@
 
 // !======> Test <=====!
 
-let users = ['ali', 'mmd', 'ahmad', 'ali', 'amin', 'mmd', 'ali']
-
-let repeatObj = users.reduce((obj, currentValue) => {
-    if (obj[currentValue]) {
-        obj[currentValue] += 1
-    } else {
-        obj[currentValue] = 1
+class MyElement extends HTMLElement {
+    constructor() {
+        super(); // Call the parent constructor
+        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
+        this.shadowRoot.innerHTML = `
+            <style>
+                h1 {
+                    color: blue;
+                }
+            </style>
+            <h1></h1>
+            <p></p>
+        `;
     }
 
-    return obj
-}, {})
+    static observedAttributes() {
+        return ["element-title", "element-content"];
+    } // For example => Output: { element-title: "Hello", element-content: "World" }
 
-console.log(repeatObj)
+    connectedCallback() {
+        this.shadowRoot.querySelector("h1").textContent = this.getAttribute("element-title");
+        this.shadowRoot.querySelector("p").textContent = this.getAttribute("element-content");
+        console.log(MyElement.observedAttributes());
+    }
+}
+
+// Register the custom element
+customElements.define("my-element", MyElement);
