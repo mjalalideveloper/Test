@@ -4116,8 +4116,6 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-
-
 ### Lifecycle Callbacks
 
 **Lifecycle callbacks are methods that are called at specific points in a web component's lifecycle. They allow developers to run code in response to changes in the component's state.**
@@ -4166,6 +4164,63 @@ class MyElement extends HTMLElement {
 
 // Register the custom element
 customElements.define("my-element", MyElement);
+```
+
+## Cookies
+
+Cookies are small pieces of data that are stored on the user's computer by the web browser while browsing a website. They are used to remember information about the user, such as login credentials, preferences, and shopping cart contents.
+
+### Setting a Cookie
+
+To set a cookie in JavaScript, you can use the `document.cookie` property:
+
+```js
+document.cookie = "username=JohnDoe";
+```
+
+### Getting a Cookie
+
+To get a cookie, you can read the `document.cookie` property:
+
+```js
+const cookies = document.cookie;
+```
+
+### Deleting a Cookie
+
+To delete a cookie, you can set its expiration date to a time in the past:
+
+```js
+document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+```
+
+### What is Path?
+
+Path is a property of a cookie that specifies the URL path for which the cookie is valid. It determines the scope of the cookie, meaning which pages or directories on the website can access the cookie.
+
+For example, if you set a cookie with a path of `/`, it will be accessible on all pages of the website. If you set a cookie with a path of `/admin`, it will only be accessible on pages within the `/admin` directory.
+
+```js
+document.cookie = "username=JohnDoe; path=/"; // Accessible on all pages
+```
+
+### What is Expires?
+
+Expires is a property of a cookie that specifies the date and time when the cookie will expire. When a cookie expires, it is automatically deleted by the browser.
+
+To set the expiration date of a cookie, you can use the `expires` attribute when creating the cookie:
+
+```js
+const now = new Date();
+
+console.log(now) // Current date and time
+
+// For 2 day
+let expireTime = now.setTime(now.getTime() + 2 * (24 * 60 * 60 * 1000));
+
+console.log(now) // 2 days from now
+
+document.cookie = `username=JohnDoe; expires=${now}`;
 ```
 
 # DOM => (Document Object Model)

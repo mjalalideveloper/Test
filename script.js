@@ -922,31 +922,7 @@
 
 // !======> Test <=====!
 
-class MyElement extends HTMLElement {
-    constructor() {
-        super(); // Call the parent constructor
-        this.attachShadow({ mode: "open" }); // Attach a shadow root to the element
-        this.shadowRoot.innerHTML = `
-            <style>
-                h1 {
-                    color: blue;
-                }
-            </style>
-            <h1></h1>
-            <p></p>
-        `;
-    }
 
-    static observedAttributes() {
-        return ["element-title", "element-content"];
-    } // For example => Output: { element-title: "Hello", element-content: "World" }
+let now = new Date()
 
-    connectedCallback() {
-        this.shadowRoot.querySelector("h1").textContent = this.getAttribute("element-title");
-        this.shadowRoot.querySelector("p").textContent = this.getAttribute("element-content");
-        console.log(MyElement.observedAttributes());
-    }
-}
-
-// Register the custom element
-customElements.define("my-element", MyElement);
+console.log(now.getTime())
